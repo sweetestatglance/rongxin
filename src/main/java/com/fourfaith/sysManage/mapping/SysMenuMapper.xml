@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysMenu" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="PId" property="pid" jdbcType="CHAR" />
+    <result column="MenuCode" property="menucode" jdbcType="VARCHAR" />
+    <result column="MenuName" property="menuname" jdbcType="VARCHAR" />
+    <result column="MenuLevel" property="menulevel" jdbcType="INTEGER" />
+    <result column="MenuUrl" property="menuurl" jdbcType="VARCHAR" />
+    <result column="MenuIcon" property="menuicon" jdbcType="VARCHAR" />
+    <result column="MenuOrder" property="menuorder" jdbcType="INTEGER" />
+    <result column="EnabledState" property="enabledstate" jdbcType="INTEGER" />
+    <result column="MenuCreateTime" property="menucreatetime" jdbcType="TIMESTAMP" />
+    <result column="MenuUpdateTime" property="menuupdatetime" jdbcType="TIMESTAMP" />
+    <result column="MenuRemark" property="menuremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, PId,MenuCode, MenuName, MenuLevel, MenuUrl, MenuIcon, MenuOrder, EnabledState, MenuCreateTime, 
+    MenuUpdateTime, MenuRemark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysMenu
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysMenu
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysMenu" >
+    insert into SysMenu (Id, PId,MenuCode, MenuName, 
+      MenuLevel, MenuUrl, MenuIcon, 
+      MenuOrder, EnabledState, MenuCreateTime, 
+      MenuUpdateTime, MenuRemark)
+    values (#{id,jdbcType=CHAR}, #{pid,jdbcType=CHAR}, #{menucode,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, 
+      #{menulevel,jdbcType=INTEGER}, #{menuurl,jdbcType=VARCHAR}, #{menuicon,jdbcType=VARCHAR}, 
+      #{menuorder,jdbcType=INTEGER}, #{enabledstate,jdbcType=INTEGER}, #{menucreatetime,jdbcType=TIMESTAMP}, 
+      #{menuupdatetime,jdbcType=TIMESTAMP}, #{menuremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysMenu" >
+    insert into SysMenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="pid != null" >
+        PId,
+      </if>
+      <if test="menucode != null" >
+        MenuCode,
+      </if>
+      <if test="menuname != null" >
+        MenuName,
+      </if>
+      <if test="menulevel != null" >
+        MenuLevel,
+      </if>
+      <if test="menuurl != null" >
+        MenuUrl,
+      </if>
+      <if test="menuicon != null" >
+        MenuIcon,
+      </if>
+      <if test="menuorder != null" >
+        MenuOrder,
+      </if>
+      <if test="enabledstate != null" >
+        EnabledState,
+      </if>
+      <if test="menucreatetime != null" >
+        MenuCreateTime,
+      </if>
+      <if test="menuupdatetime != null" >
+        MenuUpdateTime,
+      </if>
+      <if test="menuremark != null" >
+        MenuRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=CHAR},
+      </if>
+       <if test="menucode != null" >
+        #{menucode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="menulevel != null" >
+        #{menulevel,jdbcType=INTEGER},
+      </if>
+      <if test="menuurl != null" >
+        #{menuurl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuicon != null" >
+        #{menuicon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuorder != null" >
+        #{menuorder,jdbcType=INTEGER},
+      </if>
+      <if test="enabledstate != null" >
+        #{enabledstate,jdbcType=INTEGER},
+      </if>
+      <if test="menucreatetime != null" >
+        #{menucreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuupdatetime != null" >
+        #{menuupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuremark != null" >
+        #{menuremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysMenu" >
+    update SysMenu
+    <set >
+      <if test="pid != null" >
+        PId = #{pid,jdbcType=CHAR},
+      </if>
+       <if test="menucode != null" >
+        MenuCode = #{menucode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        MenuName = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="menulevel != null" >
+        MenuLevel = #{menulevel,jdbcType=INTEGER},
+      </if>
+      <if test="menuurl != null" >
+        MenuUrl = #{menuurl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuicon != null" >
+        MenuIcon = #{menuicon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuorder != null" >
+        MenuOrder = #{menuorder,jdbcType=INTEGER},
+      </if>
+      <if test="enabledstate != null" >
+        EnabledState = #{enabledstate,jdbcType=INTEGER},
+      </if>
+      <if test="menucreatetime != null" >
+        MenuCreateTime = #{menucreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuupdatetime != null" >
+        MenuUpdateTime = #{menuupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuremark != null" >
+        MenuRemark = #{menuremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysMenu" >
+    update SysMenu
+    set PId = #{pid,jdbcType=CHAR},
+      MenuCode = #{menucode,jdbcType=VARCHAR},
+      MenuName = #{menuname,jdbcType=VARCHAR},
+      MenuLevel = #{menulevel,jdbcType=INTEGER},
+      MenuUrl = #{menuurl,jdbcType=VARCHAR},
+      MenuIcon = #{menuicon,jdbcType=VARCHAR},
+      MenuOrder = #{menuorder,jdbcType=INTEGER},
+      EnabledState = #{enabledstate,jdbcType=INTEGER},
+      MenuCreateTime = #{menucreatetime,jdbcType=TIMESTAMP},
+      MenuUpdateTime = #{menuupdatetime,jdbcType=TIMESTAMP},
+      MenuRemark = #{menuremark,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="getList" resultMap="BaseResultMap" parameterType="map">
+  	SELECT * FROM SysMenu
+  	where 1=1
+      <if test="pid != null" >
+        AND PId = #{pid,jdbcType=CHAR}
+      </if>
+       <if test="menucode != null" >
+        AND MenuCode = #{menucode,jdbcType=VARCHAR}
+      </if>
+      <if test="menuname != null" >
+        AND MenuName = #{menuname,jdbcType=VARCHAR}
+      </if>
+      <if test="menuname_fuzzy != null" >
+       AND MenuName like '%${menuname_fuzzy}%'
+      </if>
+      <if test="menutype != null" >
+        AND MenuType = #{menutype,jdbcType=INTEGER}
+      </if>
+      <if test="menulevel != null" >
+        AND MenuLevel = #{menulevel,jdbcType=INTEGER}
+      </if>
+      <if test="menuurl != null" >
+        AND MenuUrl = #{menuurl,jdbcType=VARCHAR}
+      </if>
+      <if test="menuicon != null" >
+        AND MenuIcon = #{menuicon,jdbcType=VARCHAR}
+      </if>
+      <if test="menuorder != null" >
+        AND MenuOrder = #{menuorder,jdbcType=INTEGER}
+      </if>
+      <if test="menucreatetime != null" >
+        AND MenuCreateTime = #{menucreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="menuupdatetime != null" >
+        AND MenuUpdateTime = #{menuupdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="menuremark != null" >
+        AND MenuRemark = #{menuremark,jdbcType=VARCHAR}
+      </if>
+      <if test="enabledstate != null" >
+        AND EnabledState = #{enabledstate,jdbcType=INTEGER}
+      </if>
+      <if test="enabledstate_notEqual != null" >
+        AND EnabledState != #{enabledstate_notEqual,jdbcType=INTEGER} 
+      </if>
+     order by MenuOrder asc
+     <if test="pageStart!= null and pageEnd!= null">
+       limit ${pageStart},${pageEnd}
+    </if>
+  </select>
+  
+   <select id="getByMenuCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	SELECT 
+			<include refid="Base_Column_List" />
+		FROM SysMenu
+	  	where MenuCode = #{MenuCode,jdbcType=VARCHAR} 
+  </select>
+  
+   <select id="getMaxMenuOrder" resultType="java.lang.Integer" parameterType="map">
+        select max(MenuOrder) from SysMenu 
+  </select>
+  
+  
+    <select id="getMenuCodeList" resultMap="BaseResultMap" parameterType="map">
+         select * from SysMenu 
+         where 1=1
+	     <if test="menucode != null" >
+	          AND MenuCode in <foreach collection="menucode" item="item" index="index" 
+              open="(" separator="," close=")">#{item}</foreach>
+	     </if>
+	     <if test="enabledstate != null" >
+	           AND EnabledState = #{enabledstate,jdbcType=INTEGER}
+	     </if>
+  </select>
+  
+    <select id="getListByRoleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+   	select menu.* 
+   	from SysMenu as menu 
+   	where exists(
+   		select 1 
+   		from SysRolePermission as rp 
+   		where rp.menuid=menu.id 
+   		and rp.roleid=#{roleId,jdbcType=VARCHAR} 
+   	)
+   	AND menu.PId = 0
+   	AND menu.EnabledState = 1
+   	order by MenuOrder
+  </select>
+  
+     <select id="getCount" resultType="java.lang.Integer" parameterType="map">
+	 SELECT count(*) FROM SysMenu
+	where 1=1
+	<if test="pid != null" >
+        AND PId = #{pid,jdbcType=CHAR}
+      </if>
+       <if test="menucode != null" >
+        AND MenuCode = #{menucode,jdbcType=VARCHAR}
+      </if>
+      <if test="menuname != null" >
+        AND MenuName = #{menuname,jdbcType=VARCHAR}
+      </if>
+      <if test="menuname_fuzzy != null" >
+       AND MenuName like '%${menuname_fuzzy}%'
+      </if>
+      <if test="menutype != null" >
+        AND MenuType = #{menutype,jdbcType=INTEGER}
+      </if>
+      <if test="menulevel != null" >
+        AND MenuLevel = #{menulevel,jdbcType=INTEGER}
+      </if>
+      <if test="menuurl != null" >
+        AND MenuUrl = #{menuurl,jdbcType=VARCHAR}
+      </if>
+      <if test="menuicon != null" >
+        AND MenuIcon = #{menuicon,jdbcType=VARCHAR}
+      </if>
+      <if test="menuorder != null" >
+        AND MenuOrder = #{menuorder,jdbcType=INTEGER}
+      </if>
+      <if test="menucreatetime != null" >
+        AND MenuCreateTime = #{menucreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="menuupdatetime != null" >
+        AND MenuUpdateTime = #{menuupdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="menuremark != null" >
+        AND MenuRemark = #{menuremark,jdbcType=VARCHAR}
+      </if>
+      <if test="enabledstate != null" >
+        AND EnabledState = #{enabledstate,jdbcType=INTEGER}
+      </if>
+      <if test="enabledstate_notEqual != null" >
+        AND EnabledState != #{enabledstate_notEqual,jdbcType=INTEGER} 
+      </if>
+</select>
+
+<select id="getListByParams" resultMap="BaseResultMap" parameterType="map">
+   	select menu.* 
+   	from SysMenu as menu 
+   	where exists(
+   		select 1 
+   		from SysRolePermission as rp 
+   		where rp.menuid=menu.id 
+		<if test="roleid != null" >
+	      AND rp.roleid = #{roleid,jdbcType=VARCHAR}
+	    </if>
+   	)
+   	<if test="pid != null" >
+      AND menu.PId = #{pid,jdbcType=VARCHAR}
+    </if>
+   	<if test="enabledstate != null" >
+      AND menu.EnabledState = #{enabledstate,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

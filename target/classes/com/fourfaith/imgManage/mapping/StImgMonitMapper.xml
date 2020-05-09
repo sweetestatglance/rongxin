@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.imgManage.dao.StImgMonitMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.imgManage.model.StImgMonit" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="STCD" property="stcd" jdbcType="CHAR" />
+    <result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+    <result column="ImgUrl" property="imgurl" jdbcType="VARCHAR" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, STCD, Addvcd, ImgUrl, TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from st_imgmonit
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from st_imgmonit
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.imgManage.model.StImgMonit" >
+    insert into st_imgmonit (Id, STCD, Addvcd, ImgUrl, 
+      TM)
+    values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR}, #{imgurl,jdbcType=VARCHAR}, 
+      #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.imgManage.model.StImgMonit" >
+    insert into st_imgmonit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        STCD,
+      </if>
+      <if test="addvcd != null" >
+        Addvcd,
+      </if>
+      <if test="imgurl != null" >
+        ImgUrl,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="addvcd != null" >
+        #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="imgurl != null" >
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.imgManage.model.StImgMonit" >
+    update st_imgmonit
+    <set >
+      <if test="stcd != null" >
+        STCD = #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="addvcd != null" >
+        Addvcd = #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="imgurl != null" >
+        ImgUrl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.imgManage.model.StImgMonit" >
+    update st_imgmonit
+    set STCD = #{stcd,jdbcType=CHAR},
+      Addvcd = #{addvcd,jdbcType=CHAR},
+      ImgUrl = #{imgurl,jdbcType=VARCHAR},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  <select id="getImgList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sb.iscamera,
+		sb.stnm,
+		sb.sttp,
+		sb.stcd,
+		df.Id, df.STCD, df.Addvcd, df.Z as Water, df.PN05 as Rain, df.Q as Flow, df.Voltage, df.PH, df.AI as Temperature,
+		img.imgurl,
+		img.TM
+		FROM ST_STBPRP_B sb
+		LEFT JOIN ST_DeviceFactor df
+		ON df.Stcd=sb.Stcd
+		LEFT JOIN ST_ImgMonit img
+		ON img.Stcd=sb.Stcd
+		where 1=1
+		<if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+		
+		<if test="query_stcdName != null">
+			 AND ( sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+		<if test="stcd != null">
+		  AND sb.STCD = #{stcd,jdbcType=CHAR}
+	    </if>
+		<if test="stcdList != null and stcdList">
+		  AND sb.STCD in
+		  <foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		  </foreach>
+	    </if>
+		
+		<if test="addvcd != null">
+			AND sb.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		order by img.tm desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	<select id="getImgCount" resultType="java.lang.Integer" parameterType="map">
+
+		SELECT count(*)
+		FROM
+		(
+        SELECT
+		sb.stcd
+		FROM ST_STBPRP_B sb
+		LEFT JOIN ST_DeviceFactor df
+		ON df.Stcd=sb.Stcd
+		LEFT JOIN ST_ImgMonit img
+		ON img.Stcd=sb.Stcd
+		where 1=1
+		<if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+		<if test="query_stcdName != null">
+			 AND ( sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+	    <if test="stcdList != null and stcdList">
+		  AND sb.STCD in
+		  <foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		  </foreach>
+	    </if>
+		<if test="addvcd != null">
+			AND sb.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		) tmp
+
+	</select>
+	
+	<select id="getStcd" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+      <include refid="Base_Column_List" />
+      from ST_ImgMonit
+      where STCD = #{stcd,jdbcType=VARCHAR}
+  </select>
+	
+	
+</mapper>

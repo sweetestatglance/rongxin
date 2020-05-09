@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StAddvcdDMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StAddvcdD">
+		<id column="Id" property="id" jdbcType="CHAR" />
+		<result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+		<result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+		<result column="Faddvcd" property="faddvcd" jdbcType="CHAR" />
+		<result column="Addvnm" property="addvnm" jdbcType="VARCHAR" />
+		<result column="Addnum" property="addnum" jdbcType="CHAR" />
+		<result column="Comments" property="comments" jdbcType="VARCHAR" />
+		<result column="Moditime" property="moditime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, Addvcd, EnterpriseId, Faddvcd, Addvnm, Addnum, Comments, Moditime
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_ADDVCD_D
+		where Id = #{id,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ST_ADDVCD_D
+		where Id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.siteManage.model.StAddvcdD">
+		insert into ST_ADDVCD_D (Id, Addvcd, EnterpriseId,
+		Faddvcd, Addvnm, Addnum,
+		Comments, Moditime)
+		values (#{id,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR},
+		#{enterpriseid,jdbcType=CHAR},
+		#{faddvcd,jdbcType=CHAR}, #{addvnm,jdbcType=VARCHAR}, #{addnum,jdbcType=CHAR},
+		#{comments,jdbcType=VARCHAR}, #{moditime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StAddvcdD">
+		insert into ST_ADDVCD_D
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="addvcd != null">
+				Addvcd,
+			</if>
+			<if test="enterpriseid != null">
+				EnterpriseId,
+			</if>
+			<if test="faddvcd != null">
+				Faddvcd,
+			</if>
+			<if test="addvnm != null">
+				Addvnm,
+			</if>
+			<if test="addnum != null">
+				Addnum,
+			</if>
+			<if test="comments != null">
+				Comments,
+			</if>
+			<if test="moditime != null">
+				Moditime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=CHAR},
+			</if>
+			<if test="addvcd != null">
+				#{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="enterpriseid != null">
+				#{enterpriseid,jdbcType=CHAR},
+			</if>
+			<if test="faddvcd != null">
+				#{faddvcd,jdbcType=CHAR},
+			</if>
+			<if test="addvnm != null">
+				#{addvnm,jdbcType=VARCHAR},
+			</if>
+			<if test="addnum != null">
+				#{addnum,jdbcType=CHAR},
+			</if>
+			<if test="comments != null">
+				#{comments,jdbcType=VARCHAR},
+			</if>
+			<if test="moditime != null">
+				#{moditime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StAddvcdD">
+		update ST_ADDVCD_D
+		<set>
+			<if test="addvcd != null">
+				Addvcd = #{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="enterpriseid != null">
+				EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+			</if>
+			<if test="faddvcd != null">
+				Faddvcd = #{faddvcd,jdbcType=CHAR},
+			</if>
+			<if test="addvnm != null">
+				Addvnm = #{addvnm,jdbcType=VARCHAR},
+			</if>
+			<if test="addnum != null">
+				Addnum = #{addnum,jdbcType=CHAR},
+			</if>
+			<if test="comments != null">
+				Comments = #{comments,jdbcType=VARCHAR},
+			</if>
+			<if test="moditime != null">
+				Moditime = #{moditime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StAddvcdD">
+		update ST_ADDVCD_D
+		set Addvcd = #{addvcd,jdbcType=CHAR},
+		EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+		Faddvcd = #{faddvcd,jdbcType=CHAR},
+		Addvnm = #{addvnm,jdbcType=VARCHAR},
+		Addnum = #{addnum,jdbcType=CHAR},
+		Comments = #{comments,jdbcType=VARCHAR},
+		Moditime = #{moditime,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	
+	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM ST_ADDVCD_D
+		where 1=1
+		<if test="id != null">
+			AND ID = #{id,jdbcType=CHAR}
+		</if>
+		<if test="idList != null and idList.size()>0">
+	        AND ID in 
+	        <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="enterpriseid != null">
+			AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+		</if>
+		<if test="faddvcd != null">
+			AND FADDVCD = #{faddvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvam != null">
+			AND ADDVNM = #{addvam,jdbcType=CHAR}
+		</if>
+		<if test="addnum != null">
+			AND ADDNUM = #{addnum,jdbcType=CHAR}
+		</if>
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	
+	<select id="getAddvnm" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_ADDVCD_D
+    where 1=1
+    <if test="enterpriseid != null">
+		 AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+	</if>
+	<if test="addvnm != null">
+		AND ADDVNM = #{addvnm,jdbcType=CHAR}
+	</if>
+  </select>
+  
+    <select id="getChildAddvcdD" resultMap="BaseResultMap" parameterType="java.lang.String">
+      select 
+       <include refid="Base_Column_List" />
+       from ST_ADDVCD_D
+      where 1=1
+      <if test="_parameter != null">
+        AND FADDVCD = #{_parameter}
+      </if>
+  </select>
+  
+  
+   <select id="isParent" parameterType="java.lang.String" resultType="java.lang.Integer">
+      select count(*) from ST_ADDVCD_D
+      where 1=1
+      <if test="_parameter != null">
+        AND FADDVCD = #{_parameter}
+      </if>
+  </select>
+</mapper>

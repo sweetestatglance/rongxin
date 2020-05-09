@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.reportManage.dao.StDeviceFactorMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.reportManage.model.StDeviceFactor">
+		<id column="Id" property="id" jdbcType="CHAR" />
+		<result column="STCD" property="stcd" jdbcType="CHAR" />
+		<result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+		<result column="Voltage" property="voltage" jdbcType="DECIMAL" />
+		<result column="SignalInten" property="signalinten" jdbcType="DECIMAL" />
+		<result column="PJ" property="pJ" jdbcType="DECIMAL" />
+		<result column="PN05" property="pn05" jdbcType="DECIMAL" />
+		<result column="Z" property="z" jdbcType="DECIMAL" />
+		<result column="ZB" property="zb" jdbcType="DECIMAL" />
+		<result column="ZU" property="zu" jdbcType="DECIMAL" />
+		<result column="VJ" property="vj" jdbcType="DECIMAL" />
+		<result column="VA" property="va" jdbcType="DECIMAL" />
+		<result column="Q" property="q" jdbcType="DECIMAL" />
+		<result column="QA" property="qa" jdbcType="DECIMAL" />
+		<result column="AI" property="ai" jdbcType="DECIMAL" />
+		<result column="C" property="c" jdbcType="DECIMAL" />
+		<result column="MST" property="mst" jdbcType="DECIMAL" />
+		<result column="FL" property="fl" jdbcType="DECIMAL" />
+		<result column="UC" property="uc" jdbcType="DECIMAL" />
+		<result column="US" property="us" jdbcType="DECIMAL" />
+		<result column="UE" property="ue" jdbcType="DECIMAL" />
+		<result column="EJ" property="ej" jdbcType="DECIMAL" />
+		<result column="ED" property="ed" jdbcType="DECIMAL" />
+		<result column="GTP" property="gtp" jdbcType="DECIMAL" />
+		<result column="M10" property="m10" jdbcType="DECIMAL" />
+		<result column="M20" property="m20" jdbcType="DECIMAL" />
+		<result column="M30" property="m30" jdbcType="DECIMAL" />
+		<result column="M40" property="m40" jdbcType="DECIMAL" />
+		<result column="M50" property="m50" jdbcType="DECIMAL" />
+		<result column="M60" property="m60" jdbcType="DECIMAL" />
+		<result column="M80" property="m80" jdbcType="DECIMAL" />
+		<result column="M100" property="m100" jdbcType="DECIMAL" />
+		<result column="PH" property="ph" jdbcType="DECIMAL" />
+		<result column="DOXY" property="doxy" jdbcType="DECIMAL" />
+		<result column="COND" property="cond" jdbcType="DECIMAL" />
+		<result column="TURB" property="turb" jdbcType="DECIMAL" />
+		<result column="NH4N" property="nh4n" jdbcType="DECIMAL" />
+		<result column="TP" property="tp" jdbcType="DECIMAL" />
+		<result column="TN" property="tn" jdbcType="DECIMAL" />
+		<result column="CHLA" property="chla" jdbcType="DECIMAL" />
+		<result column="TD11" property="td11" jdbcType="DECIMAL" />
+		<result column="TD12" property="td12" jdbcType="DECIMAL" />
+		<result column="TD13" property="td13" jdbcType="DECIMAL" />
+		<result column="TD14" property="td14" jdbcType="DECIMAL" />
+		<result column="TD15" property="td15" jdbcType="DECIMAL" />
+		<result column="TD16" property="td16" jdbcType="DECIMAL" />
+		<result column="TD17" property="td17" jdbcType="DECIMAL" />
+		<result column="TD18" property="td18" jdbcType="DECIMAL" />
+		<result column="TD19" property="td19" jdbcType="DECIMAL" />
+		<result column="TD20" property="td20" jdbcType="DECIMAL" />
+		<result column="TD21" property="td21" jdbcType="DECIMAL" />
+		<result column="TD22" property="td22" jdbcType="DECIMAL" />
+		<result column="TD23" property="td23" jdbcType="DECIMAL" />
+		<result column="TD24" property="td24" jdbcType="DECIMAL" />
+		<result column="TM" property="tm" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, STCD, Addvcd, Voltage, SignalInten, PJ, PN05, Z, ZB, ZU, VJ, VA, Q, QA, AI, C,
+		MST, FL, UC, US, UE, EJ, ED, GTP, M10, M20, M30, M40, M50, M60, M80, M100, PH, DOXY,
+		COND, TURB, NH4N, TP, TN, CHLA, TD11, TD12, TD13, TD14, TD15, TD16, TD17, TD18, TD19,
+		TD20, TD21, TD22, TD23, TD24, TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_DeviceFactor
+		where Id = #{id,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ST_DeviceFactor
+		where Id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.reportManage.model.StDeviceFactor">
+		insert into ST_DeviceFactor (Id, STCD, Addvcd, Voltage,
+		SignalInten, PJ, PN05,
+		Z, ZB, ZU, VJ,
+		VA, Q, QA, AI,
+		C, MST, FL, UC,
+		US, UE, EJ, ED,
+		GTP, M10, M20, M30,
+		M40, M50, M60, M80,
+		M100, PH, DOXY, COND,
+		TURB, NH4N, TP, TN,
+		CHLA, TD11, TD12, TD13,
+		TD14, TD15, TD16, TD17,
+		TD18, TD19, TD20, TD21,
+		TD22, TD23, TD24, TM
+		)
+		values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR}, #{voltage,jdbcType=DECIMAL},
+		#{signalinten,jdbcType=DECIMAL}, #{pJ,jdbcType=DECIMAL}, #{pn05,jdbcType=DECIMAL},
+		#{z,jdbcType=DECIMAL}, #{zb,jdbcType=DECIMAL}, #{zu,jdbcType=DECIMAL}, #{vj,jdbcType=DECIMAL},
+		#{va,jdbcType=DECIMAL}, #{q,jdbcType=DECIMAL}, #{qa,jdbcType=DECIMAL}, #{ai,jdbcType=DECIMAL},
+		#{c,jdbcType=DECIMAL}, #{mst,jdbcType=DECIMAL}, #{fl,jdbcType=DECIMAL}, #{uc,jdbcType=DECIMAL},
+		#{us,jdbcType=DECIMAL}, #{ue,jdbcType=DECIMAL}, #{ej,jdbcType=DECIMAL}, #{ed,jdbcType=DECIMAL},
+		#{gtp,jdbcType=DECIMAL}, #{m10,jdbcType=DECIMAL}, #{m20,jdbcType=DECIMAL}, #{m30,jdbcType=DECIMAL},
+		#{m40,jdbcType=DECIMAL}, #{m50,jdbcType=DECIMAL}, #{m60,jdbcType=DECIMAL}, #{m80,jdbcType=DECIMAL},
+		#{m100,jdbcType=DECIMAL}, #{ph,jdbcType=DECIMAL}, #{doxy,jdbcType=DECIMAL}, #{cond,jdbcType=DECIMAL},
+		#{turb,jdbcType=DECIMAL}, #{nh4n,jdbcType=DECIMAL}, #{tp,jdbcType=DECIMAL}, #{tn,jdbcType=DECIMAL},
+		#{chla,jdbcType=DECIMAL}, #{td11,jdbcType=DECIMAL}, #{td12,jdbcType=DECIMAL}, #{td13,jdbcType=DECIMAL},
+		#{td14,jdbcType=DECIMAL}, #{td15,jdbcType=DECIMAL}, #{td16,jdbcType=DECIMAL}, #{td17,jdbcType=DECIMAL},
+		#{td18,jdbcType=DECIMAL}, #{td19,jdbcType=DECIMAL}, #{td20,jdbcType=DECIMAL}, #{td21,jdbcType=DECIMAL},
+		#{td22,jdbcType=DECIMAL}, #{td23,jdbcType=DECIMAL}, #{td24,jdbcType=DECIMAL}, #{tm,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.reportManage.model.StDeviceFactor">
+		insert into ST_DeviceFactor
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="stcd != null">
+				STCD,
+			</if>
+			<if test="addvcd != null">
+				Addvcd,
+			</if>
+			<if test="voltage != null">
+				Voltage,
+			</if>
+			<if test="signalinten != null">
+				SignalInten,
+			</if>
+			<if test="pJ != null">
+				PJ,
+			</if>
+			<if test="pn05 != null">
+				PN05,
+			</if>
+			<if test="z != null">
+				Z,
+			</if>
+			<if test="zb != null">
+				ZB,
+			</if>
+			<if test="zu != null">
+				ZU,
+			</if>
+			<if test="vj != null">
+				VJ,
+			</if>
+			<if test="va != null">
+				VA,
+			</if>
+			<if test="q != null">
+				Q,
+			</if>
+			<if test="qa != null">
+				QA,
+			</if>
+			<if test="ai != null">
+				AI,
+			</if>
+			<if test="c != null">
+				C,
+			</if>
+			<if test="mst != null">
+				MST,
+			</if>
+			<if test="fl != null">
+				FL,
+			</if>
+			<if test="uc != null">
+				UC,
+			</if>
+			<if test="us != null">
+				US,
+			</if>
+			<if test="ue != null">
+				UE,
+			</if>
+			<if test="ej != null">
+				EJ,
+			</if>
+			<if test="ed != null">
+				ED,
+			</if>
+			<if test="gtp != null">
+				GTP,
+			</if>
+			<if test="m10 != null">
+				M10,
+			</if>
+			<if test="m20 != null">
+				M20,
+			</if>
+			<if test="m30 != null">
+				M30,
+			</if>
+			<if test="m40 != null">
+				M40,
+			</if>
+			<if test="m50 != null">
+				M50,
+			</if>
+			<if test="m60 != null">
+				M60,
+			</if>
+			<if test="m80 != null">
+				M80,
+			</if>
+			<if test="m100 != null">
+				M100,
+			</if>
+			<if test="ph != null">
+				PH,
+			</if>
+			<if test="doxy != null">
+				DOXY,
+			</if>
+			<if test="cond != null">
+				COND,
+			</if>
+			<if test="turb != null">
+				TURB,
+			</if>
+			<if test="nh4n != null">
+				NH4N,
+			</if>
+			<if test="tp != null">
+				TP,
+			</if>
+			<if test="tn != null">
+				TN,
+			</if>
+			<if test="chla != null">
+				CHLA,
+			</if>
+			<if test="td11 != null">
+				TD11,
+			</if>
+			<if test="td12 != null">
+				TD12,
+			</if>
+			<if test="td13 != null">
+				TD13,
+			</if>
+			<if test="td14 != null">
+				TD14,
+			</if>
+			<if test="td15 != null">
+				TD15,
+			</if>
+			<if test="td16 != null">
+				TD16,
+			</if>
+			<if test="td17 != null">
+				TD17,
+			</if>
+			<if test="td18 != null">
+				TD18,
+			</if>
+			<if test="td19 != null">
+				TD19,
+			</if>
+			<if test="td20 != null">
+				TD20,
+			</if>
+			<if test="td21 != null">
+				TD21,
+			</if>
+			<if test="td22 != null">
+				TD22,
+			</if>
+			<if test="td23 != null">
+				TD23,
+			</if>
+			<if test="td24 != null">
+				TD24,
+			</if>
+			<if test="tm != null">
+				TM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=CHAR},
+			</if>
+			<if test="stcd != null">
+				#{stcd,jdbcType=CHAR},
+			</if>
+			<if test="addvcd != null">
+				#{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="voltage != null">
+				#{voltage,jdbcType=DECIMAL},
+			</if>
+			<if test="signalinten != null">
+				#{signalinten,jdbcType=DECIMAL},
+			</if>
+			<if test="pJ != null">
+				#{pJ,jdbcType=DECIMAL},
+			</if>
+			<if test="pn05 != null">
+				#{pn05,jdbcType=DECIMAL},
+			</if>
+			<if test="z != null">
+				#{z,jdbcType=DECIMAL},
+			</if>
+			<if test="zb != null">
+				#{zb,jdbcType=DECIMAL},
+			</if>
+			<if test="zu != null">
+				#{zu,jdbcType=DECIMAL},
+			</if>
+			<if test="vj != null">
+				#{vj,jdbcType=DECIMAL},
+			</if>
+			<if test="va != null">
+				#{va,jdbcType=DECIMAL},
+			</if>
+			<if test="q != null">
+				#{q,jdbcType=DECIMAL},
+			</if>
+			<if test="qa != null">
+				#{qa,jdbcType=DECIMAL},
+			</if>
+			<if test="ai != null">
+				#{ai,jdbcType=DECIMAL},
+			</if>
+			<if test="c != null">
+				#{c,jdbcType=DECIMAL},
+			</if>
+			<if test="mst != null">
+				#{mst,jdbcType=DECIMAL},
+			</if>
+			<if test="fl != null">
+				#{fl,jdbcType=DECIMAL},
+			</if>
+			<if test="uc != null">
+				#{uc,jdbcType=DECIMAL},
+			</if>
+			<if test="us != null">
+				#{us,jdbcType=DECIMAL},
+			</if>
+			<if test="ue != null">
+				#{ue,jdbcType=DECIMAL},
+			</if>
+			<if test="ej != null">
+				#{ej,jdbcType=DECIMAL},
+			</if>
+			<if test="ed != null">
+				#{ed,jdbcType=DECIMAL},
+			</if>
+			<if test="gtp != null">
+				#{gtp,jdbcType=DECIMAL},
+			</if>
+			<if test="m10 != null">
+				#{m10,jdbcType=DECIMAL},
+			</if>
+			<if test="m20 != null">
+				#{m20,jdbcType=DECIMAL},
+			</if>
+			<if test="m30 != null">
+				#{m30,jdbcType=DECIMAL},
+			</if>
+			<if test="m40 != null">
+				#{m40,jdbcType=DECIMAL},
+			</if>
+			<if test="m50 != null">
+				#{m50,jdbcType=DECIMAL},
+			</if>
+			<if test="m60 != null">
+				#{m60,jdbcType=DECIMAL},
+			</if>
+			<if test="m80 != null">
+				#{m80,jdbcType=DECIMAL},
+			</if>
+			<if test="m100 != null">
+				#{m100,jdbcType=DECIMAL},
+			</if>
+			<if test="ph != null">
+				#{ph,jdbcType=DECIMAL},
+			</if>
+			<if test="doxy != null">
+				#{doxy,jdbcType=DECIMAL},
+			</if>
+			<if test="cond != null">
+				#{cond,jdbcType=DECIMAL},
+			</if>
+			<if test="turb != null">
+				#{turb,jdbcType=DECIMAL},
+			</if>
+			<if test="nh4n != null">
+				#{nh4n,jdbcType=DECIMAL},
+			</if>
+			<if test="tp != null">
+				#{tp,jdbcType=DECIMAL},
+			</if>
+			<if test="tn != null">
+				#{tn,jdbcType=DECIMAL},
+			</if>
+			<if test="chla != null">
+				#{chla,jdbcType=DECIMAL},
+			</if>
+			<if test="td11 != null">
+				#{td11,jdbcType=DECIMAL},
+			</if>
+			<if test="td12 != null">
+				#{td12,jdbcType=DECIMAL},
+			</if>
+			<if test="td13 != null">
+				#{td13,jdbcType=DECIMAL},
+			</if>
+			<if test="td14 != null">
+				#{td14,jdbcType=DECIMAL},
+			</if>
+			<if test="td15 != null">
+				#{td15,jdbcType=DECIMAL},
+			</if>
+			<if test="td16 != null">
+				#{td16,jdbcType=DECIMAL},
+			</if>
+			<if test="td17 != null">
+				#{td17,jdbcType=DECIMAL},
+			</if>
+			<if test="td18 != null">
+				#{td18,jdbcType=DECIMAL},
+			</if>
+			<if test="td19 != null">
+				#{td19,jdbcType=DECIMAL},
+			</if>
+			<if test="td20 != null">
+				#{td20,jdbcType=DECIMAL},
+			</if>
+			<if test="td21 != null">
+				#{td21,jdbcType=DECIMAL},
+			</if>
+			<if test="td22 != null">
+				#{td22,jdbcType=DECIMAL},
+			</if>
+			<if test="td23 != null">
+				#{td23,jdbcType=DECIMAL},
+			</if>
+			<if test="td24 != null">
+				#{td24,jdbcType=DECIMAL},
+			</if>
+			<if test="tm != null">
+				#{tm,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.reportManage.model.StDeviceFactor">
+		update ST_DeviceFactor
+		<set>
+			<if test="stcd != null">
+				STCD = #{stcd,jdbcType=CHAR},
+			</if>
+			<if test="addvcd != null">
+				Addvcd = #{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="voltage != null">
+				Voltage = #{voltage,jdbcType=DECIMAL},
+			</if>
+			<if test="signalinten != null">
+				SignalInten = #{signalinten,jdbcType=DECIMAL},
+			</if>
+			<if test="pJ != null">
+				PJ = #{pJ,jdbcType=DECIMAL},
+			</if>
+			<if test="pn05 != null">
+				PN05 = #{pn05,jdbcType=DECIMAL},
+			</if>
+			<if test="z != null">
+				Z = #{z,jdbcType=DECIMAL},
+			</if>
+			<if test="zb != null">
+				ZB = #{zb,jdbcType=DECIMAL},
+			</if>
+			<if test="zu != null">
+				ZU = #{zu,jdbcType=DECIMAL},
+			</if>
+			<if test="vj != null">
+				VJ = #{vj,jdbcType=DECIMAL},
+			</if>
+			<if test="va != null">
+				VA = #{va,jdbcType=DECIMAL},
+			</if>
+			<if test="q != null">
+				Q = #{q,jdbcType=DECIMAL},
+			</if>
+			<if test="qa != null">
+				QA = #{qa,jdbcType=DECIMAL},
+			</if>
+			<if test="ai != null">
+				AI = #{ai,jdbcType=DECIMAL},
+			</if>
+			<if test="c != null">
+				C = #{c,jdbcType=DECIMAL},
+			</if>
+			<if test="mst != null">
+				MST = #{mst,jdbcType=DECIMAL},
+			</if>
+			<if test="fl != null">
+				FL = #{fl,jdbcType=DECIMAL},
+			</if>
+			<if test="uc != null">
+				UC = #{uc,jdbcType=DECIMAL},
+			</if>
+			<if test="us != null">
+				US = #{us,jdbcType=DECIMAL},
+			</if>
+			<if test="ue != null">
+				UE = #{ue,jdbcType=DECIMAL},
+			</if>
+			<if test="ej != null">
+				EJ = #{ej,jdbcType=DECIMAL},
+			</if>
+			<if test="ed != null">
+				ED = #{ed,jdbcType=DECIMAL},
+			</if>
+			<if test="gtp != null">
+				GTP = #{gtp,jdbcType=DECIMAL},
+			</if>
+			<if test="m10 != null">
+				M10 = #{m10,jdbcType=DECIMAL},
+			</if>
+			<if test="m20 != null">
+				M20 = #{m20,jdbcType=DECIMAL},
+			</if>
+			<if test="m30 != null">
+				M30 = #{m30,jdbcType=DECIMAL},
+			</if>
+			<if test="m40 != null">
+				M40 = #{m40,jdbcType=DECIMAL},
+			</if>
+			<if test="m50 != null">
+				M50 = #{m50,jdbcType=DECIMAL},
+			</if>
+			<if test="m60 != null">
+				M60 = #{m60,jdbcType=DECIMAL},
+			</if>
+			<if test="m80 != null">
+				M80 = #{m80,jdbcType=DECIMAL},
+			</if>
+			<if test="m100 != null">
+				M100 = #{m100,jdbcType=DECIMAL},
+			</if>
+			<if test="ph != null">
+				PH = #{ph,jdbcType=DECIMAL},
+			</if>
+			<if test="doxy != null">
+				DOXY = #{doxy,jdbcType=DECIMAL},
+			</if>
+			<if test="cond != null">
+				COND = #{cond,jdbcType=DECIMAL},
+			</if>
+			<if test="turb != null">
+				TURB = #{turb,jdbcType=DECIMAL},
+			</if>
+			<if test="nh4n != null">
+				NH4N = #{nh4n,jdbcType=DECIMAL},
+			</if>
+			<if test="tp != null">
+				TP = #{tp,jdbcType=DECIMAL},
+			</if>
+			<if test="tn != null">
+				TN = #{tn,jdbcType=DECIMAL},
+			</if>
+			<if test="chla != null">
+				CHLA = #{chla,jdbcType=DECIMAL},
+			</if>
+			<if test="td11 != null">
+				TD11 = #{td11,jdbcType=DECIMAL},
+			</if>
+			<if test="td12 != null">
+				TD12 = #{td12,jdbcType=DECIMAL},
+			</if>
+			<if test="td13 != null">
+				TD13 = #{td13,jdbcType=DECIMAL},
+			</if>
+			<if test="td14 != null">
+				TD14 = #{td14,jdbcType=DECIMAL},
+			</if>
+			<if test="td15 != null">
+				TD15 = #{td15,jdbcType=DECIMAL},
+			</if>
+			<if test="td16 != null">
+				TD16 = #{td16,jdbcType=DECIMAL},
+			</if>
+			<if test="td17 != null">
+				TD17 = #{td17,jdbcType=DECIMAL},
+			</if>
+			<if test="td18 != null">
+				TD18 = #{td18,jdbcType=DECIMAL},
+			</if>
+			<if test="td19 != null">
+				TD19 = #{td19,jdbcType=DECIMAL},
+			</if>
+			<if test="td20 != null">
+				TD20 = #{td20,jdbcType=DECIMAL},
+			</if>
+			<if test="td21 != null">
+				TD21 = #{td21,jdbcType=DECIMAL},
+			</if>
+			<if test="td22 != null">
+				TD22 = #{td22,jdbcType=DECIMAL},
+			</if>
+			<if test="td23 != null">
+				TD23 = #{td23,jdbcType=DECIMAL},
+			</if>
+			<if test="td24 != null">
+				TD24 = #{td24,jdbcType=DECIMAL},
+			</if>
+			<if test="tm != null">
+				TM = #{tm,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.reportManage.model.StDeviceFactor">
+		update ST_DeviceFactor
+		set STCD = #{stcd,jdbcType=CHAR},
+		Addvcd = #{addvcd,jdbcType=CHAR},
+		Voltage = #{voltage,jdbcType=DECIMAL},
+		SignalInten = #{signalinten,jdbcType=DECIMAL},
+		PJ = #{pJ,jdbcType=DECIMAL},
+		PN05 = #{pn05,jdbcType=DECIMAL},
+		Z = #{z,jdbcType=DECIMAL},
+		ZB = #{zb,jdbcType=DECIMAL},
+		ZU = #{zu,jdbcType=DECIMAL},
+		VJ = #{vj,jdbcType=DECIMAL},
+		VA = #{va,jdbcType=DECIMAL},
+		Q = #{q,jdbcType=DECIMAL},
+		QA = #{qa,jdbcType=DECIMAL},
+		AI = #{ai,jdbcType=DECIMAL},
+		C = #{c,jdbcType=DECIMAL},
+		MST = #{mst,jdbcType=DECIMAL},
+		FL = #{fl,jdbcType=DECIMAL},
+		UC = #{uc,jdbcType=DECIMAL},
+		US = #{us,jdbcType=DECIMAL},
+		UE = #{ue,jdbcType=DECIMAL},
+		EJ = #{ej,jdbcType=DECIMAL},
+		ED = #{ed,jdbcType=DECIMAL},
+		GTP = #{gtp,jdbcType=DECIMAL},
+		M10 = #{m10,jdbcType=DECIMAL},
+		M20 = #{m20,jdbcType=DECIMAL},
+		M30 = #{m30,jdbcType=DECIMAL},
+		M40 = #{m40,jdbcType=DECIMAL},
+		M50 = #{m50,jdbcType=DECIMAL},
+		M60 = #{m60,jdbcType=DECIMAL},
+		M80 = #{m80,jdbcType=DECIMAL},
+		M100 = #{m100,jdbcType=DECIMAL},
+		PH = #{ph,jdbcType=DECIMAL},
+		DOXY = #{doxy,jdbcType=DECIMAL},
+		COND = #{cond,jdbcType=DECIMAL},
+		TURB = #{turb,jdbcType=DECIMAL},
+		NH4N = #{nh4n,jdbcType=DECIMAL},
+		TP = #{tp,jdbcType=DECIMAL},
+		TN = #{tn,jdbcType=DECIMAL},
+		CHLA = #{chla,jdbcType=DECIMAL},
+		TD11 = #{td11,jdbcType=DECIMAL},
+		TD12 = #{td12,jdbcType=DECIMAL},
+		TD13 = #{td13,jdbcType=DECIMAL},
+		TD14 = #{td14,jdbcType=DECIMAL},
+		TD15 = #{td15,jdbcType=DECIMAL},
+		TD16 = #{td16,jdbcType=DECIMAL},
+		TD17 = #{td17,jdbcType=DECIMAL},
+		TD18 = #{td18,jdbcType=DECIMAL},
+		TD19 = #{td19,jdbcType=DECIMAL},
+		TD20 = #{td20,jdbcType=DECIMAL},
+		TD21 = #{td21,jdbcType=DECIMAL},
+		TD22 = #{td22,jdbcType=DECIMAL},
+		TD23 = #{td23,jdbcType=DECIMAL},
+		TD24 = #{td24,jdbcType=DECIMAL},
+		TM = #{tm,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+
+	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sa.`Faddvcd` as faddvcd,
+		sa.`Addvnm` as addvnm1,
+		sb.STCD,
+		sb.Addvcd,
+		sb.ComMode,
+		Voltage,
+		SignalInten,
+		PN05,
+		PJ,
+		TD11,
+		Z,
+		ZB,
+		ZU,
+		VJ,
+		VA,
+		Q,
+		QA,
+		AI,
+		C,
+		MST,
+		FL,
+		UC,
+		US,
+		UE,
+		EJ,
+		ED,
+		GTP,
+		M10,
+		M20,
+		M30,
+		M40,
+		M50,
+		M60,
+		M80,
+		M100,
+		PH,
+		DOXY,
+		COND,
+		TURB,
+		NH4N,
+		TP,
+		TN,
+		CHLA,
+		TD11,
+		TD12,
+		TD13,
+		TD14,
+		TD15,
+		TD16,
+		TD17,
+		TD18,
+		TD19,
+		TD20,
+		TD21,
+		TD22,
+		TD23,
+		TD24,
+		df.TM,sb.Stnm,sb.IsCamera,sb.Sttp,sb.LastOnline,sb.Dsfl,sb.cameratype,sb.videochannel,
+		sb.dvraddr,sb.dvrcode,Lgtd,Lttd,Stlc,sb.moditime
+		FROM ST_DeviceFactor df RIGHT JOIN ST_STBPRP_B sb
+		ON df.STCD=sb.STCD LEFT JOIN ST_ADDVCD_D sa ON
+		sa.id = sb.Addvcd
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+		<if test="sttp != null">
+			AND sb.sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+		<if test="tm != null">
+			AND TM = #{tm,jdbcType=TIMESTAMP}
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by CASE DSFL WHEN '1' THEN 0 WHEN '0' THEN 1 WHEN '2' THEN 2 END ,TM desc
+	</select>
+
+	<delete id="deleteStcd" parameterType="java.lang.String">
+		delete from ST_DeviceFactor
+		where STCD = #{stcd,jdbcType=CHAR}
+	</delete>
+
+	<select id="getDfList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM ST_DeviceFactor
+		where 1=1
+		<if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+		</if>
+	</select>
+
+	<select id="getMaxPj" resultType="java.lang.Double" parameterType="map">
+		SELECT max(pj) FROM ST_DeviceFactor df RIGHT JOIN ST_STBPRP_B sb
+		ON df.STCD=sb.STCD
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+		<if test="sttp != null">
+			AND sb.sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+	</select>
+
+
+
+
+
+</mapper>

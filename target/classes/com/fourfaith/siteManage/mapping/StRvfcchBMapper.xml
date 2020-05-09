@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StRvfcchBMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StRvfcchB" >
+    <id column="STCD" property="stcd" jdbcType="CHAR" />
+    <result column="LDKEL" property="ldkel" jdbcType="DECIMAL" />
+    <result column="RDKEL" property="rdkel" jdbcType="DECIMAL" />
+    <result column="WRZ" property="wrz" jdbcType="DECIMAL" />
+    <result column="WRQ" property="wrq" jdbcType="DECIMAL" />
+    <result column="GRZ" property="grz" jdbcType="DECIMAL" />
+    <result column="GRQ" property="grq" jdbcType="DECIMAL" />
+    <result column="FLPQ" property="flpq" jdbcType="DECIMAL" />
+    <result column="OBHTZ" property="obhtz" jdbcType="DECIMAL" />
+    <result column="OBHTZTM" property="obhtztm" jdbcType="TIMESTAMP" />
+    <result column="IVHZ" property="ivhz" jdbcType="DECIMAL" />
+    <result column="IVHZTM" property="ivhztm" jdbcType="TIMESTAMP" />
+    <result column="OBMXQ" property="obmxq" jdbcType="DECIMAL" />
+    <result column="OBMXQTM" property="obmxqtm" jdbcType="TIMESTAMP" />
+    <result column="IVMXQ" property="ivmxq" jdbcType="DECIMAL" />
+    <result column="IVMXQTM" property="ivmxqtm" jdbcType="TIMESTAMP" />
+    <result column="HMXS" property="hmxs" jdbcType="DECIMAL" />
+    <result column="HMXSTM" property="hmxstm" jdbcType="TIMESTAMP" />
+    <result column="HMXAVV" property="hmxavv" jdbcType="DECIMAL" />
+    <result column="HMXAVVTM" property="hmxavvtm" jdbcType="TIMESTAMP" />
+    <result column="HLZ" property="hlz" jdbcType="DECIMAL" />
+    <result column="HLZTM" property="hlztm" jdbcType="TIMESTAMP" />
+    <result column="HMNQ" property="hmnq" jdbcType="DECIMAL" />
+    <result column="HMNQTM" property="hmnqtm" jdbcType="TIMESTAMP" />
+    <result column="TAZ" property="taz" jdbcType="DECIMAL" />
+    <result column="TAQ" property="taq" jdbcType="DECIMAL" />
+    <result column="LAZ" property="laz" jdbcType="DECIMAL" />
+    <result column="LAQ" property="laq" jdbcType="DECIMAL" />
+    <result column="SFZ" property="sfz" jdbcType="DECIMAL" />
+    <result column="SFQ" property="sfq" jdbcType="DECIMAL" />
+    <result column="MODITIME" property="moditime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STCD, LDKEL, RDKEL, WRZ, WRQ, GRZ, GRQ, FLPQ, OBHTZ, OBHTZTM, IVHZ, IVHZTM, OBMXQ, 
+    OBMXQTM, IVMXQ, IVMXQTM, HMXS, HMXSTM, HMXAVV, HMXAVVTM, HLZ, HLZTM, HMNQ, HMNQTM, 
+    TAZ, TAQ, LAZ, LAQ, SFZ, SFQ, MODITIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_RVFCCH_B
+    where STCD = #{stcd,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_RVFCCH_B
+    where STCD = #{stcd,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.StRvfcchB" >
+    insert into ST_RVFCCH_B (STCD, LDKEL, RDKEL, 
+      WRZ, WRQ, GRZ, GRQ, 
+      FLPQ, OBHTZ, OBHTZTM, 
+      IVHZ, IVHZTM, OBMXQ, 
+      OBMXQTM, IVMXQ, IVMXQTM, 
+      HMXS, HMXSTM, HMXAVV, 
+      HMXAVVTM, HLZ, HLZTM, 
+      HMNQ, HMNQTM, TAZ, 
+      TAQ, LAZ, LAQ, SFZ, 
+      SFQ, MODITIME)
+    values (#{stcd,jdbcType=CHAR}, #{ldkel,jdbcType=DECIMAL}, #{rdkel,jdbcType=DECIMAL}, 
+      #{wrz,jdbcType=DECIMAL}, #{wrq,jdbcType=DECIMAL}, #{grz,jdbcType=DECIMAL}, #{grq,jdbcType=DECIMAL}, 
+      #{flpq,jdbcType=DECIMAL}, #{obhtz,jdbcType=DECIMAL}, #{obhtztm,jdbcType=TIMESTAMP}, 
+      #{ivhz,jdbcType=DECIMAL}, #{ivhztm,jdbcType=TIMESTAMP}, #{obmxq,jdbcType=DECIMAL}, 
+      #{obmxqtm,jdbcType=TIMESTAMP}, #{ivmxq,jdbcType=DECIMAL}, #{ivmxqtm,jdbcType=TIMESTAMP}, 
+      #{hmxs,jdbcType=DECIMAL}, #{hmxstm,jdbcType=TIMESTAMP}, #{hmxavv,jdbcType=DECIMAL}, 
+      #{hmxavvtm,jdbcType=TIMESTAMP}, #{hlz,jdbcType=DECIMAL}, #{hlztm,jdbcType=TIMESTAMP}, 
+      #{hmnq,jdbcType=DECIMAL}, #{hmnqtm,jdbcType=TIMESTAMP}, #{taz,jdbcType=DECIMAL}, 
+      #{taq,jdbcType=DECIMAL}, #{laz,jdbcType=DECIMAL}, #{laq,jdbcType=DECIMAL}, #{sfz,jdbcType=DECIMAL}, 
+      #{sfq,jdbcType=DECIMAL}, #{moditime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StRvfcchB" >
+    insert into ST_RVFCCH_B
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stcd != null" >
+        STCD,
+      </if>
+      <if test="ldkel != null" >
+        LDKEL,
+      </if>
+      <if test="rdkel != null" >
+        RDKEL,
+      </if>
+      <if test="wrz != null" >
+        WRZ,
+      </if>
+      <if test="wrq != null" >
+        WRQ,
+      </if>
+      <if test="grz != null" >
+        GRZ,
+      </if>
+      <if test="grq != null" >
+        GRQ,
+      </if>
+      <if test="flpq != null" >
+        FLPQ,
+      </if>
+      <if test="obhtz != null" >
+        OBHTZ,
+      </if>
+      <if test="obhtztm != null" >
+        OBHTZTM,
+      </if>
+      <if test="ivhz != null" >
+        IVHZ,
+      </if>
+      <if test="ivhztm != null" >
+        IVHZTM,
+      </if>
+      <if test="obmxq != null" >
+        OBMXQ,
+      </if>
+      <if test="obmxqtm != null" >
+        OBMXQTM,
+      </if>
+      <if test="ivmxq != null" >
+        IVMXQ,
+      </if>
+      <if test="ivmxqtm != null" >
+        IVMXQTM,
+      </if>
+      <if test="hmxs != null" >
+        HMXS,
+      </if>
+      <if test="hmxstm != null" >
+        HMXSTM,
+      </if>
+      <if test="hmxavv != null" >
+        HMXAVV,
+      </if>
+      <if test="hmxavvtm != null" >
+        HMXAVVTM,
+      </if>
+      <if test="hlz != null" >
+        HLZ,
+      </if>
+      <if test="hlztm != null" >
+        HLZTM,
+      </if>
+      <if test="hmnq != null" >
+        HMNQ,
+      </if>
+      <if test="hmnqtm != null" >
+        HMNQTM,
+      </if>
+      <if test="taz != null" >
+        TAZ,
+      </if>
+      <if test="taq != null" >
+        TAQ,
+      </if>
+      <if test="laz != null" >
+        LAZ,
+      </if>
+      <if test="laq != null" >
+        LAQ,
+      </if>
+      <if test="sfz != null" >
+        SFZ,
+      </if>
+      <if test="sfq != null" >
+        SFQ,
+      </if>
+      <if test="moditime != null" >
+        MODITIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="ldkel != null" >
+        #{ldkel,jdbcType=DECIMAL},
+      </if>
+      <if test="rdkel != null" >
+        #{rdkel,jdbcType=DECIMAL},
+      </if>
+      <if test="wrz != null" >
+        #{wrz,jdbcType=DECIMAL},
+      </if>
+      <if test="wrq != null" >
+        #{wrq,jdbcType=DECIMAL},
+      </if>
+      <if test="grz != null" >
+        #{grz,jdbcType=DECIMAL},
+      </if>
+      <if test="grq != null" >
+        #{grq,jdbcType=DECIMAL},
+      </if>
+      <if test="flpq != null" >
+        #{flpq,jdbcType=DECIMAL},
+      </if>
+      <if test="obhtz != null" >
+        #{obhtz,jdbcType=DECIMAL},
+      </if>
+      <if test="obhtztm != null" >
+        #{obhtztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ivhz != null" >
+        #{ivhz,jdbcType=DECIMAL},
+      </if>
+      <if test="ivhztm != null" >
+        #{ivhztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="obmxq != null" >
+        #{obmxq,jdbcType=DECIMAL},
+      </if>
+      <if test="obmxqtm != null" >
+        #{obmxqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ivmxq != null" >
+        #{ivmxq,jdbcType=DECIMAL},
+      </if>
+      <if test="ivmxqtm != null" >
+        #{ivmxqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmxs != null" >
+        #{hmxs,jdbcType=DECIMAL},
+      </if>
+      <if test="hmxstm != null" >
+        #{hmxstm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmxavv != null" >
+        #{hmxavv,jdbcType=DECIMAL},
+      </if>
+      <if test="hmxavvtm != null" >
+        #{hmxavvtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hlz != null" >
+        #{hlz,jdbcType=DECIMAL},
+      </if>
+      <if test="hlztm != null" >
+        #{hlztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmnq != null" >
+        #{hmnq,jdbcType=DECIMAL},
+      </if>
+      <if test="hmnqtm != null" >
+        #{hmnqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taz != null" >
+        #{taz,jdbcType=DECIMAL},
+      </if>
+      <if test="taq != null" >
+        #{taq,jdbcType=DECIMAL},
+      </if>
+      <if test="laz != null" >
+        #{laz,jdbcType=DECIMAL},
+      </if>
+      <if test="laq != null" >
+        #{laq,jdbcType=DECIMAL},
+      </if>
+      <if test="sfz != null" >
+        #{sfz,jdbcType=DECIMAL},
+      </if>
+      <if test="sfq != null" >
+        #{sfq,jdbcType=DECIMAL},
+      </if>
+      <if test="moditime != null" >
+        #{moditime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StRvfcchB" >
+    update ST_RVFCCH_B
+    <set >
+      <if test="ldkel != null" >
+        LDKEL = #{ldkel,jdbcType=DECIMAL},
+      </if>
+      <if test="rdkel != null" >
+        RDKEL = #{rdkel,jdbcType=DECIMAL},
+      </if>
+      <if test="wrz != null" >
+        WRZ = #{wrz,jdbcType=DECIMAL},
+      </if>
+      <if test="wrq != null" >
+        WRQ = #{wrq,jdbcType=DECIMAL},
+      </if>
+      <if test="grz != null" >
+        GRZ = #{grz,jdbcType=DECIMAL},
+      </if>
+      <if test="grq != null" >
+        GRQ = #{grq,jdbcType=DECIMAL},
+      </if>
+      <if test="flpq != null" >
+        FLPQ = #{flpq,jdbcType=DECIMAL},
+      </if>
+      <if test="obhtz != null" >
+        OBHTZ = #{obhtz,jdbcType=DECIMAL},
+      </if>
+      <if test="obhtztm != null" >
+        OBHTZTM = #{obhtztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ivhz != null" >
+        IVHZ = #{ivhz,jdbcType=DECIMAL},
+      </if>
+      <if test="ivhztm != null" >
+        IVHZTM = #{ivhztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="obmxq != null" >
+        OBMXQ = #{obmxq,jdbcType=DECIMAL},
+      </if>
+      <if test="obmxqtm != null" >
+        OBMXQTM = #{obmxqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ivmxq != null" >
+        IVMXQ = #{ivmxq,jdbcType=DECIMAL},
+      </if>
+      <if test="ivmxqtm != null" >
+        IVMXQTM = #{ivmxqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmxs != null" >
+        HMXS = #{hmxs,jdbcType=DECIMAL},
+      </if>
+      <if test="hmxstm != null" >
+        HMXSTM = #{hmxstm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmxavv != null" >
+        HMXAVV = #{hmxavv,jdbcType=DECIMAL},
+      </if>
+      <if test="hmxavvtm != null" >
+        HMXAVVTM = #{hmxavvtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hlz != null" >
+        HLZ = #{hlz,jdbcType=DECIMAL},
+      </if>
+      <if test="hlztm != null" >
+        HLZTM = #{hlztm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hmnq != null" >
+        HMNQ = #{hmnq,jdbcType=DECIMAL},
+      </if>
+      <if test="hmnqtm != null" >
+        HMNQTM = #{hmnqtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taz != null" >
+        TAZ = #{taz,jdbcType=DECIMAL},
+      </if>
+      <if test="taq != null" >
+        TAQ = #{taq,jdbcType=DECIMAL},
+      </if>
+      <if test="laz != null" >
+        LAZ = #{laz,jdbcType=DECIMAL},
+      </if>
+      <if test="laq != null" >
+        LAQ = #{laq,jdbcType=DECIMAL},
+      </if>
+      <if test="sfz != null" >
+        SFZ = #{sfz,jdbcType=DECIMAL},
+      </if>
+      <if test="sfq != null" >
+        SFQ = #{sfq,jdbcType=DECIMAL},
+      </if>
+      <if test="moditime != null" >
+        MODITIME = #{moditime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where STCD = #{stcd,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StRvfcchB" >
+    update ST_RVFCCH_B
+    set LDKEL = #{ldkel,jdbcType=DECIMAL},
+      RDKEL = #{rdkel,jdbcType=DECIMAL},
+      WRZ = #{wrz,jdbcType=DECIMAL},
+      WRQ = #{wrq,jdbcType=DECIMAL},
+      GRZ = #{grz,jdbcType=DECIMAL},
+      GRQ = #{grq,jdbcType=DECIMAL},
+      FLPQ = #{flpq,jdbcType=DECIMAL},
+      OBHTZ = #{obhtz,jdbcType=DECIMAL},
+      OBHTZTM = #{obhtztm,jdbcType=TIMESTAMP},
+      IVHZ = #{ivhz,jdbcType=DECIMAL},
+      IVHZTM = #{ivhztm,jdbcType=TIMESTAMP},
+      OBMXQ = #{obmxq,jdbcType=DECIMAL},
+      OBMXQTM = #{obmxqtm,jdbcType=TIMESTAMP},
+      IVMXQ = #{ivmxq,jdbcType=DECIMAL},
+      IVMXQTM = #{ivmxqtm,jdbcType=TIMESTAMP},
+      HMXS = #{hmxs,jdbcType=DECIMAL},
+      HMXSTM = #{hmxstm,jdbcType=TIMESTAMP},
+      HMXAVV = #{hmxavv,jdbcType=DECIMAL},
+      HMXAVVTM = #{hmxavvtm,jdbcType=TIMESTAMP},
+      HLZ = #{hlz,jdbcType=DECIMAL},
+      HLZTM = #{hlztm,jdbcType=TIMESTAMP},
+      HMNQ = #{hmnq,jdbcType=DECIMAL},
+      HMNQTM = #{hmnqtm,jdbcType=TIMESTAMP},
+      TAZ = #{taz,jdbcType=DECIMAL},
+      TAQ = #{taq,jdbcType=DECIMAL},
+      LAZ = #{laz,jdbcType=DECIMAL},
+      LAQ = #{laq,jdbcType=DECIMAL},
+      SFZ = #{sfz,jdbcType=DECIMAL},
+      SFQ = #{sfq,jdbcType=DECIMAL},
+      MODITIME = #{moditime,jdbcType=TIMESTAMP}
+    where STCD = #{stcd,jdbcType=CHAR}
+  </update>
+  
+  <select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		 *
+		FROM ST_RVFCCH_B
+		where 1=1
+		<if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	<select id="findByStcd" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+      <include refid="Base_Column_List" />
+      from ST_RVFCCH_B
+      where STCD = #{stcd,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StAlarmSmsSendLogMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StAlarmSmsSendLog" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, UserName, Phone, Content, TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_AlarmSmsSendLog
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_AlarmSmsSendLog
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.StAlarmSmsSendLog" >
+    insert into ST_AlarmSmsSendLog (Id, UserName, Phone, 
+      Content, TM)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StAlarmSmsSendLog" >
+    insert into ST_AlarmSmsSendLog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StAlarmSmsSendLog" >
+    update ST_AlarmSmsSendLog
+    <set >
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StAlarmSmsSendLog" >
+    update ST_AlarmSmsSendLog
+    set UserName = #{username,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(*) FROM ST_AlarmSmsSendLog
+		where 1=1
+		 <if test="username != null" >
+          AND UserName like '%${username}%'
+	    </if>
+	    <if test="phone != null" >
+	      AND Phone like '%${phone}%'
+	    </if>
+	    <if test="content != null" >
+	      AND Content = #{content,jdbcType=VARCHAR}
+	    </if>
+	</select>
+	
+  
+   <select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM ST_AlarmSmsSendLog
+		where 1=1
+	    <if test="username != null" >
+          AND UserName like '%${username}%'
+	    </if>
+	    <if test="phone != null" >
+	      AND Phone like '%${phone}%'
+	    </if>
+	    <if test="content != null" >
+	      AND Content = #{content,jdbcType=VARCHAR}
+	    </if>
+		order by TM desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+  
+</mapper>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysAnnounceMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysAnnounce" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="Admin" property="admin" jdbcType="VARCHAR" />
+    <result column="Moditime" property="moditime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Title, Content, Admin, Moditime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysAnnounce
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysAnnounce
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysAnnounce" >
+    insert into SysAnnounce (Id, Title, Content, 
+      Admin, Moditime)
+    values (#{id,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{admin,jdbcType=VARCHAR}, #{moditime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysAnnounce" >
+    insert into SysAnnounce
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="admin != null" >
+        Admin,
+      </if>
+      <if test="moditime != null" >
+        Moditime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="admin != null" >
+        #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="moditime != null" >
+        #{moditime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysAnnounce" >
+    update SysAnnounce
+    <set >
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="admin != null" >
+        Admin = #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="moditime != null" >
+        Moditime = #{moditime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysAnnounce" >
+    update SysAnnounce
+    set Title = #{title,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      Admin = #{admin,jdbcType=VARCHAR},
+      Moditime = #{moditime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM SysAnnounce
+		where 1=1
+		<if test="title != null">
+			AND Title = #{title,jdbcType=VARCHAR}
+		</if>
+		<if test="content != null">
+			AND Content = #{content,jdbcType=VARCHAR}
+		</if>
+		<if test="moditime != null">
+			AND Moditime != #{moditime,jdbcType=TIMESTAMP}
+		</if>
+		order by Moditime desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(*) FROM SysAnnounce
+		where 1=1
+		<if test="title != null">
+			AND Title = #{title,jdbcType=VARCHAR}
+		</if>
+		<if test="content != null">
+			AND Content = #{content,jdbcType=VARCHAR}
+		</if>
+		<if test="moditime != null">
+			AND Moditime != #{moditime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+	
+	<select id="getCountByRead" resultType="java.lang.Integer" parameterType="map">
+	    SELECT COUNT(1) from(
+			SELECT * FROM SysAnnounce sa
+			where EXISTS (
+				SELECT
+					1
+				FROM
+				SysUserAnnounce sua
+				WHERE sa.id = sua.NoticeId
+				<if test="userid != null">
+					AND UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="isread != null">
+					AND IsRead = #{isread,jdbcType=INTEGER}
+				</if>
+				)
+		) tm
+	</select>
+	
+	<select id="getListByRead2" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM SysAnnounce sa
+		where EXISTS (
+			SELECT
+				1
+			FROM
+			SysUserAnnounce sua
+			WHERE sa.id = sua.NoticeId
+			<if test="userid != null">
+				AND UserId = #{userid,jdbcType=VARCHAR}
+			</if>
+			<if test="isread != null">
+				AND IsRead = #{isread,jdbcType=INTEGER}
+			</if>
+			)
+		order by Moditime desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+	
+	<select id="getListByRead" resultMap="BaseResultMap" parameterType="map">
+		SELECT sa.*,sua.IsRead
+		FROM SysAnnounce sa,SysUserAnnounce sua
+		where sa.id = sua.NoticeId
+		<if test="userid != null">
+			AND sua.UserId = #{userid,jdbcType=VARCHAR}
+		</if>
+		<if test="isread != null">
+			AND sua.IsRead = #{isread,jdbcType=INTEGER}
+		</if>
+		order by sa.Moditime desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+	
+</mapper>

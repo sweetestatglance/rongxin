@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fourfaith.siteManage.dao.StAlarmInfoMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StAlarmInfo">
+		<id column="Id" jdbcType="CHAR" property="id" />
+		<result column="Stcd" jdbcType="CHAR" property="stcd" />
+		<result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+		<result column="Type" jdbcType="CHAR" property="type" />
+		<result column="FactorValue" jdbcType="VARCHAR" property="factorvalue" />
+		<result column="HasSolved" property="hassolved" jdbcType="BIT" />
+        <result column="SolvePerson" property="solveperson" jdbcType="VARCHAR" />
+        <result column="SolveTime" property="solvetime" jdbcType="TIMESTAMP" />
+		<result column="Tm" jdbcType="TIMESTAMP" property="tm" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, Stcd,Addvcd, Type, FactorValue, HasSolved, SolvePerson, 
+        SolveTime,Moditime
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ST_AlarmInfo
+		where Id = #{id,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ST_AlarmInfo
+		where Id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.siteManage.model.StAlarmInfo">
+		insert into ST_AlarmInfo (Id, Stcd,Addvcd, Type, FactorValue,HasSolved, SolvePerson, 
+        SolveTime,Tm)
+		values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR},#{type,jdbcType=CHAR}, #{factorvalue,jdbcType=VARCHAR},
+		#{hassolved,jdbcType=BIT}, #{solveperson,jdbcType=VARCHAR}, 
+        #{solvetime,jdbcType=TIMESTAMP},#{tm,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StAlarmInfo">
+		insert into ST_AlarmInfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="stcd != null">
+				Stcd,
+			</if>
+			<if test="addvcd != null">
+				Addvcd,
+			</if>
+			<if test="type != null">
+				Type,
+			</if>
+			<if test="factorvalue != null">
+				FactorValue,
+			</if>
+			<if test="hassolved != null" >
+	        	HasSolved,
+	      	</if>
+	      	<if test="solveperson != null" >
+	        	SolvePerson,
+	      	</if>
+	      	<if test="solvetime != null" >
+	        	SolveTime,
+	      	</if>
+			<if test="tm != null">
+				Tm,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=CHAR},
+			</if>
+			<if test="stcd != null">
+				#{stcd,jdbcType=CHAR},
+			</if>
+			<if test="addvcd != null">
+				#{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=CHAR},
+			</if>
+			<if test="factorvalue != null">
+				#{factorvalue,jdbcType=VARCHAR},
+			</if>
+			 <if test="hassolved != null" >
+		        #{hassolved,jdbcType=BIT},
+		      </if>
+		      <if test="solveperson != null" >
+		        #{solveperson,jdbcType=VARCHAR},
+		      </if>
+		      <if test="solvetime != null" >
+		        #{solvetime,jdbcType=TIMESTAMP},
+		      </if>
+			<if test="tm != null">
+				#{tm,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StAlarmInfo">
+		update ST_AlarmInfo
+		<set>
+			<if test="stcd != null">
+				Stcd = #{stcd,jdbcType=CHAR},
+			</if>
+			<if test="addvcd != null">
+				Addvcd = #{addvcd,jdbcType=CHAR},
+			</if>
+			<if test="type != null">
+				Type = #{type,jdbcType=CHAR},
+			</if>
+			<if test="factorvalue != null">
+				FactorValue = #{factorvalue,jdbcType=VARCHAR},
+			</if>
+			<if test="hassolved != null" >
+		       HasSolved = #{hassolved,jdbcType=BIT},
+		     </if>
+		     <if test="solveperson != null" >
+		       SolvePerson = #{solveperson,jdbcType=VARCHAR},
+		     </if>
+		     <if test="solvetime != null" >
+		       SolveTime = #{solvetime,jdbcType=TIMESTAMP},
+		     </if>
+			<if test="tm != null">
+				Tm = #{tm,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StAlarmInfo">
+		update ST_AlarmInfo
+		set Stcd = #{stcd,jdbcType=CHAR},
+		Addvcd = #{addvcd,jdbcType=CHAR},
+		Type = #{type,jdbcType=CHAR},
+		FactorValue = #{factorvalue,jdbcType=VARCHAR},
+		HasSolved = #{hassolved,jdbcType=BIT},
+        SolvePerson = #{solveperson,jdbcType=VARCHAR},
+        SolveTime = #{solvetime,jdbcType=TIMESTAMP},
+		Tm = #{tm,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+
+	<select id="getAlarmList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sb.stcd,
+		sb.stnm,
+		sb.sttp,
+		ai.*
+		FROM ST_AlarmInfo ai
+		RIGHT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=ai.Stcd
+		where 1=1
+		<if test="beginTime != null and endTime != null">
+			AND ai.Tm &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND ai.Tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd_query != null">
+		    AND sb.Stcd like '%${stcd_query}%'
+		</if>
+		<if test="type != null">
+			AND ai.Type = #{type,jdbcType=INTEGER}
+		</if>
+		<if test="addvcd != null">
+			AND ai.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND ai.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="stcdList != null and stcdList.size()>0">
+			AND sb.Stcd in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		order by ai.Tm desc
+		 <if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		count(*)
+		FROM ST_AlarmInfo ai
+		RIGHT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=ai.Stcd
+		where 1=1
+		<if test="beginTime != null and endTime != null">
+			AND ai.Tm &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND ai.Tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd_query != null">
+		    AND sb.Stcd like '%${stcd_query}%'
+		</if>
+		<if test="type != null">
+			AND ai.Type = #{type,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND ai.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND ai.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	     <if test="stcdList != null and stcdList.size()>0">
+			AND sb.Stcd in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="getTodayCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		count(*)
+		FROM ST_AlarmInfo
+		where 1=1
+		<if test="type != null">
+			AND Type = #{type,jdbcType=CHAR}
+		</if>
+	 	<if test="addvcdList != null and addvcdList.size()>0">
+			AND ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND Tm &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND Tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+	
+	<select id="getSevenALarmList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		DATE_FORMAT(Tm,'%Y-%m-%d') AS time,
+		COUNT(1) as num
+		FROM ST_AlarmInfo ai
+		where 1=1
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND ai.Tm &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND ai.Tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		GROUP BY DAYOFMONTH (TM)
+	</select>
+	
+	<update id="updateHasSolved" parameterType="map">
+         update ST_AlarmInfo set HasSolved = #{hasSolved,jdbcType=BIT},
+         <if test="hasSolved==1">
+         SolveTime = now()
+         </if>
+          <if test="hasSolved==0">
+           SolveTime =null
+          </if>
+         where id = #{id,jdbcType=VARCHAR}
+    </update>
+    
+    
+    
+    
+</mapper>

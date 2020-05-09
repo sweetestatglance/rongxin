@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+.amap-logo, .amap-copyright{
+	display:none;
+}
+
+#searchArea{
+	background-color:#fff;
+	border:1px solid #ccc;
+	padding-left:10px;
+	padding-right:2px;
+	position:absolute;
+	min-height:65px;
+	top:38px;
+	font-size:12px;
+	right:0px;
+	border-radius:3px;
+	overflow:hidden;
+	line-height:20px;
+	min-width:435px;
+}
+#searchArea input[type="button"]{
+	background-color: #0D9BF2;
+	height:25px;
+	text-align:center;
+	line-height:25px;
+	color:#fff;
+	font-size:12px;
+	border-radius:3px;
+	outline: none;
+	border:0;
+	cursor:pointer;
+}
+
+#searchArea input[type="text"]{
+	height:25px;
+	border:1px solid #ccc;
+	padding-left:5px;
+	border-radius:3px;
+	outline:none;
+	width: 80%;
+}
+#result1{
+	max-height:300px;
+	text-align:left;
+	padding-left:10px;
+}

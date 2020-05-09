@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StAlarmPersonMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StAlarmPerson" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, EnterpriseId, Name, phone, TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_AlarmPerson
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_AlarmPerson
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.StAlarmPerson" >
+    insert into ST_AlarmPerson (Id, EnterpriseId, Name, 
+      phone, TM)
+    values (#{id,jdbcType=CHAR}, #{enterpriseid,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StAlarmPerson" >
+    insert into ST_AlarmPerson
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StAlarmPerson" >
+    update ST_AlarmPerson
+    <set >
+      <if test="enterpriseid != null" >
+        EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StAlarmPerson" >
+    update ST_AlarmPerson
+    set EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(*) FROM ST_AlarmPerson
+		where 1=1
+		<if test="enterpriseid != null" >
+       	  AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+     	 </if>
+	     <if test="query_name != null" >
+	      AND Name like '%${query_name}%'
+	     </if>
+	     <if test="query_phone != null" >
+	      AND phone like '%${query_phone}%'
+	     </if>
+	</select>
+	
+  
+   <select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM ST_AlarmPerson
+		where 1=1
+		 <if test="enterpriseid != null" >
+       	  AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+     	 </if>
+	     <if test="query_name != null" >
+	      AND Name like '%${query_name}%'
+	     </if>
+	     <if test="query_phone != null" >
+	      AND phone like '%${query_phone}%'
+	     </if>
+		order by TM desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+</mapper>

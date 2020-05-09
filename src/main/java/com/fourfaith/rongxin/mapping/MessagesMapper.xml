@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.rongxin.dao.MessagesMapper" >
+
+	<select id="getvo" resultType="com.fourfaith.rongxin.model.MessageVo" parameterType="string">
+        select * from (
+        select resa.id id, resa.stcd stcd, resa.pj pj, resa.pn05 pn05, resb.RainRanges rainRanges, resb.WaterRanges waterRanges,resb.content content, resc.stnm stname, resa.tm tm from
+        (SELECT alexq.* from (SELECT az.* FROM ${tabname} az WHERE az.tm >=
+        (SELECT FROM_UNIXTIME(UNIX_TIMESTAMP(CAST(SYSDATE()AS DATE)))) ORDER BY az.tm desc limit 1000) alexq
+        GROUP BY alexq.STCD) resa, st_alarmconfigure resb, st_stbprp_b resc
+        where (resa.stcd = resb.stcd and resa.stcd = resc.stcd) and
+        (resa.pj >= resb.RainRanges or resa.z >= resb.WaterRanges)) alexw left join alex_wxpushlog resd on
+        alexw.stcd = resd.stcd and (resd.tm &lt; DATE_SUB(NOW(),INTERVAL  30 MINUTE)
+        and resd.tm > (SELECT FROM_UNIXTIME(UNIX_TIMESTAMP(CAST(SYSDATE()AS DATE)))))
+        GROUP BY resd.stcd
+    </select>
+
+    <select id="issended" resultType="int" parameterType="com.fourfaith.rongxin.model.MessageVo">
+        select count(*) from alex_wxpushlog where
+        stcd = #{stcd} and (tm >= DATE_SUB(NOW(),INTERVAL  30 MINUTE))
+    </select>
+
+	<select id="getopenids" resultType="com.fourfaith.rongxin.model.Openid">
+        select * from alex_openid where state = 1;
+    </select>
+
+    <insert id="addwxpushlog" parameterType="com.fourfaith.rongxin.model.MessageVo">
+        insert into alex_wxpushlog(id,username,phone,stcd,stname,content,pj,pn05,z,zb,zu,waterRanges,rainRanges,tm)
+        values(null,#{username},#{phone},#{stcd},#{stname},#{content},#{pj},#{pn05},#{z},#{zb},#{zu},#{waterRanges},#{rainRanges},#{tm})
+    </insert>
+
+</mapper>

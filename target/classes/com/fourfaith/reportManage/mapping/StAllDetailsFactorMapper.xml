@@ -1,0 +1,1664 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.reportManage.dao.StAllDetailsFactorMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.reportManage.model.StAllDetailsFactor">
+		<id column="Id" property="id" jdbcType="CHAR" />
+		<result column="STCD" property="stcd" jdbcType="CHAR" />
+		<result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+		<result column="Voltage" property="voltage" jdbcType="DECIMAL" />
+	    <result column="SignalInten" property="signalinten" jdbcType="DECIMAL" />
+	    <result column="PN05" property="pn05" jdbcType="DECIMAL" />
+	    <!--<result column="PJ" property="pJ" jdbcType="DECIMAL" />-->
+	    <result column="Z" property="z" jdbcType="DECIMAL" />
+	    <result column="ZB" property="zb" jdbcType="DECIMAL" />
+	    <result column="ZU" property="zu" jdbcType="DECIMAL" />
+	    <result column="VJ" property="vj" jdbcType="DECIMAL" />
+	    <result column="VA" property="va" jdbcType="DECIMAL" />
+	    <result column="Q" property="q" jdbcType="DECIMAL" />
+	    <result column="QA" property="qa" jdbcType="DECIMAL" />
+	    <result column="AI" property="ai" jdbcType="DECIMAL" />
+	    <result column="C" property="c" jdbcType="DECIMAL" />
+	    <result column="MST" property="mst" jdbcType="DECIMAL" />
+	    <result column="FL" property="fl" jdbcType="DECIMAL" />
+	    <result column="UC" property="uc" jdbcType="DECIMAL" />
+	    <result column="US" property="us" jdbcType="DECIMAL" />
+	    <result column="UE" property="ue" jdbcType="DECIMAL" />
+	    <result column="EJ" property="ej" jdbcType="DECIMAL" />
+	    <result column="ED" property="ed" jdbcType="DECIMAL" />
+	    <result column="GTP" property="gtp" jdbcType="DECIMAL" />
+	    <result column="M10" property="m10" jdbcType="DECIMAL" />
+	    <result column="M20" property="m20" jdbcType="DECIMAL" />
+	    <result column="M30" property="m30" jdbcType="DECIMAL" />
+	    <result column="M40" property="m40" jdbcType="DECIMAL" />
+	    <result column="M50" property="m50" jdbcType="DECIMAL" />
+	    <result column="M60" property="m60" jdbcType="DECIMAL" />
+	    <result column="M80" property="m80" jdbcType="DECIMAL" />
+	    <result column="M100" property="m100" jdbcType="DECIMAL" />
+	    <result column="PH" property="ph" jdbcType="DECIMAL" />
+	    <result column="DOXY" property="doxy" jdbcType="DECIMAL" />
+	    <result column="COND" property="cond" jdbcType="DECIMAL" />
+	    <result column="TURB" property="turb" jdbcType="DECIMAL" />
+	    <result column="NH4N" property="nh4n" jdbcType="DECIMAL" />
+	    <result column="TP" property="tp" jdbcType="DECIMAL" />
+	    <result column="TN" property="tn" jdbcType="DECIMAL" />
+	    <result column="CHLA" property="chla" jdbcType="DECIMAL" />
+	    <result column="TD11" property="td11" jdbcType="DECIMAL" />
+	    <result column="TD12" property="td12" jdbcType="DECIMAL" />
+	    <result column="TD13" property="td13" jdbcType="DECIMAL" />
+	    <result column="TD14" property="td14" jdbcType="DECIMAL" />
+	    <result column="TD15" property="td15" jdbcType="DECIMAL" />
+	    <result column="TD16" property="td16" jdbcType="DECIMAL" />
+	    <result column="TD17" property="td17" jdbcType="DECIMAL" />
+	    <result column="TD18" property="td18" jdbcType="DECIMAL" />
+	    <result column="TD19" property="td19" jdbcType="DECIMAL" />
+	    <result column="TD20" property="td20" jdbcType="DECIMAL" />
+	    <result column="TD21" property="td21" jdbcType="DECIMAL" />
+	    <result column="TD22" property="td22" jdbcType="DECIMAL" />
+	    <result column="TD23" property="td23" jdbcType="DECIMAL" />
+	    <result column="TD24" property="td24" jdbcType="DECIMAL" />
+	    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap id="extendResultMap" type="com.fourfaith.reportManage.model.StDeviceFactor">
+		<id column="Id" property="id" jdbcType="CHAR" />
+		<result column="STCD" property="stcd" jdbcType="CHAR" />
+		<result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+		<result column="Voltage" property="voltage" jdbcType="DECIMAL" />
+	    <result column="SignalInten" property="signalinten" jdbcType="DECIMAL" />
+	    <result column="PN05" property="pn05" jdbcType="DECIMAL" />
+	    <!--<result column="PJ" property="pJ" jdbcType="DECIMAL" />-->
+	    <result column="Z" property="z" jdbcType="DECIMAL" />
+	    <result column="ZB" property="zb" jdbcType="DECIMAL" />
+	    <result column="ZU" property="zu" jdbcType="DECIMAL" />
+	    <result column="VJ" property="vj" jdbcType="DECIMAL" />
+	    <result column="VA" property="va" jdbcType="DECIMAL" />
+	    <result column="Q" property="q" jdbcType="DECIMAL" />
+	    <result column="QA" property="qa" jdbcType="DECIMAL" />
+	    <result column="AI" property="ai" jdbcType="DECIMAL" />
+	    <result column="C" property="c" jdbcType="DECIMAL" />
+	    <result column="MST" property="mst" jdbcType="DECIMAL" />
+	    <result column="FL" property="fl" jdbcType="DECIMAL" />
+	    <result column="UC" property="uc" jdbcType="DECIMAL" />
+	    <result column="US" property="us" jdbcType="DECIMAL" />
+	    <result column="UE" property="ue" jdbcType="DECIMAL" />
+	    <result column="EJ" property="ej" jdbcType="DECIMAL" />
+	    <result column="ED" property="ed" jdbcType="DECIMAL" />
+	    <result column="GTP" property="gtp" jdbcType="DECIMAL" />
+	    <result column="M10" property="m10" jdbcType="DECIMAL" />
+	    <result column="M20" property="m20" jdbcType="DECIMAL" />
+	    <result column="M30" property="m30" jdbcType="DECIMAL" />
+	    <result column="M40" property="m40" jdbcType="DECIMAL" />
+	    <result column="M50" property="m50" jdbcType="DECIMAL" />
+	    <result column="M60" property="m60" jdbcType="DECIMAL" />
+	    <result column="M80" property="m80" jdbcType="DECIMAL" />
+	    <result column="M100" property="m100" jdbcType="DECIMAL" />
+	    <result column="PH" property="ph" jdbcType="DECIMAL" />
+	    <result column="DOXY" property="doxy" jdbcType="DECIMAL" />
+	    <result column="COND" property="cond" jdbcType="DECIMAL" />
+	    <result column="TURB" property="turb" jdbcType="DECIMAL" />
+	    <result column="NH4N" property="nh4n" jdbcType="DECIMAL" />
+	    <result column="TP" property="tp" jdbcType="DECIMAL" />
+	    <result column="TN" property="tn" jdbcType="DECIMAL" />
+	    <result column="CHLA" property="chla" jdbcType="DECIMAL" />
+	    <result column="TD11" property="td11" jdbcType="DECIMAL" />
+	    <result column="TD12" property="td12" jdbcType="DECIMAL" />
+	    <result column="TD13" property="td13" jdbcType="DECIMAL" />
+	    <result column="TD14" property="td14" jdbcType="DECIMAL" />
+	    <result column="TD15" property="td15" jdbcType="DECIMAL" />
+	    <result column="TD16" property="td16" jdbcType="DECIMAL" />
+	    <result column="TD17" property="td17" jdbcType="DECIMAL" />
+	    <result column="TD18" property="td18" jdbcType="DECIMAL" />
+	    <result column="TD19" property="td19" jdbcType="DECIMAL" />
+	    <result column="TD20" property="td20" jdbcType="DECIMAL" />
+	    <result column="TD21" property="td21" jdbcType="DECIMAL" />
+	    <result column="TD22" property="td22" jdbcType="DECIMAL" />
+	    <result column="TD23" property="td23" jdbcType="DECIMAL" />
+	    <result column="TD24" property="td24" jdbcType="DECIMAL" />
+	    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+	Id, STCD, Addvcd, Voltage, SignalInten, PN05, Z, ZB, ZU, VJ, VA, Q, QA, AI, C, MST, 
+    FL, UC, US, UE, EJ, ED, GTP, M10, M20, M30, M40, M50, M60, M80, M100, PH, DOXY, COND, 
+    TURB, NH4N, TP, TN, CHLA, TD11, TD12, TD13, TD14, TD15, TD16, TD17, TD18, TD19, TD20, 
+    TD21, TD22, TD23, TD24, TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_AllDetails_Factor
+		where Id = #{id,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ST_AllDetails_Factor
+		where Id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.reportManage.model.StAllDetailsFactor">
+    insert into ST_AllDetails_Factor_201704 (Id, STCD, Addvcd, Voltage, 
+      SignalInten, PN05, Z, 
+      ZB, ZU, VJ, VA, 
+      Q, QA, AI, C, 
+      MST, FL, UC, US, 
+      UE, EJ, ED, GTP, 
+      M10, M20, M30, M40, 
+      M50, M60, M80, M100, 
+      PH, DOXY, COND, TURB, 
+      NH4N, TP, TN, CHLA, 
+      TD11, TD12, TD13, TD14, 
+      TD15, TD16, TD17, TD18, 
+      TD19, TD20, TD21, TD22, 
+      TD23, TD24, TM)
+    values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR}, #{voltage,jdbcType=DECIMAL}, 
+      #{signalinten,jdbcType=DECIMAL}, #{pn05,jdbcType=DECIMAL}, #{z,jdbcType=DECIMAL}, 
+      #{zb,jdbcType=DECIMAL}, #{zu,jdbcType=DECIMAL}, #{vj,jdbcType=DECIMAL}, #{va,jdbcType=DECIMAL}, 
+      #{q,jdbcType=DECIMAL}, #{qa,jdbcType=DECIMAL}, #{ai,jdbcType=DECIMAL}, #{c,jdbcType=DECIMAL}, 
+      #{mst,jdbcType=DECIMAL}, #{fl,jdbcType=DECIMAL}, #{uc,jdbcType=DECIMAL}, #{us,jdbcType=DECIMAL}, 
+      #{ue,jdbcType=DECIMAL}, #{ej,jdbcType=DECIMAL}, #{ed,jdbcType=DECIMAL}, #{gtp,jdbcType=DECIMAL}, 
+      #{m10,jdbcType=DECIMAL}, #{m20,jdbcType=DECIMAL}, #{m30,jdbcType=DECIMAL}, #{m40,jdbcType=DECIMAL}, 
+      #{m50,jdbcType=DECIMAL}, #{m60,jdbcType=DECIMAL}, #{m80,jdbcType=DECIMAL}, #{m100,jdbcType=DECIMAL}, 
+      #{ph,jdbcType=DECIMAL}, #{doxy,jdbcType=DECIMAL}, #{cond,jdbcType=DECIMAL}, #{turb,jdbcType=DECIMAL}, 
+      #{nh4n,jdbcType=DECIMAL}, #{tp,jdbcType=DECIMAL}, #{tn,jdbcType=DECIMAL}, #{chla,jdbcType=DECIMAL}, 
+      #{td11,jdbcType=DECIMAL}, #{td12,jdbcType=DECIMAL}, #{td13,jdbcType=DECIMAL}, #{td14,jdbcType=DECIMAL}, 
+      #{td15,jdbcType=DECIMAL}, #{td16,jdbcType=DECIMAL}, #{td17,jdbcType=DECIMAL}, #{td18,jdbcType=DECIMAL}, 
+      #{td19,jdbcType=DECIMAL}, #{td20,jdbcType=DECIMAL}, #{td21,jdbcType=DECIMAL}, #{td22,jdbcType=DECIMAL}, 
+      #{td23,jdbcType=DECIMAL}, #{td24,jdbcType=DECIMAL}, #{tm,jdbcType=TIMESTAMP}) 
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.reportManage.model.StAllDetailsFactor">
+		insert into ST_AllDetails_Factor
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        STCD,
+      </if>
+      <if test="addvcd != null" >
+        Addvcd,
+      </if>
+      <if test="voltage != null" >
+        Voltage,
+      </if>
+      <if test="signalinten != null" >
+        SignalInten,
+      </if>
+      <if test="pn05 != null" >
+        PN05,
+      </if>
+      <if test="z != null" >
+        Z,
+      </if>
+      <if test="zb != null" >
+        ZB,
+      </if>
+      <if test="zu != null" >
+        ZU,
+      </if>
+      <if test="vj != null" >
+        VJ,
+      </if>
+      <if test="va != null" >
+        VA,
+      </if>
+      <if test="q != null" >
+        Q,
+      </if>
+      <if test="qa != null" >
+        QA,
+      </if>
+      <if test="ai != null" >
+        AI,
+      </if>
+      <if test="c != null" >
+        C,
+      </if>
+      <if test="mst != null" >
+        MST,
+      </if>
+      <if test="fl != null" >
+        FL,
+      </if>
+      <if test="uc != null" >
+        UC,
+      </if>
+      <if test="us != null" >
+        US,
+      </if>
+      <if test="ue != null" >
+        UE,
+      </if>
+      <if test="ej != null" >
+        EJ,
+      </if>
+      <if test="ed != null" >
+        ED,
+      </if>
+      <if test="gtp != null" >
+        GTP,
+      </if>
+      <if test="m10 != null" >
+        M10,
+      </if>
+      <if test="m20 != null" >
+        M20,
+      </if>
+      <if test="m30 != null" >
+        M30,
+      </if>
+      <if test="m40 != null" >
+        M40,
+      </if>
+      <if test="m50 != null" >
+        M50,
+      </if>
+      <if test="m60 != null" >
+        M60,
+      </if>
+      <if test="m80 != null" >
+        M80,
+      </if>
+      <if test="m100 != null" >
+        M100,
+      </if>
+      <if test="ph != null" >
+        PH,
+      </if>
+      <if test="doxy != null" >
+        DOXY,
+      </if>
+      <if test="cond != null" >
+        COND,
+      </if>
+      <if test="turb != null" >
+        TURB,
+      </if>
+      <if test="nh4n != null" >
+        NH4N,
+      </if>
+      <if test="tp != null" >
+        TP,
+      </if>
+      <if test="tn != null" >
+        TN,
+      </if>
+      <if test="chla != null" >
+        CHLA,
+      </if>
+      <if test="td11 != null" >
+        TD11,
+      </if>
+      <if test="td12 != null" >
+        TD12,
+      </if>
+      <if test="td13 != null" >
+        TD13,
+      </if>
+      <if test="td14 != null" >
+        TD14,
+      </if>
+      <if test="td15 != null" >
+        TD15,
+      </if>
+      <if test="td16 != null" >
+        TD16,
+      </if>
+      <if test="td17 != null" >
+        TD17,
+      </if>
+      <if test="td18 != null" >
+        TD18,
+      </if>
+      <if test="td19 != null" >
+        TD19,
+      </if>
+      <if test="td20 != null" >
+        TD20,
+      </if>
+      <if test="td21 != null" >
+        TD21,
+      </if>
+      <if test="td22 != null" >
+        TD22,
+      </if>
+      <if test="td23 != null" >
+        TD23,
+      </if>
+      <if test="td24 != null" >
+        TD24,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="addvcd != null" >
+        #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="voltage != null" >
+        #{voltage,jdbcType=DECIMAL},
+      </if>
+      <if test="signalinten != null" >
+        #{signalinten,jdbcType=DECIMAL},
+      </if>
+      <if test="pn05 != null" >
+        #{pn05,jdbcType=DECIMAL},
+      </if>
+      <if test="z != null" >
+        #{z,jdbcType=DECIMAL},
+      </if>
+      <if test="zb != null" >
+        #{zb,jdbcType=DECIMAL},
+      </if>
+      <if test="zu != null" >
+        #{zu,jdbcType=DECIMAL},
+      </if>
+      <if test="vj != null" >
+        #{vj,jdbcType=DECIMAL},
+      </if>
+      <if test="va != null" >
+        #{va,jdbcType=DECIMAL},
+      </if>
+      <if test="q != null" >
+        #{q,jdbcType=DECIMAL},
+      </if>
+      <if test="qa != null" >
+        #{qa,jdbcType=DECIMAL},
+      </if>
+      <if test="ai != null" >
+        #{ai,jdbcType=DECIMAL},
+      </if>
+      <if test="c != null" >
+        #{c,jdbcType=DECIMAL},
+      </if>
+      <if test="mst != null" >
+        #{mst,jdbcType=DECIMAL},
+      </if>
+      <if test="fl != null" >
+        #{fl,jdbcType=DECIMAL},
+      </if>
+      <if test="uc != null" >
+        #{uc,jdbcType=DECIMAL},
+      </if>
+      <if test="us != null" >
+        #{us,jdbcType=DECIMAL},
+      </if>
+      <if test="ue != null" >
+        #{ue,jdbcType=DECIMAL},
+      </if>
+      <if test="ej != null" >
+        #{ej,jdbcType=DECIMAL},
+      </if>
+      <if test="ed != null" >
+        #{ed,jdbcType=DECIMAL},
+      </if>
+      <if test="gtp != null" >
+        #{gtp,jdbcType=DECIMAL},
+      </if>
+      <if test="m10 != null" >
+        #{m10,jdbcType=DECIMAL},
+      </if>
+      <if test="m20 != null" >
+        #{m20,jdbcType=DECIMAL},
+      </if>
+      <if test="m30 != null" >
+        #{m30,jdbcType=DECIMAL},
+      </if>
+      <if test="m40 != null" >
+        #{m40,jdbcType=DECIMAL},
+      </if>
+      <if test="m50 != null" >
+        #{m50,jdbcType=DECIMAL},
+      </if>
+      <if test="m60 != null" >
+        #{m60,jdbcType=DECIMAL},
+      </if>
+      <if test="m80 != null" >
+        #{m80,jdbcType=DECIMAL},
+      </if>
+      <if test="m100 != null" >
+        #{m100,jdbcType=DECIMAL},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=DECIMAL},
+      </if>
+      <if test="doxy != null" >
+        #{doxy,jdbcType=DECIMAL},
+      </if>
+      <if test="cond != null" >
+        #{cond,jdbcType=DECIMAL},
+      </if>
+      <if test="turb != null" >
+        #{turb,jdbcType=DECIMAL},
+      </if>
+      <if test="nh4n != null" >
+        #{nh4n,jdbcType=DECIMAL},
+      </if>
+      <if test="tp != null" >
+        #{tp,jdbcType=DECIMAL},
+      </if>
+      <if test="tn != null" >
+        #{tn,jdbcType=DECIMAL},
+      </if>
+      <if test="chla != null" >
+        #{chla,jdbcType=DECIMAL},
+      </if>
+      <if test="td11 != null" >
+        #{td11,jdbcType=DECIMAL},
+      </if>
+      <if test="td12 != null" >
+        #{td12,jdbcType=DECIMAL},
+      </if>
+      <if test="td13 != null" >
+        #{td13,jdbcType=DECIMAL},
+      </if>
+      <if test="td14 != null" >
+        #{td14,jdbcType=DECIMAL},
+      </if>
+      <if test="td15 != null" >
+        #{td15,jdbcType=DECIMAL},
+      </if>
+      <if test="td16 != null" >
+        #{td16,jdbcType=DECIMAL},
+      </if>
+      <if test="td17 != null" >
+        #{td17,jdbcType=DECIMAL},
+      </if>
+      <if test="td18 != null" >
+        #{td18,jdbcType=DECIMAL},
+      </if>
+      <if test="td19 != null" >
+        #{td19,jdbcType=DECIMAL},
+      </if>
+      <if test="td20 != null" >
+        #{td20,jdbcType=DECIMAL},
+      </if>
+      <if test="td21 != null" >
+        #{td21,jdbcType=DECIMAL},
+      </if>
+      <if test="td22 != null" >
+        #{td22,jdbcType=DECIMAL},
+      </if>
+      <if test="td23 != null" >
+        #{td23,jdbcType=DECIMAL},
+      </if>
+      <if test="td24 != null" >
+        #{td24,jdbcType=DECIMAL},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.reportManage.model.StAllDetailsFactor">
+		update ST_AllDetails_Factor
+		<set >
+      <if test="stcd != null" >
+        STCD = #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="addvcd != null" >
+        Addvcd = #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="voltage != null" >
+        Voltage = #{voltage,jdbcType=DECIMAL},
+      </if>
+      <if test="signalinten != null" >
+        SignalInten = #{signalinten,jdbcType=DECIMAL},
+      </if>
+      <if test="pn05 != null" >
+        PN05 = #{pn05,jdbcType=DECIMAL},
+      </if>
+      <if test="z != null" >
+        Z = #{z,jdbcType=DECIMAL},
+      </if>
+      <if test="zb != null" >
+        ZB = #{zb,jdbcType=DECIMAL},
+      </if>
+      <if test="zu != null" >
+        ZU = #{zu,jdbcType=DECIMAL},
+      </if>
+      <if test="vj != null" >
+        VJ = #{vj,jdbcType=DECIMAL},
+      </if>
+      <if test="va != null" >
+        VA = #{va,jdbcType=DECIMAL},
+      </if>
+      <if test="q != null" >
+        Q = #{q,jdbcType=DECIMAL},
+      </if>
+      <if test="qa != null" >
+        QA = #{qa,jdbcType=DECIMAL},
+      </if>
+      <if test="ai != null" >
+        AI = #{ai,jdbcType=DECIMAL},
+      </if>
+      <if test="c != null" >
+        C = #{c,jdbcType=DECIMAL},
+      </if>
+      <if test="mst != null" >
+        MST = #{mst,jdbcType=DECIMAL},
+      </if>
+      <if test="fl != null" >
+        FL = #{fl,jdbcType=DECIMAL},
+      </if>
+      <if test="uc != null" >
+        UC = #{uc,jdbcType=DECIMAL},
+      </if>
+      <if test="us != null" >
+        US = #{us,jdbcType=DECIMAL},
+      </if>
+      <if test="ue != null" >
+        UE = #{ue,jdbcType=DECIMAL},
+      </if>
+      <if test="ej != null" >
+        EJ = #{ej,jdbcType=DECIMAL},
+      </if>
+      <if test="ed != null" >
+        ED = #{ed,jdbcType=DECIMAL},
+      </if>
+      <if test="gtp != null" >
+        GTP = #{gtp,jdbcType=DECIMAL},
+      </if>
+      <if test="m10 != null" >
+        M10 = #{m10,jdbcType=DECIMAL},
+      </if>
+      <if test="m20 != null" >
+        M20 = #{m20,jdbcType=DECIMAL},
+      </if>
+      <if test="m30 != null" >
+        M30 = #{m30,jdbcType=DECIMAL},
+      </if>
+      <if test="m40 != null" >
+        M40 = #{m40,jdbcType=DECIMAL},
+      </if>
+      <if test="m50 != null" >
+        M50 = #{m50,jdbcType=DECIMAL},
+      </if>
+      <if test="m60 != null" >
+        M60 = #{m60,jdbcType=DECIMAL},
+      </if>
+      <if test="m80 != null" >
+        M80 = #{m80,jdbcType=DECIMAL},
+      </if>
+      <if test="m100 != null" >
+        M100 = #{m100,jdbcType=DECIMAL},
+      </if>
+      <if test="ph != null" >
+        PH = #{ph,jdbcType=DECIMAL},
+      </if>
+      <if test="doxy != null" >
+        DOXY = #{doxy,jdbcType=DECIMAL},
+      </if>
+      <if test="cond != null" >
+        COND = #{cond,jdbcType=DECIMAL},
+      </if>
+      <if test="turb != null" >
+        TURB = #{turb,jdbcType=DECIMAL},
+      </if>
+      <if test="nh4n != null" >
+        NH4N = #{nh4n,jdbcType=DECIMAL},
+      </if>
+      <if test="tp != null" >
+        TP = #{tp,jdbcType=DECIMAL},
+      </if>
+      <if test="tn != null" >
+        TN = #{tn,jdbcType=DECIMAL},
+      </if>
+      <if test="chla != null" >
+        CHLA = #{chla,jdbcType=DECIMAL},
+      </if>
+      <if test="td11 != null" >
+        TD11 = #{td11,jdbcType=DECIMAL},
+      </if>
+      <if test="td12 != null" >
+        TD12 = #{td12,jdbcType=DECIMAL},
+      </if>
+      <if test="td13 != null" >
+        TD13 = #{td13,jdbcType=DECIMAL},
+      </if>
+      <if test="td14 != null" >
+        TD14 = #{td14,jdbcType=DECIMAL},
+      </if>
+      <if test="td15 != null" >
+        TD15 = #{td15,jdbcType=DECIMAL},
+      </if>
+      <if test="td16 != null" >
+        TD16 = #{td16,jdbcType=DECIMAL},
+      </if>
+      <if test="td17 != null" >
+        TD17 = #{td17,jdbcType=DECIMAL},
+      </if>
+      <if test="td18 != null" >
+        TD18 = #{td18,jdbcType=DECIMAL},
+      </if>
+      <if test="td19 != null" >
+        TD19 = #{td19,jdbcType=DECIMAL},
+      </if>
+      <if test="td20 != null" >
+        TD20 = #{td20,jdbcType=DECIMAL},
+      </if>
+      <if test="td21 != null" >
+        TD21 = #{td21,jdbcType=DECIMAL},
+      </if>
+      <if test="td22 != null" >
+        TD22 = #{td22,jdbcType=DECIMAL},
+      </if>
+      <if test="td23 != null" >
+        TD23 = #{td23,jdbcType=DECIMAL},
+      </if>
+      <if test="td24 != null" >
+        TD24 = #{td24,jdbcType=DECIMAL},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.reportManage.model.StAllDetailsFactor">
+		update ST_AllDetails_Factor
+		 set STCD = #{stcd,jdbcType=CHAR},
+      Addvcd = #{addvcd,jdbcType=CHAR},
+      Voltage = #{voltage,jdbcType=DECIMAL},
+      SignalInten = #{signalinten,jdbcType=DECIMAL},
+      PN05 = #{pn05,jdbcType=DECIMAL},
+      Z = #{z,jdbcType=DECIMAL},
+      ZB = #{zb,jdbcType=DECIMAL},
+      ZU = #{zu,jdbcType=DECIMAL},
+      VJ = #{vj,jdbcType=DECIMAL},
+      VA = #{va,jdbcType=DECIMAL},
+      Q = #{q,jdbcType=DECIMAL},
+      QA = #{qa,jdbcType=DECIMAL},
+      AI = #{ai,jdbcType=DECIMAL},
+      C = #{c,jdbcType=DECIMAL},
+      MST = #{mst,jdbcType=DECIMAL},
+      FL = #{fl,jdbcType=DECIMAL},
+      UC = #{uc,jdbcType=DECIMAL},
+      US = #{us,jdbcType=DECIMAL},
+      UE = #{ue,jdbcType=DECIMAL},
+      EJ = #{ej,jdbcType=DECIMAL},
+      ED = #{ed,jdbcType=DECIMAL},
+      GTP = #{gtp,jdbcType=DECIMAL},
+      M10 = #{m10,jdbcType=DECIMAL},
+      M20 = #{m20,jdbcType=DECIMAL},
+      M30 = #{m30,jdbcType=DECIMAL},
+      M40 = #{m40,jdbcType=DECIMAL},
+      M50 = #{m50,jdbcType=DECIMAL},
+      M60 = #{m60,jdbcType=DECIMAL},
+      M80 = #{m80,jdbcType=DECIMAL},
+      M100 = #{m100,jdbcType=DECIMAL},
+      PH = #{ph,jdbcType=DECIMAL},
+      DOXY = #{doxy,jdbcType=DECIMAL},
+      COND = #{cond,jdbcType=DECIMAL},
+      TURB = #{turb,jdbcType=DECIMAL},
+      NH4N = #{nh4n,jdbcType=DECIMAL},
+      TP = #{tp,jdbcType=DECIMAL},
+      TN = #{tn,jdbcType=DECIMAL},
+      CHLA = #{chla,jdbcType=DECIMAL},
+      TD11 = #{td11,jdbcType=DECIMAL},
+      TD12 = #{td12,jdbcType=DECIMAL},
+      TD13 = #{td13,jdbcType=DECIMAL},
+      TD14 = #{td14,jdbcType=DECIMAL},
+      TD15 = #{td15,jdbcType=DECIMAL},
+      TD16 = #{td16,jdbcType=DECIMAL},
+      TD17 = #{td17,jdbcType=DECIMAL},
+      TD18 = #{td18,jdbcType=DECIMAL},
+      TD19 = #{td19,jdbcType=DECIMAL},
+      TD20 = #{td20,jdbcType=DECIMAL},
+      TD21 = #{td21,jdbcType=DECIMAL},
+      TD22 = #{td22,jdbcType=DECIMAL},
+      TD23 = #{td23,jdbcType=DECIMAL},
+      TD24 = #{td24,jdbcType=DECIMAL},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+	</update>
+
+	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sa.`Faddvcd` as faddvcd,
+		sa.`Addvnm` as addvnm1,
+		sb.STCD,
+		sb.STNM,
+		Voltage, SignalInten, PN05,PJ as pJ, Z, ZB, ZU, VJ, VA, Q, QA, AI, C, MST, 
+    	FL, UC, US, UE, EJ, ED, GTP, M10, M20, M30, M40, M50, M60, M80, M100, PH, DOXY, COND, 
+    	TURB, NH4N, TP, TN, CHLA, TD11, TD12, TD13, TD14, TD15, TD16, TD17, TD18, TD19, TD20, 
+    	TD21, TD22, TD23, TD24, TM
+		FROM ${tableName} st RIGHT JOIN ST_STBPRP_B sb
+		on st.stcd=sb.stcd
+	    LEFT JOIN ST_ADDVCD_D sa ON 
+	    sa.id =  sb.Addvcd
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like
+			'%${query_stcdName}%')
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by st.TM desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+		<select id="getHistoryList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sa.`Faddvcd` as faddvcd,
+		sa.`Addvnm` as addvnm1,
+		sb.STCD,
+		sb.STNM,
+		Voltage, SignalInten, PN05,PJ as pJ, Z, ZB, ZU, VJ, VA, Q, QA, AI, C, MST, 
+    	FL, UC, US, UE, EJ, ED, GTP, M10, M20, M30, M40, M50, M60, M80, M100, PH, DOXY, COND, 
+    	TURB, NH4N, TP, TN, CHLA, TD11, TD12, TD13, TD14, TD15, TD16, TD17, TD18, TD19, TD20, 
+    	TD21, TD22, TD23, TD24, TM
+		FROM ${tableName} st RIGHT JOIN ST_STBPRP_B sb
+		on st.stcd=sb.stcd
+		LEFT JOIN ST_ADDVCD_D sa ON sa.id = sb.Addvcd
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like
+			'%${query_stcdName}%')
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by st.TM desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(1)
+		FROM ${tableName} st RIGHT JOIN ST_STBPRP_B sb
+		on st.stcd=sb.stcd
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like
+			'%${query_stcdName}%')
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+
+	<select id="getStatistList" resultMap="BaseResultMap" parameterType="map">
+		SELECT 
+		
+		sb.STCD,
+		sb.STNM,
+		ROUND(MAX(pj), 3) AS maxpj,
+		ROUND(max(Voltage),3) as maxVoltage,
+		ROUND(min(Voltage),3) as minVoltage,
+		ROUND(avg(Voltage),3) as Voltage,
+		
+		ROUND(max(SignalInten),3) as maxSignalInten,
+		ROUND(min(SignalInten),3) as minSignalInten,
+		ROUND(avg(SignalInten),3) as SignalInten,
+		
+		ROUND(max(PN05),3) as maxPN05,
+		ROUND(min(PN05),3) as minPN05,
+		ROUND(sum(PN05),3) as PN05,
+
+        ROUND(max(Z),3) as maxZ,
+        ROUND(min(Z),3) as minZ,
+        ROUND(avg(Z),3) as Z,
+
+        ROUND(max(ZB),3) as maxZB,
+        ROUND(min(ZB),3) as minZB,
+        ROUND(avg(ZB),3) as ZB,
+
+        ROUND(max(ZU),3) as maxZU,
+        ROUND(min(ZU),3) as minZU,
+        ROUND(avg(ZU),3) as ZU,
+
+        ROUND(max(VJ),3) as maxVJ,
+        ROUND(min(VJ),3) as minVJ,
+        ROUND(avg(VJ),3) as VJ,
+
+        ROUND(max(VA),3) as maxVA,
+        ROUND(min(VA),3) as minVA,
+        ROUND(avg(VA),3) as VA,
+
+        ROUND(max(Q),3) as maxQ,
+        ROUND(min(Q),3) as minQ,
+        ROUND(avg(Q),3) as Q,
+
+        ROUND(max(QA),3) as maxQA,
+        ROUND(min(QA),3) as minQA,
+        ROUND(avg(QA),3) as QA,
+
+        ROUND(max(AI),3) as maxAI,
+        ROUND(min(AI),3) as minAI,
+        ROUND(avg(AI),3) as AI,
+
+        ROUND(max(C),3) as maxC,
+        ROUND(min(C),3) as minC,
+        ROUND(avg(C),3) as C,
+
+        ROUND(max(MST),3) as maxMST,
+        ROUND(min(MST),3) as minMST,
+        ROUND(avg(MST),3) as MST,
+
+        ROUND(max(FL),3) as maxFL,
+        ROUND(min(FL),3) as minFL,
+        ROUND(avg(FL),3) as FL,
+
+        ROUND(max(UC),3) as maxUC,
+        ROUND(min(UC),3) as minUC,
+        ROUND(avg(UC),3) as UC,
+
+        ROUND(max(US),3) as maxUS,
+        ROUND(min(US),3) as `minUS`,
+        ROUND(avg(US),3) as US,
+
+        ROUND(max(UE),3) as maxUE,
+        ROUND(min(UE),3) as minUE,
+        ROUND(avg(UE),3) as UE,
+
+        ROUND(max(EJ),3) as maxEJ,
+        ROUND(min(EJ),3) as minEJ,
+        ROUND(avg(EJ),3) as EJ,
+
+        ROUND(max(ED),3) as maxED,
+        ROUND(min(ED),3) as minED,
+        ROUND(avg(ED),3) as ED,
+
+        ROUND(max(GTP),3) as maxGTP,
+        ROUND(min(GTP),3) as minGTP,
+        ROUND(avg(GTP),3) as GTP,
+
+        ROUND(max(M10),3) as maxM10,
+        ROUND(min(M10),3) as minM10,
+        ROUND(avg(M10),3) as M10,
+
+        ROUND(max(M20),3) as maxM20,
+        ROUND(min(M20),3) as minM20,
+        ROUND(avg(M20),3) as M20,
+
+        ROUND(max(M30),3) as maxM30,
+        ROUND(min(M30),3) as minM30,
+        ROUND(avg(M30),3) as M30,
+
+        ROUND(max(M40),3) as maxM40,
+        ROUND(min(M40),3) as minM40,
+        ROUND(avg(M40),3) as M40,
+
+        ROUND(max(M50),3) as maxM50,
+        ROUND(min(M50),3) as minM50,
+        ROUND(avg(M50),3) as M50,
+
+        ROUND(max(M60),3) as maxM60,
+        ROUND(min(M60),3) as minM60,
+        ROUND(avg(M60),3) as M60,
+
+        ROUND(max(M80),3) as maxM80,
+        ROUND(min(M80),3) as minM80,
+        ROUND(avg(M80),3) as M80,
+
+        ROUND(max(M100),3) as maxM100,
+        ROUND(min(M100),3) as minM100,
+        ROUND(avg(M100),3) as M100,
+
+        ROUND(max(PH),3) as maxPH,
+        ROUND(min(PH),3) as minPH,
+        ROUND(avg(PH),3) as PH,
+
+        ROUND(max(DOXY),3) as maxDOXY,
+        ROUND(min(DOXY),3) as minDOXY,
+        ROUND(avg(DOXY),3) as DOXY,
+
+        ROUND(max(COND),3) as maxCOND,
+        ROUND(min(COND),3) as minCOND,
+        ROUND(avg(COND),3) as COND,
+
+        ROUND(max(TURB),3) as maxTURB,
+        ROUND(min(TURB),3) as minTURB,
+        ROUND(avg(TURB),3) as TURB,
+
+        ROUND(max(NH4N),3) as maxNH4N,
+        ROUND(min(NH4N),3) as minNH4N,
+        ROUND(avg(NH4N),3) as NH4N,
+
+        ROUND(max(TP),3) as maxTP,
+        ROUND(min(TP),3) as minTP,
+        ROUND(avg(TP),3) as TP,
+
+        ROUND(max(TN),3) as maxTN,
+        ROUND(min(TN),3) as minTN,
+        ROUND(avg(TN),3) as TN,
+
+        ROUND(max(CHLA),3) as maxCHLA,
+        ROUND(min(CHLA),3) as minCHLA,
+        ROUND(avg(CHLA),3) as CHLA,
+
+        ROUND(max(TD11),3) as maxTD11,
+        ROUND(min(TD11),3) as minTD11,
+        ROUND(avg(TD11),3) as TD11,
+
+        ROUND(max(TD12),3) as maxTD12,
+        ROUND(min(TD12),3) as minTD12,
+        ROUND(avg(TD12),3) as TD12,
+
+        ROUND(max(TD13),3) as maxTD13,
+        ROUND(min(TD13),3) as minTD13,
+        ROUND(avg(TD13),3) as TD13,
+
+        ROUND(max(TD14),3) as maxTD14,
+        ROUND(min(TD14),3) as minTD14,
+        ROUND(avg(TD14),3) as TD14,
+
+        ROUND(max(TD15),3) as maxTD15,
+        ROUND(min(TD15),3) as minTD15,
+        ROUND(avg(TD15),3) as TD15,
+
+        ROUND(max(TD16),3) as maxTD16,
+        ROUND(min(TD16),3) as minTD16,
+        ROUND(avg(TD16),3) as TD16,
+
+        ROUND(max(TD17),3) as maxTD17,
+        ROUND(min(TD17),3) as minTD17,
+        ROUND(avg(TD17),3) as TD17,
+
+        ROUND(max(TD18),3) as maxTD18,
+        ROUND(min(TD18),3) as minTD18,
+        ROUND(avg(TD18),3) as TD18,
+
+        ROUND(max(TD19),3) as maxTD19,
+        ROUND(min(TD19),3) as minTD19,
+        ROUND(avg(TD19),3) as TD19,
+
+        ROUND(max(TD20),3) as maxTD20,
+        ROUND(min(TD20),3) as minTD20,
+        ROUND(avg(TD20),3) as TD20,
+
+        ROUND(max(TD21),3) as maxTD21,
+        ROUND(min(TD21),3) as minTD21,
+        ROUND(avg(TD21),3) as TD21,
+
+        ROUND(max(TD22),3) as maxTD22,
+        ROUND(min(TD22),3) as minTD22,
+        ROUND(avg(TD22),3) as TD22,
+
+        ROUND(max(TD23),3) as maxTD23,
+        ROUND(min(TD23),3) as minTD23,
+        ROUND(avg(TD23),3) as TD23,
+
+        ROUND(max(TD24),3) as maxTD24,
+        ROUND(min(TD24),3) as minTD24,
+        ROUND(avg(TD24),3) as TD24,
+		TM
+		FROM ${tableName} st RIGHT JOIN ST_STBPRP_B sb
+		on st.stcd=sb.stcd
+		where 1=1
+		
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		group by sb.STCD
+		ORDER BY st.tm desc,sb.STCD asc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+
+	<select id="getStatistCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		COUNT(*)
+		FROM (
+		SELECT sb.STCD
+		FROM ${tableName} st RIGHT JOIN ST_STBPRP_B sb
+		on st.stcd=sb.stcd
+		where 1=1
+		
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		group by sb.STCD
+		) t
+	</select>
+
+	<select id="getFactorList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sb.STCD,
+		sb.stnm,
+		sb.dsfl,
+		sb.sttp,
+		<if test="zfl != null">
+			ROUND(avg(water),3) as avgWater,
+		</if>
+		<if test="pfl != null">
+			ROUND(sum(rain),1) as sunRain,
+		</if>
+		<if test="iffl != null">
+			ROUND(avg(flow),3) as avgFlow,
+		</if>
+		<if test="vfl != null">
+			ROUND(avg(voltage),2) as avgVoltage,
+		</if>
+		<if test="phfl != null">
+			ROUND(avg(ph),2) as avgPh,
+		</if>
+		<if test="tufl != null">
+			ROUND(avg(turbidimeter),0) as avgTurbidimeter,
+		</if>
+		<if test="dofl != null">
+			ROUND(avg(oxygen),1) as avgOxygen,
+		</if>
+		<if test="sufl != null">
+			ROUND(avg(surfactants),0) as avgSurfactants,
+		</if>
+		<if test="tefl != null">
+			ROUND(avg(temperature),1) as avgTemperature,
+		</if>
+		af.tm
+		FROM
+		ST_AllDetails_Factor af
+		LEFT JOIN ST_STSMTASK_B sm
+		ON sm.Stcd=af.Stcd
+		LEFT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=af.Stcd
+		where 1=1
+		<if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd_query != null">
+			AND sb.stcd like '%${stcd_query}%'
+		</if>
+		<if test="addvcd != null">
+			AND af.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="zfl != null">
+			AND sm.zfl = #{zfl,jdbcType=INTEGER}
+		</if>
+		<if test="pfl != null">
+			AND sm.pfl = #{pfl,jdbcType=INTEGER}
+		</if>
+		<if test="iffl != null">
+			AND sm.iffl = #{iffl,jdbcType=INTEGER}
+		</if>
+		<if test="vfl != null">
+			AND sm.vfl = #{vfl,jdbcType=INTEGER}
+		</if>
+		<if test="phfl != null">
+			AND sm.phfl = #{phfl,jdbcType=INTEGER}
+		</if>
+		<if test="tufl != null">
+			AND sm.tufl = #{tufl,jdbcType=INTEGER}
+		</if>
+		<if test="dofl != null">
+			AND sm.dofl = #{addvcd,jdbcType=INTEGER}
+		</if>
+		<if test="sufl != null">
+			AND sm.sufl = #{sufl,jdbcType=INTEGER}
+		</if>
+		<if test="tefl != null">
+			AND sm.tefl = #{tefl,jdbcType=INTEGER}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND af.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		group by af.Stcd
+		order by CASE sb.DSFL WHEN '1' THEN 0 WHEN '0' THEN 1 WHEN '2' THEN 2 END,af.tm desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+
+	<select id="getFactorCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(*)
+		FROM
+		(
+		SELECT sb.STCD
+		FROM
+		ST_AllDetails_Factor af
+		LEFT JOIN ST_STSMTASK_B sm
+		ON sm.Stcd=af.Stcd
+		LEFT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=af.Stcd
+		where 1=1
+		<if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd_query != null">
+			AND sb.stcd like '%${stcd_query}%'
+		</if>
+		<if test="addvcd != null">
+			AND af.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="zfl != null">
+			AND sm.zfl = #{zfl,jdbcType=INTEGER}
+		</if>
+		<if test="pfl != null">
+			AND sm.pfl = #{pfl,jdbcType=INTEGER}
+		</if>
+		<if test="iffl != null">
+			AND sm.iffl = #{iffl,jdbcType=INTEGER}
+		</if>
+		<if test="vfl != null">
+			AND sm.vfl = #{vfl,jdbcType=INTEGER}
+		</if>
+		<if test="phfl != null">
+			AND sm.phfl = #{phfl,jdbcType=INTEGER}
+		</if>
+		<if test="tufl != null">
+			AND sm.tufl = #{tufl,jdbcType=INTEGER}
+		</if>
+		<if test="dofl != null">
+			AND sm.dofl = #{addvcd,jdbcType=INTEGER}
+		</if>
+		<if test="sufl != null">
+			AND sm.sufl = #{sufl,jdbcType=INTEGER}
+		</if>
+		<if test="tefl != null">
+			AND sm.tefl = #{tefl,jdbcType=INTEGER}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND af.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		GROUP BY af.STCD
+		) tmp
+
+	</select>
+
+	<select id="getReportStaticList" resultMap="extendResultMap" parameterType="map">
+		SELECT
+		STCD,
+		ROUND(avg(Voltage),3) as Voltage,
+		ROUND(avg(SignalInten),3) as SignalInten,
+		ROUND(max(PJ),3) as PJ,
+	<!-- 	ROUND(sum(PJ),3) as PJ, -->
+		ROUND(sum(PN05),3) as PN05,
+        ROUND(avg(Z),3) as Z,
+        ROUND(avg(ZB),3) as ZB,
+        ROUND(avg(ZU),3) as ZU,
+        ROUND(avg(VJ),3) as VJ,
+        ROUND(avg(VA),3) as VA,
+        ROUND(avg(Q),3) as Q,
+        ROUND(avg(QA),3) as QA,
+        ROUND(avg(AI),3) as AI,
+        ROUND(avg(C),3) as C,
+        ROUND(avg(MST),3) as MST,
+        ROUND(avg(FL),3) as FL,
+        ROUND(avg(UC),3) as UC,
+        ROUND(avg(US),3) as US,
+        ROUND(avg(UE),3) as UE,
+        ROUND(avg(EJ),3) as EJ,
+        ROUND(avg(ED),3) as ED,
+        ROUND(avg(GTP),3) as GTP,
+        ROUND(avg(M10),3) as M10,
+        ROUND(avg(M20),3) as M20,
+        ROUND(avg(M30),3) as M30,
+        ROUND(avg(M40),3) as M40,
+        ROUND(avg(M50),3) as M50,
+        ROUND(avg(M60),3) as M60,
+        ROUND(avg(M80),3) as M80,
+        ROUND(avg(M100),3) as M100,
+        ROUND(avg(PH),3) as PH,
+        ROUND(avg(DOXY),3) as DOXY,
+        ROUND(avg(COND),3) as COND,
+        ROUND(avg(TURB),3) as TURB,
+        ROUND(avg(NH4N),3) as NH4N,
+        ROUND(avg(TP),3) as TP,
+        ROUND(avg(TN),3) as TN,
+        ROUND(avg(CHLA),3) as CHLA,
+        ROUND(avg(TD11),3) as TD11,
+        ROUND(avg(TD12),3) as TD12,
+        ROUND(avg(TD13),3) as TD13,
+        ROUND(avg(TD14),3) as TD14,
+        ROUND(avg(TD15),3) as TD15,
+        ROUND(avg(TD16),3) as TD16,
+        ROUND(avg(TD17),3) as TD17,
+        ROUND(avg(TD18),3) as TD18,
+        ROUND(avg(TD19),3) as TD19,
+        ROUND(avg(TD20),3) as TD20,
+        ROUND(avg(TD21),3) as TD21,
+        ROUND(avg(TD22),3) as TD22,
+        ROUND(avg(TD23),3) as TD23,
+        ROUND(avg(TD24),3) as TD24,
+        
+		TM
+		FROM
+		${tableName}
+		where 1=1
+		<if test="beginTime != null and endTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="groupByCon != null">
+			group by ${groupByCon}
+		</if>
+		<if test="orderByCon != null">
+			order by ${orderByCon}
+		</if>
+	</select>
+
+	<select id="getLastest" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		FROM
+		${tableName}
+		where 1=1
+		<if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by TM desc
+		limit 1
+	</select>
+
+	<select id="getDetail" resultMap="BaseResultMap" parameterType="map">
+		SELECT t.*,
+		(SELECT ${factorCon} FROM ${tableName} WHERE stcd=t.stcd AND tm =t.newDate LIMIT 1) AS newFactorValue,
+		(SELECT tm FROM ${tableName} WHERE stcd=t.stcd AND ${factorCon}=t.minFactorValue
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by tm desc
+		LIMIT 1) AS minDate,
+		(SELECT tm FROM ${tableName} WHERE stcd=t.stcd AND ${factorCon}=t.maxFactorValue
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		order by tm desc
+		LIMIT 1) AS maxDate
+		FROM
+		(
+		SELECT stcd,
+		<if test="factorCon=='Rain'">
+			SUM(${factorCon}) AS sumFactorValue,
+		</if>
+		MAX(${factorCon}) AS maxFactorValue,SUM(${factorCon}) As sumFactorValue,MIN(${factorCon}) AS minFactorValue,MAX(tm) AS newDate FROM ${tableName} WHERE
+		1=1
+		<if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		)t
+	</select>
+
+	<select id="getTableExist" parameterType="String" resultType="Integer">
+		select count(1)
+		from ${tableName}
+	</select>
+
+    <select id="getDaySzList" resultMap="BaseResultMap" parameterType="map">
+        select
+		tb.*,sb.stcd,sb.dsfl,sb.sttp,sb.area,sb.basin,turbidimeter,oxygen,surfactants,temperature
+		FROM
+		${tableName} tb
+		RIGHT JOIN ST_STBPRP_B sb ON sb.stcd = tb.stcd
+		where 1=1
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	    <if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+	   </if> 
+		<if test="stcd_query != null">
+			AND sb.STCD like '%${stcd_query}%'
+		</if>
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		group by sb.stcd
+		order by TM desc 
+		<if test="start!= null and limit!= null">
+		   limit ${start},${limit}
+	    </if>
+	    
+	</select>
+	
+	<select id="getDaySzCount" resultType="java.lang.Integer" parameterType="map">
+	select count(1) from(
+        select
+	    sb.stcd
+		FROM
+		${tableName} tb
+		RIGHT JOIN ST_STBPRP_B sb ON sb.stcd = tb.stcd
+		where 1=1
+		<if test="beginTime != null">
+			AND TM &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="stcd_query != null">
+			AND sb.STCD like '%${stcd_query}%'
+		</if>
+		<if test="sttp != null">
+			AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+	   </if> 
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		group by sb.stcd
+		)t
+	</select>
+	
+	 <select id="getFactorStatistList" resultMap="BaseResultMap" parameterType="map">
+	   SELECT t.*, 
+    	(SELECT ${factor}  FROM ${tableName} WHERE stcd=t.stcd AND tm =t.newDate LIMIT 1) AS newFactorValue
+	  FROM ( 
+	     SELECT sb.dsfl,sb.sttp,sb.stcd,sb.stnm,MAX(tm) AS newDate 
+	     FROM ${tableName} af 
+	     RIGHT JOIN ST_STBPRP_B sb ON sb.stcd = af.stcd
+	     RIGHT JOIN ST_STSMTASK_B sm ON sm.stcd = af.stcd  
+	     WHERE 1=1
+	    <if test="factorFl != null">
+			AND sm.${factorFl} = 1
+		</if>
+	     <if test="stcd_query != null">
+			AND sb.STCD like '%${stcd_query}%'
+		</if>
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+	     <if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null">
+			AND af.tm &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND af.tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	     GROUP BY sb.stcd 
+	     <if test="start!= null and limit!= null">
+		   limit ${start},${limit}
+	    </if> 
+	    )t
+	 </select>
+	 <select id="getFactorStatistCount" resultType="java.lang.Integer" parameterType="map">
+	    select count(1) from ( SELECT t.*, 
+    	(SELECT ${factor}  FROM ${tableName} WHERE stcd=t.stcd AND tm =t.newDate LIMIT 1) AS newFactorValue
+	  FROM ( 
+	     SELECT sb.dsfl,sb.sttp,sb.stcd,sb.stnm,MAX(tm) AS newDate 
+	     FROM ${tableName} af 
+	     RIGHT JOIN ST_STBPRP_B sb ON sb.stcd = af.stcd
+	     RIGHT JOIN ST_STSMTASK_B sm ON sm.stcd = af.stcd  
+	     WHERE 1=1
+	    <if test="factorFl != null">
+			AND sm.${factorFl} = 1
+		</if> 
+	     <if test="stcd_query != null">
+			AND sb.STCD like '%${stcd_query}%'
+		</if>
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+	     <if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null">
+			AND af.tm &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND af.tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	     GROUP BY sb.stcd  
+	    )t)b
+	 </select>
+	 
+	<select id="getMaxPj" resultType="java.lang.Double" parameterType="map">
+		SELECT max(PJ)  FROM ${tableName} df RIGHT JOIN ST_STBPRP_B sb
+		ON df.STCD=sb.STCD
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="stcdList != null and stcdList">
+			AND sb.STCD in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="query_stcdName != null">
+			AND (sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+		<if test="sttp != null">
+			AND sb.sttp = #{sttp,jdbcType=INTEGER}
+		</if>
+			<if test="beginTime != null">
+			AND df.tm &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null">
+			AND df.tm &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+	
+	
+	<select id="getAlmanacReportCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		  count(*)
+		FROM
+		   ${tableName} st
+		  RIGHT JOIN ST_STBPRP_B sb
+		    ON st.stcd = sb.stcd
+		WHERE 1 = 1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+	
+	<select id="getAlmanacReportList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		  sb.STCD as stcd,
+		  sb.STNM as stnm,
+		  st.pj as pJ,
+		  st.signalinten as signalinten,
+		  st.voltage as voltage,	
+		 st.TM as tm
+		FROM
+		   ${tableName} st
+		  RIGHT JOIN ST_STBPRP_B sb
+		    ON st.stcd = sb.stcd
+		WHERE 1 = 1
+		<if test="stcd != null">
+			AND sb.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="beginTime != null and endTime != null">
+			AND st.TM &gt;=#{beginTime,jdbcType=TIMESTAMP}
+			AND st.TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		ORDER BY st.tm desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.DevicePhotoMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.DevicePhoto" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Stcd" property="stcd" jdbcType="CHAR" />
+    <result column="PhotoType" property="phototype" jdbcType="INTEGER" />
+    <result column="PhotoId" property="photoid" jdbcType="VARCHAR" />
+    <result column="ChannelId" property="channelid" jdbcType="INTEGER" />
+    <result column="PhotoUrl" property="photourl" jdbcType="VARCHAR" />
+    <result column="PhotoCreateTime" property="photocreatetime" jdbcType="TIMESTAMP" />
+    <result column="PhotoComplateTime" property="photocomplatetime" jdbcType="TIMESTAMP" />
+    <result column="PhotoStatus" property="photostatus" jdbcType="INTEGER" />
+    <result column="PhotoSeeTime" property="photoseetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Stcd, PhotoType, PhotoId, ChannelId,PhotoUrl, PhotoCreateTime, PhotoComplateTime, PhotoStatus, PhotoSeeTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from DevicePhoto
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from DevicePhoto
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.DevicePhoto" >
+    insert into DevicePhoto (Id, Stcd, PhotoType, 
+      PhotoId,ChannelId, PhotoUrl, PhotoCreateTime, 
+      PhotoComplateTime, PhotoStatus,PhotoSeeTime)
+    values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{phototype,jdbcType=INTEGER}, 
+      #{photoid,jdbcType=VARCHAR},#{channelid,jdbcType=INTEGER},  #{photourl,jdbcType=VARCHAR}, #{photocreatetime,jdbcType=TIMESTAMP}, 
+      #{photocomplatetime,jdbcType=TIMESTAMP}, #{photostatus,jdbcType=INTEGER}, #{photoseetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.DevicePhoto" >
+    insert into DevicePhoto
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        Stcd,
+      </if>
+      <if test="phototype != null" >
+        PhotoType,
+      </if>
+      <if test="photoid != null" >
+        PhotoId,
+      </if>
+      <if test="channelid != null" >
+        ChannelId,
+      </if>
+      <if test="photourl != null" >
+        PhotoUrl,
+      </if>
+      <if test="photocreatetime != null" >
+        PhotoCreateTime,
+      </if>
+      <if test="photocomplatetime != null" >
+        PhotoComplateTime,
+      </if>
+      <if test="photostatus != null" >
+        PhotoStatus,
+      </if>
+      <if test="photoseetime != null" >
+        PhotoSeeTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="phototype != null" >
+        #{phototype,jdbcType=INTEGER},
+      </if>
+      <if test="photoid != null" >
+        #{photoid,jdbcType=VARCHAR},
+      </if>
+       <if test="channelid != null" >
+        #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="photourl != null" >
+        #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="photocreatetime != null" >
+        #{photocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photocomplatetime != null" >
+        #{photocomplatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photostatus != null" >
+        #{photostatus,jdbcType=INTEGER},
+      </if>
+       <if test="photoseetime != null" >
+        #{photoseetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.DevicePhoto" >
+    update DevicePhoto
+    <set >
+      <if test="stcd != null" >
+        Stcd = #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="phototype != null" >
+        PhotoType = #{phototype,jdbcType=INTEGER},
+      </if>
+      <if test="photoid != null" >
+        PhotoId = #{photoid,jdbcType=VARCHAR},
+      </if>
+       <if test="channelid != null" >
+        ChannelId = #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="photourl != null" >
+        PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="photocreatetime != null" >
+        PhotoCreateTime = #{photocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photocomplatetime != null" >
+        PhotoComplateTime = #{photocomplatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photostatus != null" >
+        PhotoStatus = #{photostatus,jdbcType=INTEGER},
+      </if>
+      <if test="photoseetime != null" >
+        PhotoSeeTime = #{photoseetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.DevicePhoto" >
+    update DevicePhoto
+    set Stcd = #{stcd,jdbcType=CHAR},
+      PhotoType = #{phototype,jdbcType=INTEGER},
+      PhotoId = #{photoid,jdbcType=VARCHAR},
+      ChannelId = #{channelid,jdbcType=INTEGER},
+      PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      PhotoCreateTime = #{photocreatetime,jdbcType=TIMESTAMP},
+      PhotoComplateTime = #{photocomplatetime,jdbcType=TIMESTAMP},
+      PhotoStatus = #{photostatus,jdbcType=INTEGER},
+      PhotoSeeTime = #{photoseetime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		select *
+		from DevicePhoto
+		where 1=1
+		<if test="stcd != null">
+			and STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="beginTime != null and beginTime !=''">
+			and PhotoSeeTime &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="channelid != null and channelid!=''">
+			and ChannelId = #{channelid,jdbcType=INTEGER}
+		</if>
+		<if test="endTime != null and  endTime!= ''">
+			and PhotoSeeTime &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="photoType != null and photoType!=''">
+			and PhotoType = #{photoType,jdbcType=INTEGER}
+		</if>
+		<if test="photostatus != null and photoType!=''">
+			and PhotoStatus = #{photostatus,jdbcType=INTEGER}
+		</if>
+		order by PhotoSeeTime desc
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		select count(*)
+		from DevicePhoto
+		where 1=1
+		<if test="stcd != null">
+			and STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="beginTime != null and beginTime !=''">
+			and PhotoSeeTime &gt;= #{beginTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and  endTime!= ''">
+			and PhotoSeeTime &lt;= #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="channelid != null and channelid!=''">
+			and ChannelId = #{channelid,jdbcType=INTEGER}
+		</if>
+		<if test="photoType != null and photoType!=''">
+			and PhotoType = #{photoType,jdbcType=INTEGER}
+		</if>
+		<if test="photostatus != null and photoType!=''">
+			and PhotoStatus = #{photostatus,jdbcType=INTEGER}
+		</if>
+	</select>
+  
+</mapper>

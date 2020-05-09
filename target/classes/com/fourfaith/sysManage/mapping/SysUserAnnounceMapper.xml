@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysUserAnnounceMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysUserAnnounce">
+		<id column="Id" property="id" jdbcType="CHAR" />
+		<result column="NoticeId" property="noticeid" jdbcType="CHAR" />
+		<result column="UserId" property="userid" jdbcType="CHAR" />
+		<result column="IsRead" property="isread" jdbcType="INTEGER" />
+		<result column="Moditime" property="moditime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, NoticeId, UserId, IsRead, Moditime
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from SysUserAnnounce
+		where Id = #{id,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from SysUserAnnounce
+		where Id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.sysManage.model.SysUserAnnounce">
+		insert into SysUserAnnounce (Id, NoticeId, UserId,
+		IsRead, Moditime)
+		values (#{id,jdbcType=CHAR}, #{noticeid,jdbcType=CHAR},
+		#{userid,jdbcType=CHAR},
+		#{isread,jdbcType=INTEGER}, #{moditime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysUserAnnounce">
+		insert into SysUserAnnounce
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="noticeid != null">
+				NoticeId,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="isread != null">
+				IsRead,
+			</if>
+			<if test="moditime != null">
+				Moditime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=CHAR},
+			</if>
+			<if test="noticeid != null">
+				#{noticeid,jdbcType=CHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=CHAR},
+			</if>
+			<if test="isread != null">
+				#{isread,jdbcType=INTEGER},
+			</if>
+			<if test="moditime != null">
+				#{moditime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysUserAnnounce">
+		update SysUserAnnounce
+		<set>
+			<if test="noticeid != null">
+				NoticeId = #{noticeid,jdbcType=CHAR},
+			</if>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=CHAR},
+			</if>
+			<if test="isread != null">
+				IsRead = #{isread,jdbcType=INTEGER},
+			</if>
+			<if test="moditime != null">
+				Moditime = #{moditime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysUserAnnounce">
+		update SysUserAnnounce
+		set NoticeId = #{noticeid,jdbcType=CHAR},
+		UserId = #{userid,jdbcType=CHAR},
+		IsRead = #{isread,jdbcType=INTEGER},
+		Moditime = #{moditime,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=CHAR}
+	</update>
+
+	<delete id="deleteByNoticeId" parameterType="java.lang.String">
+		delete from SysUserAnnounce
+		where NoticeId = #{noticeid,jdbcType=VARCHAR}
+	</delete>
+
+	<select id="findByUserIdAndAnnId" resultMap="BaseResultMap" parameterType="map">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from SysUserAnnounce
+	    where UserId = #{userId,jdbcType=CHAR}
+	    AND NoticeId = #{noticeId,jdbcType=CHAR}
+	</select>
+</mapper>

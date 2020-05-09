@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysRolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysRolePermission" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="RoleId" property="roleid" jdbcType="CHAR" />
+    <result column="MenuId" property="menuid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, RoleId, MenuId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysRolePermission
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysRolePermission
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysRolePermission" >
+    insert into SysRolePermission (Id, RoleId, MenuId)
+    values (#{id,jdbcType=CHAR}, #{roleid,jdbcType=CHAR}, #{menuid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysRolePermission" >
+    insert into SysRolePermission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="roleid != null" >
+        RoleId,
+      </if>
+      <if test="menuid != null" >
+        MenuId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=CHAR},
+      </if>
+      <if test="menuid != null" >
+        #{menuid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysRolePermission" >
+    update SysRolePermission
+    <set >
+      <if test="roleid != null" >
+        RoleId = #{roleid,jdbcType=CHAR},
+      </if>
+      <if test="menuid != null" >
+        MenuId = #{menuid,jdbcType=CHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysRolePermission" >
+    update SysRolePermission
+    set RoleId = #{roleid,jdbcType=CHAR},
+      MenuId = #{menuid,jdbcType=CHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+    <select id="getList" resultMap="BaseResultMap" parameterType="map">
+  	SELECT * FROM SysRolePermission
+  	where 1=1
+    <if test="id != null" >
+        AND id = #{id,jdbcType=VARCHAR} 
+    </if>
+    <if test="roleid != null" >
+        AND RoleId = #{roleid,jdbcType=VARCHAR} 
+    </if>
+    <if test="menuid != null" >
+        AND MenuId = #{menuid,jdbcType=VARCHAR} 
+    </if>
+  </select>
+  
+    <delete id="deleteByRoleMenu" parameterType="java.lang.String" >
+    delete from SysRolePermission
+    where RoleId = #{roleid,jdbcType=VARCHAR}
+  </delete>
+  
+</mapper>

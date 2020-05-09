@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StAlarmConfigureMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StAlarmConfigure" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="Stcd" property="stcd" jdbcType="VARCHAR" />
+    <result column="PersonId" property="personId" jdbcType="VARCHAR" />
+    <result column="WaterRanges" property="waterranges" jdbcType="DOUBLE" />
+    <result column="RainRanges" property="rainranges" jdbcType="DOUBLE" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="IsOpen" property="isopen" jdbcType="INTEGER" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Stcd, PersonId,WaterRanges, RainRanges, Content, IsOpen, TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_AlarmConfigure
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_AlarmConfigure
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.StAlarmConfigure" >
+    insert into ST_AlarmConfigure (Id, Stcd,PersonId, WaterRanges, 
+      RainRanges, Content, IsOpen, 
+      TM)
+    values (#{id,jdbcType=VARCHAR}, #{stcd,jdbcType=VARCHAR},#{personId,jdbcType=VARCHAR}, #{waterranges,jdbcType=DOUBLE}, 
+      #{rainranges,jdbcType=DOUBLE}, #{content,jdbcType=VARCHAR}, #{isopen,jdbcType=INTEGER}, 
+      #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StAlarmConfigure" >
+    insert into ST_AlarmConfigure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        Stcd,
+      </if>
+       <if test="personId != null" >
+        PersonId,
+      </if>
+      <if test="waterranges != null" >
+        WaterRanges,
+      </if>
+      <if test="rainranges != null" >
+        RainRanges,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="isopen != null" >
+        IsOpen,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=VARCHAR},
+      </if>
+       <if test="personId != null" >
+        #{personId,jdbcType=VARCHAR},
+      </if>
+      <if test="waterranges != null" >
+        #{waterranges,jdbcType=DOUBLE},
+      </if>
+      <if test="rainranges != null" >
+        #{rainranges,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null" >
+        #{isopen,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StAlarmConfigure" >
+    update ST_AlarmConfigure
+    <set >
+      <if test="stcd != null" >
+        Stcd = #{stcd,jdbcType=VARCHAR},
+      </if>
+       <if test="personId != null" >
+        PersonId = #{personId,jdbcType=VARCHAR},
+      </if>
+      <if test="waterranges != null" >
+        WaterRanges = #{waterranges,jdbcType=DOUBLE},
+      </if>
+      <if test="rainranges != null" >
+        RainRanges = #{rainranges,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null" >
+        IsOpen = #{isopen,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StAlarmConfigure" >
+    update ST_AlarmConfigure
+    set Stcd = #{stcd,jdbcType=VARCHAR},
+      PersonId = #{personId,jdbcType=VARCHAR},
+      WaterRanges = #{waterranges,jdbcType=DOUBLE},
+      RainRanges = #{rainranges,jdbcType=DOUBLE},
+      Content = #{content,jdbcType=VARCHAR},
+      IsOpen = #{isopen,jdbcType=INTEGER},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		count(*)
+		FROM ST_AlarmConfigure ac
+		RIGHT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=ac.Stcd
+		where 1=1
+		<if test="stcd_query != null">
+		    AND sb.Stcd like '%${stcd_query}%'
+		</if>
+		<if test="addvcd != null">
+			AND sb.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	     <if test="stcdList != null and stcdList.size()>0">
+			AND sb.Stcd in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="waterranges != null" >
+	      AND ac.WaterRanges = #{waterranges,jdbcType=DOUBLE}
+	    </if>
+	    <if test="rainranges != null" >
+	      AND ac.RainRanges = #{rainranges,jdbcType=DOUBLE}
+	    </if>
+	    <if test="content != null" >
+	      AND ac.Content = #{content,jdbcType=VARCHAR}
+	    </if>
+	    <if test="isopen != null" >
+	      AND ac.IsOpen = #{isopen,jdbcType=INTEGER}
+	    </if>
+	</select>
+	
+	  <select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		sb.stcd,
+		sb.stnm,
+		sb.sttp,
+		ac.*
+		FROM ST_AlarmConfigure ac
+		RIGHT JOIN ST_STBPRP_B sb
+		ON sb.Stcd=ac.Stcd
+		where 1=1
+		<if test="stcd_query != null">
+		    AND sb.Stcd like '%${stcd_query}%'
+		</if>
+		<if test="addvcd != null">
+			AND sb.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND sb.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	     <if test="stcdList != null and stcdList.size()>0">
+			AND sb.Stcd in
+			<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="waterranges != null" >
+	      AND ac.WaterRanges = #{waterranges,jdbcType=DOUBLE}
+	    </if>
+	    <if test="rainranges != null" >
+	      AND ac.RainRanges = #{rainranges,jdbcType=DOUBLE}
+	    </if>
+	    <if test="content != null" >
+	      AND ac.Content = #{content,jdbcType=VARCHAR}
+	    </if>
+	    <if test="isopen != null" >
+	      AND ac.IsOpen = #{isopen,jdbcType=INTEGER}
+	    </if>
+	    	order by ac.Tm desc
+		 <if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+    <select id="findByStcd" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	SELECT 
+			<include refid="Base_Column_List" />
+		FROM ST_AlarmConfigure
+	  	where STCD = #{stcd,jdbcType=CHAR} 
+    </select>
+    
+      <select id="getByPerson" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	SELECT 
+			<include refid="Base_Column_List" />
+		FROM ST_AlarmConfigure
+	  	where PersonId like concat(concat('%',#{personId}),'%')
+    </select>
+</mapper>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.reportManage.dao.MonthAllDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.reportManage.model.MonthAllDetails" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Stcd" property="stcd" jdbcType="CHAR" />
+    <result column="Factor" property="factor" jdbcType="VARCHAR" />
+    <result column="FactorName" property="factorname" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="INTEGER" />
+    <result column="Month" property="month" jdbcType="INTEGER" />
+    <result column="Day" property="day" jdbcType="INTEGER" />
+    <result column="newFactorValue" property="newFactorValue" jdbcType="DECIMAL" />
+    <result column="newDate" property="newDate" jdbcType="TIMESTAMP" />
+    <result column="maxFactorValue" property="maxFactorValue" jdbcType="DECIMAL" />
+    <result column="maxDate" property="maxDate" jdbcType="TIMESTAMP" />
+    <result column="minFactorValue" property="minFactorValue" jdbcType="DECIMAL" />
+    <result column="minDate" property="minDate" jdbcType="TIMESTAMP" />
+    <result column="avgFactorValue" property="avgFactorValue" jdbcType="DECIMAL" />
+    <result column="avgDate" property="avgDate" jdbcType="TIMESTAMP" />
+    <result column="sumFactorValue" property="sumFactorValue" jdbcType="DECIMAL" />
+    <result column="sumDate" property="sumDate" jdbcType="TIMESTAMP" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Stcd, Factor, FactorName, Year, Month,Day, newFactorValue, newDate, maxFactorValue, 
+    maxDate, minFactorValue, minDate, avgFactorValue, avgDate, sumFactorValue, sumDate, 
+    TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from MonthAllDetails
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from MonthAllDetails
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.reportManage.model.MonthAllDetails" >
+    insert into MonthAllDetails (Id, Stcd, Factor, FactorName, 
+      Year, Month,Day, newFactorValue, 
+      newDate, maxFactorValue, maxDate, 
+      minFactorValue, minDate, avgFactorValue, 
+      avgDate, sumFactorValue, sumDate, 
+      TM)
+    values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{factor,jdbcType=VARCHAR}, #{factorname,jdbcType=VARCHAR}, 
+      #{year,jdbcType=INTEGER}, #{month,jdbcType=INTEGER}, #{day,jdbcType=INTEGER},#{newFactorValue,jdbcType=DECIMAL}, 
+      #{newDate,jdbcType=TIMESTAMP}, #{maxFactorValue,jdbcType=DECIMAL}, #{maxDate,jdbcType=TIMESTAMP}, 
+      #{minFactorValue,jdbcType=DECIMAL}, #{minDate,jdbcType=TIMESTAMP}, #{avgFactorValue,jdbcType=DECIMAL}, 
+      #{avgDate,jdbcType=TIMESTAMP}, #{sumFactorValue,jdbcType=DECIMAL}, #{sumDate,jdbcType=TIMESTAMP}, 
+      #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.reportManage.model.MonthAllDetails" >
+    insert into MonthAllDetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        Stcd,
+      </if>
+      <if test="factor != null" >
+        Factor,
+      </if>
+      <if test="factorname != null" >
+        FactorName,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="month != null" >
+        Month,
+      </if>
+      <if test="day != null" >
+        Day,
+      </if>
+      <if test="newfactorvalue != null" >
+        newFactorValue,
+      </if>
+      <if test="newdate != null" >
+        newDate,
+      </if>
+      <if test="maxfactorvalue != null" >
+        maxFactorValue,
+      </if>
+      <if test="maxdate != null" >
+        maxDate,
+      </if>
+      <if test="minfactorvalue != null" >
+        minFactorValue,
+      </if>
+      <if test="mindate != null" >
+        minDate,
+      </if>
+      <if test="avgfactorvalue != null" >
+        avgFactorValue,
+      </if>
+      <if test="avgdate != null" >
+        avgDate,
+      </if>
+      <if test="sumfactorvalue != null" >
+        sumFactorValue,
+      </if>
+      <if test="sumdate != null" >
+        sumDate,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="factor != null" >
+        #{factor,jdbcType=VARCHAR},
+      </if>
+      <if test="factorname != null" >
+        #{factorname,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=INTEGER},
+      </if>
+      <if test="newFactorValue != null" >
+        #{newFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="newDate != null" >
+        #{newDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxFactorValue != null" >
+        #{maxFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxDate != null" >
+        #{maxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minFactorValue != null" >
+        #{minFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="minDate != null" >
+        #{minDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avgFactorValue != null" >
+        #{avgFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="avgDate != null" >
+        #{avgDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sumFactorValue != null" >
+        #{sumFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="sumDate != null" >
+        #{sumDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.reportManage.model.MonthAllDetails" >
+    update MonthAllDetails
+    <set >
+      <if test="stcd != null" >
+        Stcd = #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="factor != null" >
+        Factor = #{factor,jdbcType=VARCHAR},
+      </if>
+      <if test="factorname != null" >
+        FactorName = #{factorname,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        Month = #{month,jdbcType=INTEGER},
+      </if>
+      <if test="day != null" >
+        Day = #{day,jdbcType=INTEGER},
+      </if>
+      <if test="newFactorValue != null" >
+        newFactorValue = #{newFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="newDate != null" >
+        newDate = #{newDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxFactorValue != null" >
+        maxFactorValue = #{maxFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxDate != null" >
+        maxDate = #{maxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minFactorValue != null" >
+        minFactorValue = #{minFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="minDate != null" >
+        minDate = #{minDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avgFactorValue != null" >
+        avgFactorValue = #{avgFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="avgDate != null" >
+        avgDate = #{avgDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sumFactorValue != null" >
+        sumFactorValue = #{sumFactorValue,jdbcType=DECIMAL},
+      </if>
+      <if test="sumDate != null" >
+        sumDate = #{sumDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.reportManage.model.MonthAllDetails" >
+    update MonthAllDetails
+    set Stcd = #{stcd,jdbcType=CHAR},
+      Factor = #{factor,jdbcType=VARCHAR},
+      FactorName = #{factorname,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=INTEGER},
+      Month = #{month,jdbcType=INTEGER},
+      Day = #{day,jdbcType=INTEGER},
+      newFactorValue = #{newFactorValue,jdbcType=DECIMAL},
+      newDate = #{newDate,jdbcType=TIMESTAMP},
+      maxFactorValue = #{maxFactorValue,jdbcType=DECIMAL},
+      maxDate = #{maxDate,jdbcType=TIMESTAMP},
+      minFactorValue = #{minFactorValue,jdbcType=DECIMAL},
+      minDate = #{minDate,jdbcType=TIMESTAMP},
+      avgFactorValue = #{avgFactorValue,jdbcType=DECIMAL},
+      avgDate = #{avgDate,jdbcType=TIMESTAMP},
+      sumFactorValue = #{sumFactorValue,jdbcType=DECIMAL},
+      sumDate = #{sumDate,jdbcType=TIMESTAMP},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="getDetail" resultMap="BaseResultMap" parameterType="map">
+    select
+	<include refid="Base_Column_List" />
+	FROM
+	MonthAllDetails
+	where 1=1
+	<if test="stcd != null">
+		AND STCD = #{stcd,jdbcType=CHAR}
+	</if>
+	<if test="year != null">
+		AND Year = #{year,jdbcType=INTEGER}
+	</if>
+	<if test="month != null">
+		AND Month = #{month,jdbcType=INTEGER}
+	</if>
+	<if test="factor != null">
+		AND Factor = #{factor,jdbcType=VARCHAR}
+    </if>
+	<if test="factorName != null">
+		AND FactorName = #{factorName,jdbcType=VARCHAR}
+	</if>
+	limit 1
+  </select>
+  
+    <select id="getYearDetail" resultMap="BaseResultMap" parameterType="map">
+	   SELECT t.*,
+		(SELECT newFactorValue FROM MonthAllDetails  WHERE stcd=t.stcd AND newDate =t.newDate 
+		   <if test="year != null">
+			 AND Year = #{year,jdbcType=INTEGER}
+		   </if>
+		   <if test="factor != null">
+			 AND Factor = #{factor,jdbcType=VARCHAR}
+		   </if>
+		    <if test="factorName != null">
+			 AND FactorName = #{factorName,jdbcType=VARCHAR}
+		   </if>
+		 LIMIT 1) AS newFactorValue,   
+		(SELECT minDate  FROM  MonthAllDetails  WHERE stcd=t.stcd  AND minfactorvalue=t.minfactorvalue 
+	<if test="year != null">
+		AND Year = #{year,jdbcType=INTEGER}
+	</if>
+	<if test="factor != null">
+		AND Factor = #{factor,jdbcType=VARCHAR}
+    </if>
+     <if test="factorName != null">
+		AND FactorName = #{factorName,jdbcType=VARCHAR}
+    </if>
+	 	ORDER BY minfactorvalue DESC LIMIT 1) AS minDate,       
+		(SELECT maxDate  FROM  MonthAllDetails  WHERE stcd=t.stcd  AND maxfactorvalue=t.maxfactorvalue  
+	<if test="year != null">
+		AND Year = #{year,jdbcType=INTEGER}
+	</if>
+	<if test="factor != null">
+		AND Factor = #{factor,jdbcType=VARCHAR}
+    </if>
+    <if test="factorName != null">
+		AND FactorName = #{factorName,jdbcType=VARCHAR}
+    </if>
+	  	ORDER BY maxfactorvalue DESC LIMIT 1) AS maxDate        
+ 	 FROM     
+	 (        
+	   SELECT stcd,MAX(maxfactorvalue) AS maxfactorvalue,MIN(minfactorvalue) AS minfactorvalue,MAX(newDate) AS newDate FROM  MonthAllDetails  WHERE 1=1
+	   <if test="stcd != null">
+			AND STCD = #{stcd,jdbcType=CHAR}
+	   </if>         	
+	   <if test="year != null">
+			AND Year = #{year,jdbcType=INTEGER}
+	   </if>
+	   <if test="factor != null">
+			AND Factor = #{factor,jdbcType=VARCHAR}
+    	</if>
+    	<if test="factorName != null">
+			AND FactorName = #{factorName,jdbcType=VARCHAR}
+    	</if>
+	 )t
+  </select>
+  
+  <select id="getList" resultMap="BaseResultMap" parameterType="map">
+    select months.*,sb.stnm
+    FROM MonthAllDetails months LEFT JOIN ST_STBPRP_B sb 
+    ON sb.stcd  = months.stcd
+	where 1=1
+	<if test="stcd != null">
+		AND months.STCD = #{stcd,jdbcType=CHAR}
+	</if>
+	<if test="year != null">
+		AND months.Year = #{year,jdbcType=INTEGER}
+	</if>
+	<if test="month != null">
+		AND months.Month = #{month,jdbcType=INTEGER}
+	</if>
+	<if test="day != null">
+		AND months.Day = #{day,jdbcType=INTEGER}
+	</if>
+	<if test="stcd != null">
+		AND months.STCD = #{stcd,jdbcType=CHAR}
+	</if>
+	<if test="stcdList != null and stcdList.size()>0">
+		AND months.STCD in
+		<foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</if>
+	<if test="addvcd != null">
+		AND months.Addvcd = #{addvcd,jdbcType=CHAR}
+	</if>
+	<if test="addvcdList != null and addvcdList.size()>0">
+		AND months.ADDVCD in
+		<foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</if>
+	<if test="factor != null">
+		AND Factor = #{factor,jdbcType=VARCHAR}
+    </if>
+	<if test="factorName != null">
+		AND FactorName = #{factorName,jdbcType=VARCHAR}
+	</if>
+	
+	<choose>
+		<when test="orderByCon != null">order by ${orderByCon}</when>
+		<otherwise>order by Month asc</otherwise>
+	</choose>
+	
+  </select>
+  
+  <select id="getStatistic" resultMap="BaseResultMap" parameterType="map">
+      
+      SELECT t.*,
+	  (SELECT ${factor} FROM ${tableName}  WHERE stcd=t.stcd AND tm =t.newDate  LIMIT 1) AS newFactorValue,   
+	  (SELECT tm  FROM  ${tableName}  WHERE stcd=t.stcd  AND ${factor}=t.minFactorValue AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP} AND TM &lt;= #{endTime,jdbcType=TIMESTAMP} ORDER BY tm DESC LIMIT 1) AS minDate,       
+	  (SELECT tm  FROM  ${tableName}  WHERE stcd=t.stcd  AND ${factor}=t.maxFactorValue AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP} AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}  ORDER BY tm DESC LIMIT 1) AS maxDate        
+	  FROM     
+	  (        
+	   SELECT stcd,SUM(${factor}) AS sumFactorValue,ROUND(AVG(${factor}),3) AS avgFactorValue,MAX(${factor}) AS maxFactorValue,MIN(${factor}) AS minFactorValue,MAX(tm) AS newDate FROM  ${tableName}  
+	   WHERE STCD = #{stcd,jdbcType=CHAR}
+	     AND TM &gt;=#{beginTime,jdbcType=TIMESTAMP} 
+	     AND TM &lt;= #{endTime,jdbcType=TIMESTAMP}
+	  )t
+      
+  </select>
+  
+  <select id="getStatistStcd" resultType="String" parameterType="map">
+	   SELECT months.stcd FROM MonthAllDetails months RIGHT JOIN ST_STBPRP_B sb 
+	    ON sb.stcd  = months.stcd
+		WHERE 1=1
+		<if test="stcd_query != null">
+			AND months.STCD like '%${stcd_query}%'
+	    </if>
+	    <if test="stcd != null">
+		    AND months.STCD = #{stcd,jdbcType=CHAR}
+	    </if>
+	    <if test="addvcd != null">
+		    AND months.Addvcd = #{addvcd,jdbcType=CHAR}
+	    </if>
+	    <if test="addvcdList != null and addvcdList.size()>0">
+			AND months.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>     
+	    <if test="year != null">
+			AND Year = #{year,jdbcType=INTEGER}
+	    </if>
+	    <if test="month != null">
+			AND Month = #{month,jdbcType=INTEGER}
+		</if>
+		<if test="day != null">
+			AND Day = #{day,jdbcType=INTEGER}
+		</if>
+	    <if test="factorCon != null">
+			AND Factor = #{factorCon,jdbcType=VARCHAR}
+    	</if>
+    	<if test="factorName != null">
+			AND FactorName = #{factorName,jdbcType=VARCHAR}
+    	</if>
+		GROUP BY months.stcd
+		ORDER BY months.stcd
+		<if test="start!= null and limit!= null">
+			limit ${start},${limit}
+		</if>
+	</select>
+  
+	<select id="getStatistCount" resultType="java.lang.Integer" parameterType="map">
+	   SELECT COUNT(*) FROM (SELECT months.stcd FROM MonthAllDetails months RIGHT JOIN ST_STBPRP_B sb 
+	    ON sb.stcd  = months.stcd
+		WHERE 1=1
+		<if test="stcd_query != null">
+			AND months.STCD like '%${stcd_query}%'
+	    </if>
+	    <if test="stcd != null">
+		    AND months.STCD = #{stcd,jdbcType=CHAR}
+	    </if>
+	    <if test="addvcd != null">
+		    AND months.Addvcd = #{addvcd,jdbcType=CHAR}
+	    </if>
+	    <if test="addvcdList != null and addvcdList.size()>0">
+			AND months.ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>     
+	    <if test="year != null">
+			AND Year = #{year,jdbcType=INTEGER}
+	    </if>
+	    <if test="month != null">
+			AND Month = #{month,jdbcType=INTEGER}
+		</if>
+		<if test="day != null">
+			AND Day = #{day,jdbcType=INTEGER}
+		</if>
+	    <if test="factorCon != null">
+			AND Factor = #{factorCon,jdbcType=VARCHAR}
+    	</if>
+    	<if test="factorName != null">
+			AND FactorName = #{factorName,jdbcType=VARCHAR}
+    	</if>
+		GROUP BY months.stcd
+       )t 
+	</select>
+	
+</mapper>

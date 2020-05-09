@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.DeviceTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.DeviceTask" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Stcd" property="stcd" jdbcType="CHAR" />
+    <result column="TaskCode" property="taskcode" jdbcType="CHAR" />
+    <result column="TaskCreateTime" property="taskcreatetime" jdbcType="TIMESTAMP" />
+    <result column="TaskExecutionTime" property="taskexecutiontime" jdbcType="TIMESTAMP" />
+    <result column="TaskComplateTime" property="taskcomplatetime" jdbcType="TIMESTAMP" />
+    <result column="TaskStatus" property="taskstatus" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.fourfaith.siteManage.model.DeviceTask" extends="BaseResultMap" >
+    <result column="TaskContent" property="taskcontent" jdbcType="LONGVARCHAR" />
+    <result column="DownlinkPacket" property="downlinkpacket" jdbcType="LONGVARCHAR" />
+    <result column="UplinkPacket" property="uplinkpacket" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Stcd, TaskCode, TaskCreateTime, TaskExecutionTime, TaskComplateTime, TaskStatus,TaskContent,DownlinkPacket, UplinkPacket
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from DeviceTask
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from DeviceTask
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.DeviceTask" >
+    insert into DeviceTask (Id, Stcd, TaskCode, TaskCreateTime, 
+      TaskExecutionTime, TaskComplateTime, 
+      TaskStatus, TaskContent, DownlinkPacket, 
+      UplinkPacket)
+    values (#{id,jdbcType=CHAR}, #{stcd,jdbcType=CHAR}, #{taskcode,jdbcType=CHAR}, #{taskcreatetime,jdbcType=TIMESTAMP}, 
+      #{taskexecutiontime,jdbcType=TIMESTAMP}, #{taskcomplatetime,jdbcType=TIMESTAMP}, 
+      #{taskstatus,jdbcType=INTEGER}, #{taskcontent,jdbcType=LONGVARCHAR}, #{downlinkpacket,jdbcType=LONGVARCHAR}, 
+      #{uplinkpacket,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.DeviceTask" >
+    insert into DeviceTask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="stcd != null" >
+        Stcd,
+      </if>
+      <if test="taskcode != null" >
+        TaskCode,
+      </if>
+      <if test="taskcreatetime != null" >
+        TaskCreateTime,
+      </if>
+      <if test="taskexecutiontime != null" >
+        TaskExecutionTime,
+      </if>
+      <if test="taskcomplatetime != null" >
+        TaskComplateTime,
+      </if>
+      <if test="taskstatus != null" >
+        TaskStatus,
+      </if>
+      <if test="taskcontent != null" >
+        TaskContent,
+      </if>
+      <if test="downlinkpacket != null" >
+        DownlinkPacket,
+      </if>
+      <if test="uplinkpacket != null" >
+        UplinkPacket,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="taskcode != null" >
+        #{taskcode,jdbcType=CHAR},
+      </if>
+      <if test="taskcreatetime != null" >
+        #{taskcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskexecutiontime != null" >
+        #{taskexecutiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskcomplatetime != null" >
+        #{taskcomplatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskstatus != null" >
+        #{taskstatus,jdbcType=INTEGER},
+      </if>
+      <if test="taskcontent != null" >
+        #{taskcontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="downlinkpacket != null" >
+        #{downlinkpacket,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="uplinkpacket != null" >
+        #{uplinkpacket,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.DeviceTask" >
+    update DeviceTask
+    <set >
+      <if test="stcd != null" >
+        Stcd = #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="taskcode != null" >
+        TaskCode = #{taskcode,jdbcType=CHAR},
+      </if>
+      <if test="taskcreatetime != null" >
+        TaskCreateTime = #{taskcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskexecutiontime != null" >
+        TaskExecutionTime = #{taskexecutiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskcomplatetime != null" >
+        TaskComplateTime = #{taskcomplatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskstatus != null" >
+        TaskStatus = #{taskstatus,jdbcType=INTEGER},
+      </if>
+      <if test="taskcontent != null" >
+        TaskContent = #{taskcontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="downlinkpacket != null" >
+        DownlinkPacket = #{downlinkpacket,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="uplinkpacket != null" >
+        UplinkPacket = #{uplinkpacket,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.DeviceTask" >
+    update DeviceTask
+    set Stcd = #{stcd,jdbcType=CHAR},
+      TaskCode = #{taskcode,jdbcType=CHAR},
+      TaskCreateTime = #{taskcreatetime,jdbcType=TIMESTAMP},
+      TaskExecutionTime = #{taskexecutiontime,jdbcType=TIMESTAMP},
+      TaskComplateTime = #{taskcomplatetime,jdbcType=TIMESTAMP},
+      TaskStatus = #{taskstatus,jdbcType=INTEGER},
+      TaskContent = #{taskcontent,jdbcType=LONGVARCHAR},
+      DownlinkPacket = #{downlinkpacket,jdbcType=LONGVARCHAR},
+      UplinkPacket = #{uplinkpacket,jdbcType=LONGVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+    	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM DeviceTask
+		where 1=1
+	    <if test="stcd != null" >
+           AND STCD = #{stcd,jdbcType=CHAR}
+        </if>
+        <if test="taskcode != null" >
+           AND TaskCode = #{taskcode,jdbcType=CHAR}
+        </if>
+        <if test="taskcontent != null" >
+           AND TaskContent = #{taskcontent,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="taskcreatetime != null" >
+           AND TaskCreateTime = #{taskcreatetime,jdbcType=TIMESTAMP}
+        </if>
+	    <if test="taskexecutiontime != null" >
+	       AND TaskExecutionTime = #{taskexecutiontime,jdbcType=TIMESTAMP}
+	    </if>
+	    <if test="taskcomplatetime != null" >
+	       AND TaskComplateTime = #{taskcomplatetime,jdbcType=TIMESTAMP}
+	    </if>
+	    <if test="taskstatus != null" >
+	       AND TaskStatus = #{taskstatus,jdbcType=INTEGER}
+	    </if>
+	    <if test="downlinkpacket != null" >
+	       AND DownlinkPacket = #{downlinkpacket,jdbcType=LONGVARCHAR}
+	    </if>
+	    <if test="uplinkpacket != null" >
+	       AND UplinkPacket = #{uplinkpacket,jdbcType=LONGVARCHAR}
+	    </if>
+		<if test="start!= null and limit!= null">
+		   AND limit ${start},${limit}
+		</if>
+	</select>
+  
+    <select id="getTaskByStcdCount"  parameterType="map" resultType="java.lang.Integer">
+     select count(*) from DeviceTask where STCD in  <foreach collection="stcd" item="item" index="index" 
+            open="(" separator="," close=")">#{item}</foreach>
+          <if test="beginTime != null" >
+   			and TaskCreateTime &gt;= #{beginTime,jdbcType=TIMESTAMP} 
+	      </if>
+          <if test="endTime != null" >
+   			and TaskCreateTime &lt;= #{endTime,jdbcType=TIMESTAMP} 
+          </if>
+          <if test="taskcode != null" >
+    			and TaskCode= #{taskcode,jdbcType=VARCHAR} 
+          </if>
+   </select>
+   
+    <select id="getTaskByStcd" resultMap="BaseResultMap" parameterType="map">
+     select * from DeviceTask where STCD in  <foreach collection="stcd" item="item" index="index" 
+            open="(" separator="," close=")">#{item}</foreach>
+         <if test="beginTime != null" >
+  			and TaskCreateTime &gt;= #{beginTime,jdbcType=TIMESTAMP} 
+      </if>
+         <if test="endTime != null" >
+  			and TaskCreateTime &lt;= #{endTime,jdbcType=TIMESTAMP} 
+         </if>
+         <if test="taskcode != null" >
+    			and TaskCode= #{taskcode,jdbcType=VARCHAR} 
+         </if>
+          order by TaskCreateTime desc 
+          <if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+  </select>
+   
+    <update id="updateByStatus" parameterType="com.fourfaith.siteManage.model.DeviceTask" >
+         update DeviceTask set TaskStatus = #{taskstatus,jdbcType=INTEGER} where Id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

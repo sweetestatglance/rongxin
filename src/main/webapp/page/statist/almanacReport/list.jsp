@@ -1,0 +1,108 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/taglibs.jsp"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<title>年鉴报表列表</title>
+<style type="text/css">
+	.active{ color: #f50c0c; text-decoration: none; }
+</style>
+</head>
+
+<body>
+	<div id="container">
+<%-- 	<div>
+			<span style="font-weight: bold;"><fmt:message key="monthSelection"/>：</span>
+					<c:forEach items="${monthMap}" var="month" >
+						<a href="javascript:initPage(${month.key})" class="<c:if test='${month.key eq viewMonth}'>active</c:if>">${month.value}</a>
+	                </c:forEach> 
+	</div> --%>
+	<div class="data-grid" id="dataOverId" style="top:95px;">
+		<table cellspacing='0' cellpadding='3' class='list-table'>
+			<thead>
+				<tr>
+					<th><fmt:message key="stationCode"/></th>
+					<th><fmt:message key="stationName"/></th>
+					<!-- <th>水文站</th>
+					<th>水文局</th> -->
+					<th>日降雨量</th>
+					<th>电压</th>
+					<th>信号强度</th>
+					<%-- <c:forEach var="item"  items="${viewHead}" varStatus="vs">
+						<th>${item}</th>
+			 		</c:forEach> --%>
+					<th><fmt:message key="acquisitionTime"/></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${fn:length(list)==0}">
+						<tr height="40">
+							<td colspan="${fn:length(list) +6}"><font color="#a8a8a8"> <label style="float:left;padding-left:15px"><fmt:message key="noData"/></label></font></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="item" items="${list}" varStatus="vs">
+							<tr class="${vs.index%2==0?'singular':'double'}">
+								<td>${item.stnm}</td>
+								<td>${item.stcd}</td>
+								<%-- <td>${item.addvnm1}</td>
+								<td>${item.addvnm2}</td> --%>
+								<td>
+									<c:if test="${item.pJ==null}">--</c:if>
+									<c:if test="${item.pJ!=null}">${item.pJ}</c:if>
+								</td>
+								<td>
+									<c:if test="${item.voltage==null}">--</c:if>
+									<c:if test="${item.voltage!=null}">${item.voltage}</c:if>
+								</td>
+								<td>
+									<c:if test="${item.signalinten==null}">--</c:if>
+									<c:if test="${item.signalinten!=null}">${item.signalinten}</c:if>
+								</td>
+								
+								<td><c:if test="${item.tm==null}">--</c:if>
+									<c:if test="${item.tm!=null}">
+										<fmt:formatDate value="${item.tm}" pattern="yyyy-MM-dd HH:mm:ss" />
+									</c:if></td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+		<div class="list-page"><div id="pagination"></div></div>
+	</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var totalPage = ${pagingBean.pageNum};
+	var totalRecords = ${pagingBean.totalItems};
+	var pageNo = ${pagingBean.pageNo};
+	if(!pageNo){
+		pageNo = 1;
+	}
+	//生成分页
+	$.Pagination.generPageHtml({
+		//填充的id
+		pagerid : "pagination",
+		//当前页
+		pno : pageNo,
+		//总页码
+		total : totalPage,
+		//总数据条数
+		totalRecords : totalRecords,
+		mode : 'click',
+		click : function(n){
+			//分页执行方法
+			changePage1(n);
+			//this.selectPage(n);
+			return false;
+		}
+	});
+});
+</script>

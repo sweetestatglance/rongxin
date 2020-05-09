@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.siteManage.dao.StStbprpBMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.siteManage.model.StStbprpB" >
+    <id column="Stcd" property="stcd" jdbcType="CHAR" />
+    <result column="Addvcd" property="addvcd" jdbcType="CHAR" />
+    <result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+    <result column="Stnm" property="stnm" jdbcType="VARCHAR" />
+    <result column="Pwd" property="pwd" jdbcType="INTEGER" />
+    <result column="Sttp" property="sttp" jdbcType="INTEGER" />
+    <result column="Model" property="model" jdbcType="VARCHAR" />
+    <result column="Area" property="area" jdbcType="VARCHAR" />
+    <result column="Basin" property="basin" jdbcType="VARCHAR" />
+    <result column="Lgtd" property="lgtd" jdbcType="DECIMAL" />
+    <result column="Lttd" property="lttd" jdbcType="DECIMAL" />
+    <result column="Stlc" property="stlc" jdbcType="VARCHAR" />
+    <result column="Dsfl" property="dsfl" jdbcType="INTEGER" />
+    <result column="EarlyWarn" property="earlywarn" jdbcType="INTEGER" />
+    <result column="AbCount" property="abcount" jdbcType="INTEGER" />
+    <result column="IsCamera" property="iscamera" jdbcType="INTEGER" />
+    <result column="CameraType" property="cameratype" jdbcType="INTEGER" />
+    <result column="VideoChannel" property="videochannel" jdbcType="VARCHAR" />
+    <result column="DvrAddr" property="dvraddr" jdbcType="VARCHAR" />
+    <result column="DvrCode" property="dvrcode" jdbcType="VARCHAR" />
+    <result column="Comments" property="comments" jdbcType="VARCHAR" />
+    <result column="Moditime" property="moditime" jdbcType="TIMESTAMP" />
+    <result column="LastOnline" property="lastonline" jdbcType="TIMESTAMP" />
+    <result column="PacketType" property="packettype" jdbcType="INTEGER" />
+    <result column="WorkerName" property="workername" jdbcType="VARCHAR" />
+    <result column="WorkerPhone" property="workerphone" jdbcType="VARCHAR" />
+    <result column="ComMode" property="commode" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Stcd, Addvcd, EnterpriseId, Stnm, Pwd, Sttp, Model, Area, Basin, Lgtd, Lttd, Stlc, 
+    Dsfl, EarlyWarn, AbCount, IsCamera, CameraType, VideoChannel, DvrAddr, DvrCode, Comments, 
+    Moditime, LastOnline, PacketType, WorkerName, WorkerPhone, ComMode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_STBPRP_B
+    where Stcd = #{stcd,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_STBPRP_B
+    where Stcd = #{stcd,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.siteManage.model.StStbprpB" >
+    insert into ST_STBPRP_B (Stcd, Addvcd, EnterpriseId, 
+      Stnm, Pwd, Sttp, Model, 
+      Area, Basin, Lgtd, 
+      Lttd, Stlc, Dsfl, EarlyWarn, 
+      AbCount, IsCamera, CameraType, 
+      VideoChannel, DvrAddr, DvrCode, 
+      Comments, Moditime, LastOnline, 
+      PacketType, WorkerName, WorkerPhone, 
+      ComMode)
+    values (#{stcd,jdbcType=CHAR}, #{addvcd,jdbcType=CHAR}, #{enterpriseid,jdbcType=CHAR}, 
+      #{stnm,jdbcType=VARCHAR}, #{pwd,jdbcType=INTEGER}, #{sttp,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{basin,jdbcType=VARCHAR}, #{lgtd,jdbcType=DECIMAL}, 
+      #{lttd,jdbcType=DECIMAL}, #{stlc,jdbcType=VARCHAR}, #{dsfl,jdbcType=INTEGER}, #{earlywarn,jdbcType=INTEGER}, 
+      #{abcount,jdbcType=INTEGER}, #{iscamera,jdbcType=INTEGER}, #{cameratype,jdbcType=INTEGER}, 
+      #{videochannel,jdbcType=VARCHAR}, #{dvraddr,jdbcType=VARCHAR}, #{dvrcode,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{moditime,jdbcType=TIMESTAMP}, #{lastonline,jdbcType=TIMESTAMP}, 
+      #{packettype,jdbcType=INTEGER}, #{workername,jdbcType=VARCHAR}, #{workerphone,jdbcType=VARCHAR}, 
+      #{commode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.siteManage.model.StStbprpB" >
+    insert into ST_STBPRP_B
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stcd != null" >
+        Stcd,
+      </if>
+      <if test="addvcd != null" >
+        Addvcd,
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId,
+      </if>
+      <if test="stnm != null" >
+        Stnm,
+      </if>
+      <if test="pwd != null" >
+        Pwd,
+      </if>
+      <if test="sttp != null" >
+        Sttp,
+      </if>
+      <if test="model != null" >
+        Model,
+      </if>
+      <if test="area != null" >
+        Area,
+      </if>
+      <if test="basin != null" >
+        Basin,
+      </if>
+      <if test="lgtd != null" >
+        Lgtd,
+      </if>
+      <if test="lttd != null" >
+        Lttd,
+      </if>
+      <if test="stlc != null" >
+        Stlc,
+      </if>
+      <if test="dsfl != null" >
+        Dsfl,
+      </if>
+      <if test="earlywarn != null" >
+        EarlyWarn,
+      </if>
+      <if test="abcount != null" >
+        AbCount,
+      </if>
+      <if test="iscamera != null" >
+        IsCamera,
+      </if>
+      <if test="cameratype != null" >
+        CameraType,
+      </if>
+      <if test="videochannel != null" >
+        VideoChannel,
+      </if>
+      <if test="dvraddr != null" >
+        DvrAddr,
+      </if>
+      <if test="dvrcode != null" >
+        DvrCode,
+      </if>
+      <if test="comments != null" >
+        Comments,
+      </if>
+      <if test="moditime != null" >
+        Moditime,
+      </if>
+      <if test="lastonline != null" >
+        LastOnline,
+      </if>
+      <if test="packettype != null" >
+        PacketType,
+      </if>
+      <if test="workername != null" >
+        WorkerName,
+      </if>
+      <if test="workerphone != null" >
+        WorkerPhone,
+      </if>
+      <if test="commode != null" >
+        ComMode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stcd != null" >
+        #{stcd,jdbcType=CHAR},
+      </if>
+      <if test="addvcd != null" >
+        #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="stnm != null" >
+        #{stnm,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=INTEGER},
+      </if>
+      <if test="sttp != null" >
+        #{sttp,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="basin != null" >
+        #{basin,jdbcType=VARCHAR},
+      </if>
+      <if test="lgtd != null" >
+        #{lgtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lttd != null" >
+        #{lttd,jdbcType=DECIMAL},
+      </if>
+      <if test="stlc != null" >
+        #{stlc,jdbcType=VARCHAR},
+      </if>
+      <if test="dsfl != null" >
+        #{dsfl,jdbcType=INTEGER},
+      </if>
+      <if test="earlywarn != null" >
+        #{earlywarn,jdbcType=INTEGER},
+      </if>
+      <if test="abcount != null" >
+        #{abcount,jdbcType=INTEGER},
+      </if>
+      <if test="iscamera != null" >
+        #{iscamera,jdbcType=INTEGER},
+      </if>
+      <if test="cameratype != null" >
+        #{cameratype,jdbcType=INTEGER},
+      </if>
+      <if test="videochannel != null" >
+        #{videochannel,jdbcType=VARCHAR},
+      </if>
+      <if test="dvraddr != null" >
+        #{dvraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="dvrcode != null" >
+        #{dvrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="moditime != null" >
+        #{moditime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastonline != null" >
+        #{lastonline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packettype != null" >
+        #{packettype,jdbcType=INTEGER},
+      </if>
+      <if test="workername != null" >
+        #{workername,jdbcType=VARCHAR},
+      </if>
+      <if test="workerphone != null" >
+        #{workerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="commode != null" >
+        #{commode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.siteManage.model.StStbprpB" >
+    update ST_STBPRP_B
+    <set >
+      <if test="addvcd != null" >
+        Addvcd = #{addvcd,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="stnm != null" >
+        Stnm = #{stnm,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        Pwd = #{pwd,jdbcType=INTEGER},
+      </if>
+      <if test="sttp != null" >
+        Sttp = #{sttp,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        Model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        Area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="basin != null" >
+        Basin = #{basin,jdbcType=VARCHAR},
+      </if>
+      <if test="lgtd != null" >
+        Lgtd = #{lgtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lttd != null" >
+        Lttd = #{lttd,jdbcType=DECIMAL},
+      </if>
+      <if test="stlc != null" >
+        Stlc = #{stlc,jdbcType=VARCHAR},
+      </if>
+      <if test="dsfl != null" >
+        Dsfl = #{dsfl,jdbcType=INTEGER},
+      </if>
+      <if test="earlywarn != null" >
+        EarlyWarn = #{earlywarn,jdbcType=INTEGER},
+      </if>
+      <if test="abcount != null" >
+        AbCount = #{abcount,jdbcType=INTEGER},
+      </if>
+      <if test="iscamera != null" >
+        IsCamera = #{iscamera,jdbcType=INTEGER},
+      </if>
+      <if test="cameratype != null" >
+        CameraType = #{cameratype,jdbcType=INTEGER},
+      </if>
+      <if test="videochannel != null" >
+        VideoChannel = #{videochannel,jdbcType=VARCHAR},
+      </if>
+      <if test="dvraddr != null" >
+        DvrAddr = #{dvraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="dvrcode != null" >
+        DvrCode = #{dvrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        Comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="moditime != null" >
+        Moditime = #{moditime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastonline != null" >
+        LastOnline = #{lastonline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packettype != null" >
+        PacketType = #{packettype,jdbcType=INTEGER},
+      </if>
+      <if test="workername != null" >
+        WorkerName = #{workername,jdbcType=VARCHAR},
+      </if>
+      <if test="workerphone != null" >
+        WorkerPhone = #{workerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="commode != null" >
+        ComMode = #{commode,jdbcType=CHAR},
+      </if>
+    </set>
+    where Stcd = #{stcd,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.siteManage.model.StStbprpB" >
+    update ST_STBPRP_B
+    set Addvcd = #{addvcd,jdbcType=CHAR},
+      EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      Stnm = #{stnm,jdbcType=VARCHAR},
+      Pwd = #{pwd,jdbcType=INTEGER},
+      Sttp = #{sttp,jdbcType=INTEGER},
+      Model = #{model,jdbcType=VARCHAR},
+      Area = #{area,jdbcType=VARCHAR},
+      Basin = #{basin,jdbcType=VARCHAR},
+      Lgtd = #{lgtd,jdbcType=DECIMAL},
+      Lttd = #{lttd,jdbcType=DECIMAL},
+      Stlc = #{stlc,jdbcType=VARCHAR},
+      Dsfl = #{dsfl,jdbcType=INTEGER},
+      EarlyWarn = #{earlywarn,jdbcType=INTEGER},
+      AbCount = #{abcount,jdbcType=INTEGER},
+      IsCamera = #{iscamera,jdbcType=INTEGER},
+      CameraType = #{cameratype,jdbcType=INTEGER},
+      VideoChannel = #{videochannel,jdbcType=VARCHAR},
+      DvrAddr = #{dvraddr,jdbcType=VARCHAR},
+      DvrCode = #{dvrcode,jdbcType=VARCHAR},
+      Comments = #{comments,jdbcType=VARCHAR},
+      Moditime = #{moditime,jdbcType=TIMESTAMP},
+      LastOnline = #{lastonline,jdbcType=TIMESTAMP},
+      PacketType = #{packettype,jdbcType=INTEGER},
+      WorkerName = #{workername,jdbcType=VARCHAR},
+      WorkerPhone = #{workerphone,jdbcType=VARCHAR},
+      ComMode = #{commode,jdbcType=CHAR}
+    where Stcd = #{stcd,jdbcType=CHAR}
+  </update>
+	
+	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		 sb.*,
+		sa.`Faddvcd` as faddvcd,
+  		sa.`Addvnm` as addvnm1
+		FROM ST_STBPRP_B as sb
+		LEFT JOIN ST_ADDVCD_D sa
+   		 ON sa.id = sb.Addvcd
+		where 1=1
+		<if test="stcd != null">
+			AND sb.STCD like '%${stcd}%'
+		</if>
+		<if test="query_stcdName != null and query_stcdName != ''">
+			AND ( sb.STCD like '%${query_stcdName}%' OR sb.Stnm like '%${query_stcdName}%')
+		</if>
+		<if test="stcdList != null and stcdList.size()>0">
+	        AND sb.STCD in 
+	        <foreach collection="stcdList" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="addvcd != null">
+			AND sb.Addvcd = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+	        AND sb.Addvcd in 
+	        <foreach collection="addvcdList" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="enterpriseid != null">
+			AND sb.EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+		</if>
+		<if test="sttp != null" > 
+        	AND sb.Sttp = #{sttp,jdbcType=INTEGER}
+      	</if>
+		<if test="dsfl != null">
+			AND sb.DSFL = #{dsfl,jdbcType=INTEGER}
+		</if>
+		<if test="model != null">
+			AND sb.Model = #{model,jdbcType=VARCHAR}
+		</if>
+		<if test="packettype != null">
+			AND sb.PacketType = #{packettype,jdbcType=INTEGER}
+		</if>
+		<if test="addvcd != null">
+			AND sb.ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdDId != null and addvcdDId.size()>0">
+	        AND sb.ADDVCD in 
+	        <foreach collection="addvcdDId" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="stnm != null">
+			AND sb.STNM = #{stnm,jdbcType=VARCHAR}
+		</if>
+		<if test="stnm_fuzzy != null">
+			AND sb.STNM like '%${stnm_fuzzy}%'
+		</if>
+		 order by CASE DSFL WHEN '1' THEN 0 WHEN '0' THEN 1 WHEN '2' THEN 2 END ,LastOnline desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+		
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(*) 
+		FROM ST_STBPRP_B
+		where 1=1
+		<if test="stcd != null">
+			AND STCD like '%${stcd}%'
+		</if>
+		<if test="idList != null and idList.size()>0">
+	        AND STCD in 
+	        <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="enterpriseid != null">
+			AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+		</if>
+		<if test="dsfl != null">
+			AND DSFL = #{dsfl,jdbcType=INTEGER}
+		</if>
+		<if test="model != null">
+			AND Model = #{model,jdbcType=VARCHAR}
+		</if>
+		<if test="packettype != null">
+			AND PacketType = #{packettype,jdbcType=INTEGER}
+		</if>
+		<if test="addvcd != null">
+			AND ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdDId != null and addvcdDId.size()>0">
+	        AND ADDVCD in 
+	        <foreach collection="addvcdDId" item="item" index="index" open="(" separator="," close=")">
+	    		#{item}
+	        </foreach>
+        </if>
+		<if test="stnm != null">
+			AND STNM = #{stnm,jdbcType=VARCHAR}
+		</if>
+		<if test="stnm_fuzzy != null">
+			AND STNM like '%${stnm_fuzzy}%'
+		</if>
+	</select>
+
+	<select id="getListByType" parameterType="map" resultMap="BaseResultMap">
+		SELECT
+		b.*
+		FROM
+		ST_STBPRP_B b ,ST_STSMTASK_B mt
+		WHERE
+		b.STCD = mt.STCD
+		<if test="stcd != null">
+			AND b.STCD = #{stcd,jdbcType=CHAR}
+		</if>
+		<if test="packettype != null">
+			AND b.PacketType = #{packettype,jdbcType=INTEGER}
+		</if>
+		<if test="ifrfl != null">
+			AND IFRFL = #{ifrfl,jdbcType=INTEGER}
+		</if>
+		<if test="iffl != null">
+			AND IFFL = #{iffl,jdbcType=INTEGER}
+		</if>
+		<if test="offl != null">
+			AND OFFL = #{offl,jdbcType=INTEGER}
+		</if>
+		<if test="zfl != null">
+			AND ZFL = #{zfl,jdbcType=INTEGER}
+		</if>
+		<if test="vffl != null">
+			AND VFFL = #{vffl,jdbcType=INTEGER}
+		</if>
+		<if test="vifl != null">
+			AND VIFL = #{vifl,jdbcType=INTEGER}
+		</if>
+		<if test="vvfl != null">
+			AND VVFL = #{vvfl,jdbcType=INTEGER}
+		</if>
+		<if test="iwpfl != null">
+			AND IWPFL = #{iwpfl,jdbcType=INTEGER}
+		</if>
+		<if test="owpfl != null">
+			AND OWPFL = #{owpfl,jdbcType=INTEGER}
+		</if>
+		<if test="pp01 != null">
+			AND PP01 = #{pp01,jdbcType=INTEGER}
+		</if>
+		<if test="pp02 != null">
+			AND PP02 = #{pp02,jdbcType=INTEGER}
+		</if>
+		<if test="rcfl != null">
+			AND RCFL = #{rcfl,jdbcType=INTEGER}
+		</if>
+
+		<if test="dsfl != null">
+			AND DSFL = #{dsfl,jdbcType=INTEGER}
+		</if>
+		<if test="addvcd != null">
+			AND ADDVCD = #{addvcd,jdbcType=CHAR}
+		</if>
+		<if test="addvcdList != null and addvcdList.size()>0">
+			AND ADDVCD in
+			<foreach collection="addvcdList" item="item" index="index"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="enterpriseid != null">
+			AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+		</if>
+		order by CASE DSFL WHEN '1' THEN 0 WHEN '0' THEN 1 WHEN '2' THEN 2 END ,MODITIME desc
+		<if test="start != null">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	  <select id="getByStcd" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	SELECT 
+			<include refid="Base_Column_List" />
+		FROM ST_STBPRP_B
+	  	where STCD = #{stcd,jdbcType=CHAR} 
+  </select>
+  
+   <select id="getByTel" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+      <include refid="Base_Column_List" />
+      from ST_STBPRP_B
+      where Tel = #{tel,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getByAddvcdDIdCount"  parameterType="map" resultType="java.lang.Integer">
+     select count(*) from ST_STBPRP_B where  1=1
+       <if test="addvcdDId != null">
+         AND ADDVCD in <foreach collection="addvcdDId" item="item" index="index" 
+            open="(" separator="," close=")">#{item}</foreach>
+      </if>
+      <if test="stcd != null">
+			AND STCD like '%${stcd}%'
+	  </if>
+      <if test="enterpriseid != null">
+			AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+	  </if>
+  </select>
+  
+    <select id="getStbprpBCollect" parameterType="map" resultMap="BaseResultMap">
+     select 
+     <include refid="Base_Column_List" />
+      from ST_STBPRP_B where  1=1
+      <if test="addvcdDId != null">
+         AND ADDVCD in <foreach collection="addvcdDId" item="item" index="index" 
+            open="(" separator="," close=")">#{item}</foreach>
+      </if>
+      <if test="stcd != null">
+			AND STCD like '%${stcd}%'
+	  </if>
+      <if test="enterpriseid != null">
+			AND EnterpriseId = #{enterpriseid,jdbcType=CHAR}
+	  </if>
+      order by CASE DSFL WHEN '1' THEN 0 WHEN '0' THEN 1 WHEN '2' THEN 2 END ,MODITIME desc
+      <if test="start != null" >
+          limit ${start},${limit}
+      </if>
+  </select>
+</mapper>

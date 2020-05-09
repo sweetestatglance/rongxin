@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"
+>
+
+	<!-- 设置mvc编码 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >  
+		<property name="messageConverters">   
+	         <list>   
+	             <bean class = "org.springframework.http.converter.StringHttpMessageConverter">   
+	                <property name = "supportedMediaTypes">
+	                      <list>
+	                          <value>text/html;charset=UTF-8</value>   
+	                     </list>   
+	                </property>   
+	             </bean>   
+	         </list>   
+	   </property>  
+	</bean>  
+   
+    
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<context:component-scan base-package="com.fourfaith.**.controller" />
+    <context:component-scan base-package="com.fourfaith.rongxin.wechat" />
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
+	
+	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver  总文件大小 10485760 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"  
+        p:defaultEncoding="UTF-8" 
+        p:resolveLazily="true" 
+        p:uploadTempDir="temp"
+     >  
+    </bean>
+    <!-- Spring 统一日志处理   LogInterceptor拦截器 配置　-->     
+  <mvc:interceptors >    
+    <mvc:interceptor>    
+        <mvc:mapping path="/*/log*" /> <!-- /all/*  -->    
+        <bean class="com.fourfaith.utils.LogInterceptor"></bean>    
+    </mvc:interceptor>
+   </mvc:interceptors>  
+   
+   <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" p:defaultLocale="zh_CN" />
+   <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">  
+        <property name="defaultEncoding" value="UTF-8"/>                  <!-- 默认编码格式 -->  
+        <property name="useCodeAsDefaultMessage" value="true"></property>   <!-- 加载不到对应key时，不抛出异常直接返回key作为value -->  
+        <property name="cacheSeconds" value="1800"></property>              <!-- 刷新国际化资源时间 单位:秒。 -->  
+        <property name="basename" value="classpath:message_info" />
+    </bean>
+
+
+</beans>

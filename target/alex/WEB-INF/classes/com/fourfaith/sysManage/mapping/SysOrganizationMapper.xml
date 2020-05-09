@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysOrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysOrganization" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="PId" property="pid" jdbcType="CHAR" />
+    <result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+    <result column="OrganCode" property="organcode" jdbcType="VARCHAR" />
+    <result column="OrganName" property="organname" jdbcType="VARCHAR" />
+    <result column="EnabledState" property="enabledstate" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="OrganRemark" property="organremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, PId, EnterpriseId, OrganCode, OrganName, EnabledState, CreateTime, UpdateTime, 
+    OrganRemark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysOrganization
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysOrganization
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysOrganization" >
+    insert into SysOrganization (Id, PId, EnterpriseId, 
+      OrganCode, OrganName, EnabledState, 
+      CreateTime, UpdateTime, OrganRemark
+      )
+    values (#{id,jdbcType=CHAR}, #{pid,jdbcType=CHAR}, #{enterpriseid,jdbcType=CHAR}, 
+      #{organcode,jdbcType=VARCHAR}, #{organname,jdbcType=VARCHAR}, #{enabledstate,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{organremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysOrganization" >
+    insert into SysOrganization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="pid != null" >
+        PId,
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId,
+      </if>
+      <if test="organcode != null" >
+        OrganCode,
+      </if>
+      <if test="organname != null" >
+        OrganName,
+      </if>
+      <if test="enabledstate != null" >
+        EnabledState,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="organremark != null" >
+        OrganRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="organcode != null" >
+        #{organcode,jdbcType=VARCHAR},
+      </if>
+      <if test="organname != null" >
+        #{organname,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledstate != null" >
+        #{enabledstate,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organremark != null" >
+        #{organremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysOrganization" >
+    update SysOrganization
+    <set >
+      <if test="pid != null" >
+        PId = #{pid,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="organcode != null" >
+        OrganCode = #{organcode,jdbcType=VARCHAR},
+      </if>
+      <if test="organname != null" >
+        OrganName = #{organname,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledstate != null" >
+        EnabledState = #{enabledstate,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organremark != null" >
+        OrganRemark = #{organremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysOrganization" >
+    update SysOrganization
+    set PId = #{pid,jdbcType=CHAR},
+      EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      OrganCode = #{organcode,jdbcType=VARCHAR},
+      OrganName = #{organname,jdbcType=VARCHAR},
+      EnabledState = #{enabledstate,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      OrganRemark = #{organremark,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+    <select id="getList" resultMap="BaseResultMap" parameterType="map">
+  	SELECT * FROM SysOrganization
+  	where 1=1
+    <if test="enterpriseid != null" >
+        AND EnterpriseId = #{enterpriseid,jdbcType=VARCHAR} 
+    </if>
+    <if test="pid != null" >
+        AND PId = #{pid,jdbcType=VARCHAR} 
+    </if>
+    <if test="organCode != null" >
+        AND OrganCode = #{organCode,jdbcType=VARCHAR} 
+    </if>
+    <if test="organName != null" >
+        AND OrganName = #{organName,jdbcType=VARCHAR} 
+    </if>
+    <if test="organName_fuzzy != null" >
+        AND OrganName like '%${organName_fuzzy}%'
+    </if>
+    <if test="enabledstate != null" >
+        AND EnabledState = #{enabledstate,jdbcType=INTEGER} 
+    </if>
+    <if test="enabledstate_notEqual != null" >
+        AND EnabledState != #{enabledstate_notEqual,jdbcType=INTEGER} 
+    </if>
+    order by CreateTime 
+  </select>
+  
+   <select id="getByOrgan"  resultMap="BaseResultMap" parameterType="map"   >
+     select * from SysOrganization where 1=1
+     <if test="enterpriseid != null" >
+          AND EnterpriseId = #{enterpriseid,jdbcType=VARCHAR} 
+     </if>
+     <if test="organCode != null" >
+             AND OrganCode = #{organCode,jdbcType=VARCHAR}
+        </if>
+     <if test="organName != null" >
+          AND OrganName = #{organName,jdbcType=VARCHAR} 
+     </if>
+  </select>
+</mapper>

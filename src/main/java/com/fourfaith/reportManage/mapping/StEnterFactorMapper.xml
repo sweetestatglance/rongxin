@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.reportManage.dao.StEnterFactorMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.reportManage.model.StEnterFactor" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+    <result column="Voltage" property="voltage" jdbcType="INTEGER" />
+    <result column="SignalInten" property="signalinten" jdbcType="INTEGER" />
+    <result column="PN05" property="pn05" jdbcType="INTEGER" />
+    <result column="Z" property="z" jdbcType="INTEGER" />
+    <result column="ZB" property="zb" jdbcType="INTEGER" />
+    <result column="ZU" property="zu" jdbcType="INTEGER" />
+    <result column="VJ" property="vj" jdbcType="INTEGER" />
+    <result column="VA" property="va" jdbcType="INTEGER" />
+    <result column="Q" property="q" jdbcType="INTEGER" />
+    <result column="QA" property="qa" jdbcType="INTEGER" />
+    <result column="AI" property="ai" jdbcType="INTEGER" />
+    <result column="C" property="c" jdbcType="INTEGER" />
+    <result column="MST" property="mst" jdbcType="INTEGER" />
+    <result column="FL" property="fl" jdbcType="INTEGER" />
+    <result column="UC" property="uc" jdbcType="INTEGER" />
+    <result column="US" property="us" jdbcType="INTEGER" />
+    <result column="UE" property="ue" jdbcType="INTEGER" />
+    <result column="EJ" property="ej" jdbcType="INTEGER" />
+    <result column="ED" property="ed" jdbcType="INTEGER" />
+    <result column="GTP" property="gtp" jdbcType="INTEGER" />
+    <result column="M10" property="m10" jdbcType="INTEGER" />
+    <result column="M20" property="m20" jdbcType="INTEGER" />
+    <result column="M30" property="m30" jdbcType="INTEGER" />
+    <result column="M40" property="m40" jdbcType="INTEGER" />
+    <result column="M50" property="m50" jdbcType="INTEGER" />
+    <result column="M60" property="m60" jdbcType="INTEGER" />
+    <result column="M80" property="m80" jdbcType="INTEGER" />
+    <result column="M100" property="m100" jdbcType="INTEGER" />
+    <result column="PH" property="ph" jdbcType="INTEGER" />
+    <result column="DOXY" property="doxy" jdbcType="INTEGER" />
+    <result column="COND" property="cond" jdbcType="INTEGER" />
+    <result column="TURB" property="turb" jdbcType="INTEGER" />
+    <result column="NH4N" property="nh4n" jdbcType="INTEGER" />
+    <result column="TP" property="tp" jdbcType="INTEGER" />
+    <result column="TN" property="tn" jdbcType="INTEGER" />
+    <result column="CHLA" property="chla" jdbcType="INTEGER" />
+    <result column="TD11" property="td11" jdbcType="INTEGER" />
+    <result column="TD12" property="td12" jdbcType="INTEGER" />
+    <result column="TD13" property="td13" jdbcType="INTEGER" />
+    <result column="TD14" property="td14" jdbcType="INTEGER" />
+    <result column="TD15" property="td15" jdbcType="INTEGER" />
+    <result column="TD16" property="td16" jdbcType="INTEGER" />
+    <result column="TD17" property="td17" jdbcType="INTEGER" />
+    <result column="TD18" property="td18" jdbcType="INTEGER" />
+    <result column="TD19" property="td19" jdbcType="INTEGER" />
+    <result column="TD20" property="td20" jdbcType="INTEGER" />
+    <result column="TD21" property="td21" jdbcType="INTEGER" />
+    <result column="TD22" property="td22" jdbcType="INTEGER" />
+    <result column="TD23" property="td23" jdbcType="INTEGER" />
+    <result column="TD24" property="td24" jdbcType="INTEGER" />
+    <result column="TM" property="tm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, EnterpriseId, Voltage, SignalInten, PN05, Z, ZB, ZU, VJ, VA, Q, QA, AI, C, MST, 
+    FL, UC, US, UE, EJ, ED, GTP, M10, M20, M30, M40, M50, M60, M80, M100, PH, DOXY, COND, 
+    TURB, NH4N, TP, TN, CHLA, TD11, TD12, TD13, TD14, TD15, TD16, TD17, TD18, TD19, TD20, 
+    TD21, TD22, TD23, TD24, TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ST_EnterFactor
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ST_EnterFactor
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.reportManage.model.StEnterFactor" >
+    insert into ST_EnterFactor (Id, EnterpriseId, Voltage, 
+      SignalInten, PN05, Z, 
+      ZB, ZU, VJ, VA, 
+      Q, QA, AI, C, 
+      MST, FL, UC, US, 
+      UE, EJ, ED, GTP, 
+      M10, M20, M30, M40, 
+      M50, M60, M80, M100, 
+      PH, DOXY, COND, TURB, 
+      NH4N, TP, TN, CHLA, 
+      TD11, TD12, TD13, TD14, 
+      TD15, TD16, TD17, TD18, 
+      TD19, TD20, TD21, TD22, 
+      TD23, TD24, TM)
+    values (#{id,jdbcType=CHAR}, #{enterpriseid,jdbcType=CHAR}, #{voltage,jdbcType=INTEGER}, 
+      #{signalinten,jdbcType=INTEGER}, #{pn05,jdbcType=INTEGER}, #{z,jdbcType=INTEGER}, 
+      #{zb,jdbcType=INTEGER}, #{zu,jdbcType=INTEGER}, #{vj,jdbcType=INTEGER}, #{va,jdbcType=INTEGER}, 
+      #{q,jdbcType=INTEGER}, #{qa,jdbcType=INTEGER}, #{ai,jdbcType=INTEGER}, #{c,jdbcType=INTEGER}, 
+      #{mst,jdbcType=INTEGER}, #{fl,jdbcType=INTEGER}, #{uc,jdbcType=INTEGER}, #{us,jdbcType=INTEGER}, 
+      #{ue,jdbcType=INTEGER}, #{ej,jdbcType=INTEGER}, #{ed,jdbcType=INTEGER}, #{gtp,jdbcType=INTEGER}, 
+      #{m10,jdbcType=INTEGER}, #{m20,jdbcType=INTEGER}, #{m30,jdbcType=INTEGER}, #{m40,jdbcType=INTEGER}, 
+      #{m50,jdbcType=INTEGER}, #{m60,jdbcType=INTEGER}, #{m80,jdbcType=INTEGER}, #{m100,jdbcType=INTEGER}, 
+      #{ph,jdbcType=INTEGER}, #{doxy,jdbcType=INTEGER}, #{cond,jdbcType=INTEGER}, #{turb,jdbcType=INTEGER}, 
+      #{nh4n,jdbcType=INTEGER}, #{tp,jdbcType=INTEGER}, #{tn,jdbcType=INTEGER}, #{chla,jdbcType=INTEGER}, 
+      #{td11,jdbcType=INTEGER}, #{td12,jdbcType=INTEGER}, #{td13,jdbcType=INTEGER}, #{td14,jdbcType=INTEGER}, 
+      #{td15,jdbcType=INTEGER}, #{td16,jdbcType=INTEGER}, #{td17,jdbcType=INTEGER}, #{td18,jdbcType=INTEGER}, 
+      #{td19,jdbcType=INTEGER}, #{td20,jdbcType=INTEGER}, #{td21,jdbcType=INTEGER}, #{td22,jdbcType=INTEGER}, 
+      #{td23,jdbcType=INTEGER}, #{td24,jdbcType=INTEGER}, #{tm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.reportManage.model.StEnterFactor" >
+    insert into ST_EnterFactor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId,
+      </if>
+      <if test="voltage != null" >
+        Voltage,
+      </if>
+      <if test="signalinten != null" >
+        SignalInten,
+      </if>
+      <if test="pn05 != null" >
+        PN05,
+      </if>
+      <if test="z != null" >
+        Z,
+      </if>
+      <if test="zb != null" >
+        ZB,
+      </if>
+      <if test="zu != null" >
+        ZU,
+      </if>
+      <if test="vj != null" >
+        VJ,
+      </if>
+      <if test="va != null" >
+        VA,
+      </if>
+      <if test="q != null" >
+        Q,
+      </if>
+      <if test="qa != null" >
+        QA,
+      </if>
+      <if test="ai != null" >
+        AI,
+      </if>
+      <if test="c != null" >
+        C,
+      </if>
+      <if test="mst != null" >
+        MST,
+      </if>
+      <if test="fl != null" >
+        FL,
+      </if>
+      <if test="uc != null" >
+        UC,
+      </if>
+      <if test="us != null" >
+        US,
+      </if>
+      <if test="ue != null" >
+        UE,
+      </if>
+      <if test="ej != null" >
+        EJ,
+      </if>
+      <if test="ed != null" >
+        ED,
+      </if>
+      <if test="gtp != null" >
+        GTP,
+      </if>
+      <if test="m10 != null" >
+        M10,
+      </if>
+      <if test="m20 != null" >
+        M20,
+      </if>
+      <if test="m30 != null" >
+        M30,
+      </if>
+      <if test="m40 != null" >
+        M40,
+      </if>
+      <if test="m50 != null" >
+        M50,
+      </if>
+      <if test="m60 != null" >
+        M60,
+      </if>
+      <if test="m80 != null" >
+        M80,
+      </if>
+      <if test="m100 != null" >
+        M100,
+      </if>
+      <if test="ph != null" >
+        PH,
+      </if>
+      <if test="doxy != null" >
+        DOXY,
+      </if>
+      <if test="cond != null" >
+        COND,
+      </if>
+      <if test="turb != null" >
+        TURB,
+      </if>
+      <if test="nh4n != null" >
+        NH4N,
+      </if>
+      <if test="tp != null" >
+        TP,
+      </if>
+      <if test="tn != null" >
+        TN,
+      </if>
+      <if test="chla != null" >
+        CHLA,
+      </if>
+      <if test="td11 != null" >
+        TD11,
+      </if>
+      <if test="td12 != null" >
+        TD12,
+      </if>
+      <if test="td13 != null" >
+        TD13,
+      </if>
+      <if test="td14 != null" >
+        TD14,
+      </if>
+      <if test="td15 != null" >
+        TD15,
+      </if>
+      <if test="td16 != null" >
+        TD16,
+      </if>
+      <if test="td17 != null" >
+        TD17,
+      </if>
+      <if test="td18 != null" >
+        TD18,
+      </if>
+      <if test="td19 != null" >
+        TD19,
+      </if>
+      <if test="td20 != null" >
+        TD20,
+      </if>
+      <if test="td21 != null" >
+        TD21,
+      </if>
+      <if test="td22 != null" >
+        TD22,
+      </if>
+      <if test="td23 != null" >
+        TD23,
+      </if>
+      <if test="td24 != null" >
+        TD24,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="voltage != null" >
+        #{voltage,jdbcType=INTEGER},
+      </if>
+      <if test="signalinten != null" >
+        #{signalinten,jdbcType=INTEGER},
+      </if>
+      <if test="pn05 != null" >
+        #{pn05,jdbcType=INTEGER},
+      </if>
+      <if test="z != null" >
+        #{z,jdbcType=INTEGER},
+      </if>
+      <if test="zb != null" >
+        #{zb,jdbcType=INTEGER},
+      </if>
+      <if test="zu != null" >
+        #{zu,jdbcType=INTEGER},
+      </if>
+      <if test="vj != null" >
+        #{vj,jdbcType=INTEGER},
+      </if>
+      <if test="va != null" >
+        #{va,jdbcType=INTEGER},
+      </if>
+      <if test="q != null" >
+        #{q,jdbcType=INTEGER},
+      </if>
+      <if test="qa != null" >
+        #{qa,jdbcType=INTEGER},
+      </if>
+      <if test="ai != null" >
+        #{ai,jdbcType=INTEGER},
+      </if>
+      <if test="c != null" >
+        #{c,jdbcType=INTEGER},
+      </if>
+      <if test="mst != null" >
+        #{mst,jdbcType=INTEGER},
+      </if>
+      <if test="fl != null" >
+        #{fl,jdbcType=INTEGER},
+      </if>
+      <if test="uc != null" >
+        #{uc,jdbcType=INTEGER},
+      </if>
+      <if test="us != null" >
+        #{us,jdbcType=INTEGER},
+      </if>
+      <if test="ue != null" >
+        #{ue,jdbcType=INTEGER},
+      </if>
+      <if test="ej != null" >
+        #{ej,jdbcType=INTEGER},
+      </if>
+      <if test="ed != null" >
+        #{ed,jdbcType=INTEGER},
+      </if>
+      <if test="gtp != null" >
+        #{gtp,jdbcType=INTEGER},
+      </if>
+      <if test="m10 != null" >
+        #{m10,jdbcType=INTEGER},
+      </if>
+      <if test="m20 != null" >
+        #{m20,jdbcType=INTEGER},
+      </if>
+      <if test="m30 != null" >
+        #{m30,jdbcType=INTEGER},
+      </if>
+      <if test="m40 != null" >
+        #{m40,jdbcType=INTEGER},
+      </if>
+      <if test="m50 != null" >
+        #{m50,jdbcType=INTEGER},
+      </if>
+      <if test="m60 != null" >
+        #{m60,jdbcType=INTEGER},
+      </if>
+      <if test="m80 != null" >
+        #{m80,jdbcType=INTEGER},
+      </if>
+      <if test="m100 != null" >
+        #{m100,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=INTEGER},
+      </if>
+      <if test="doxy != null" >
+        #{doxy,jdbcType=INTEGER},
+      </if>
+      <if test="cond != null" >
+        #{cond,jdbcType=INTEGER},
+      </if>
+      <if test="turb != null" >
+        #{turb,jdbcType=INTEGER},
+      </if>
+      <if test="nh4n != null" >
+        #{nh4n,jdbcType=INTEGER},
+      </if>
+      <if test="tp != null" >
+        #{tp,jdbcType=INTEGER},
+      </if>
+      <if test="tn != null" >
+        #{tn,jdbcType=INTEGER},
+      </if>
+      <if test="chla != null" >
+        #{chla,jdbcType=INTEGER},
+      </if>
+      <if test="td11 != null" >
+        #{td11,jdbcType=INTEGER},
+      </if>
+      <if test="td12 != null" >
+        #{td12,jdbcType=INTEGER},
+      </if>
+      <if test="td13 != null" >
+        #{td13,jdbcType=INTEGER},
+      </if>
+      <if test="td14 != null" >
+        #{td14,jdbcType=INTEGER},
+      </if>
+      <if test="td15 != null" >
+        #{td15,jdbcType=INTEGER},
+      </if>
+      <if test="td16 != null" >
+        #{td16,jdbcType=INTEGER},
+      </if>
+      <if test="td17 != null" >
+        #{td17,jdbcType=INTEGER},
+      </if>
+      <if test="td18 != null" >
+        #{td18,jdbcType=INTEGER},
+      </if>
+      <if test="td19 != null" >
+        #{td19,jdbcType=INTEGER},
+      </if>
+      <if test="td20 != null" >
+        #{td20,jdbcType=INTEGER},
+      </if>
+      <if test="td21 != null" >
+        #{td21,jdbcType=INTEGER},
+      </if>
+      <if test="td22 != null" >
+        #{td22,jdbcType=INTEGER},
+      </if>
+      <if test="td23 != null" >
+        #{td23,jdbcType=INTEGER},
+      </if>
+      <if test="td24 != null" >
+        #{td24,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.reportManage.model.StEnterFactor" >
+    update ST_EnterFactor
+    <set >
+      <if test="enterpriseid != null" >
+        EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="voltage != null" >
+        Voltage = #{voltage,jdbcType=INTEGER},
+      </if>
+      <if test="signalinten != null" >
+        SignalInten = #{signalinten,jdbcType=INTEGER},
+      </if>
+      <if test="pn05 != null" >
+        PN05 = #{pn05,jdbcType=INTEGER},
+      </if>
+      <if test="z != null" >
+        Z = #{z,jdbcType=INTEGER},
+      </if>
+      <if test="zb != null" >
+        ZB = #{zb,jdbcType=INTEGER},
+      </if>
+      <if test="zu != null" >
+        ZU = #{zu,jdbcType=INTEGER},
+      </if>
+      <if test="vj != null" >
+        VJ = #{vj,jdbcType=INTEGER},
+      </if>
+      <if test="va != null" >
+        VA = #{va,jdbcType=INTEGER},
+      </if>
+      <if test="q != null" >
+        Q = #{q,jdbcType=INTEGER},
+      </if>
+      <if test="qa != null" >
+        QA = #{qa,jdbcType=INTEGER},
+      </if>
+      <if test="ai != null" >
+        AI = #{ai,jdbcType=INTEGER},
+      </if>
+      <if test="c != null" >
+        C = #{c,jdbcType=INTEGER},
+      </if>
+      <if test="mst != null" >
+        MST = #{mst,jdbcType=INTEGER},
+      </if>
+      <if test="fl != null" >
+        FL = #{fl,jdbcType=INTEGER},
+      </if>
+      <if test="uc != null" >
+        UC = #{uc,jdbcType=INTEGER},
+      </if>
+      <if test="us != null" >
+        US = #{us,jdbcType=INTEGER},
+      </if>
+      <if test="ue != null" >
+        UE = #{ue,jdbcType=INTEGER},
+      </if>
+      <if test="ej != null" >
+        EJ = #{ej,jdbcType=INTEGER},
+      </if>
+      <if test="ed != null" >
+        ED = #{ed,jdbcType=INTEGER},
+      </if>
+      <if test="gtp != null" >
+        GTP = #{gtp,jdbcType=INTEGER},
+      </if>
+      <if test="m10 != null" >
+        M10 = #{m10,jdbcType=INTEGER},
+      </if>
+      <if test="m20 != null" >
+        M20 = #{m20,jdbcType=INTEGER},
+      </if>
+      <if test="m30 != null" >
+        M30 = #{m30,jdbcType=INTEGER},
+      </if>
+      <if test="m40 != null" >
+        M40 = #{m40,jdbcType=INTEGER},
+      </if>
+      <if test="m50 != null" >
+        M50 = #{m50,jdbcType=INTEGER},
+      </if>
+      <if test="m60 != null" >
+        M60 = #{m60,jdbcType=INTEGER},
+      </if>
+      <if test="m80 != null" >
+        M80 = #{m80,jdbcType=INTEGER},
+      </if>
+      <if test="m100 != null" >
+        M100 = #{m100,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null" >
+        PH = #{ph,jdbcType=INTEGER},
+      </if>
+      <if test="doxy != null" >
+        DOXY = #{doxy,jdbcType=INTEGER},
+      </if>
+      <if test="cond != null" >
+        COND = #{cond,jdbcType=INTEGER},
+      </if>
+      <if test="turb != null" >
+        TURB = #{turb,jdbcType=INTEGER},
+      </if>
+      <if test="nh4n != null" >
+        NH4N = #{nh4n,jdbcType=INTEGER},
+      </if>
+      <if test="tp != null" >
+        TP = #{tp,jdbcType=INTEGER},
+      </if>
+      <if test="tn != null" >
+        TN = #{tn,jdbcType=INTEGER},
+      </if>
+      <if test="chla != null" >
+        CHLA = #{chla,jdbcType=INTEGER},
+      </if>
+      <if test="td11 != null" >
+        TD11 = #{td11,jdbcType=INTEGER},
+      </if>
+      <if test="td12 != null" >
+        TD12 = #{td12,jdbcType=INTEGER},
+      </if>
+      <if test="td13 != null" >
+        TD13 = #{td13,jdbcType=INTEGER},
+      </if>
+      <if test="td14 != null" >
+        TD14 = #{td14,jdbcType=INTEGER},
+      </if>
+      <if test="td15 != null" >
+        TD15 = #{td15,jdbcType=INTEGER},
+      </if>
+      <if test="td16 != null" >
+        TD16 = #{td16,jdbcType=INTEGER},
+      </if>
+      <if test="td17 != null" >
+        TD17 = #{td17,jdbcType=INTEGER},
+      </if>
+      <if test="td18 != null" >
+        TD18 = #{td18,jdbcType=INTEGER},
+      </if>
+      <if test="td19 != null" >
+        TD19 = #{td19,jdbcType=INTEGER},
+      </if>
+      <if test="td20 != null" >
+        TD20 = #{td20,jdbcType=INTEGER},
+      </if>
+      <if test="td21 != null" >
+        TD21 = #{td21,jdbcType=INTEGER},
+      </if>
+      <if test="td22 != null" >
+        TD22 = #{td22,jdbcType=INTEGER},
+      </if>
+      <if test="td23 != null" >
+        TD23 = #{td23,jdbcType=INTEGER},
+      </if>
+      <if test="td24 != null" >
+        TD24 = #{td24,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.reportManage.model.StEnterFactor" >
+    update ST_EnterFactor
+    set EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      Voltage = #{voltage,jdbcType=INTEGER},
+      SignalInten = #{signalinten,jdbcType=INTEGER},
+      PN05 = #{pn05,jdbcType=INTEGER},
+      Z = #{z,jdbcType=INTEGER},
+      ZB = #{zb,jdbcType=INTEGER},
+      ZU = #{zu,jdbcType=INTEGER},
+      VJ = #{vj,jdbcType=INTEGER},
+      VA = #{va,jdbcType=INTEGER},
+      Q = #{q,jdbcType=INTEGER},
+      QA = #{qa,jdbcType=INTEGER},
+      AI = #{ai,jdbcType=INTEGER},
+      C = #{c,jdbcType=INTEGER},
+      MST = #{mst,jdbcType=INTEGER},
+      FL = #{fl,jdbcType=INTEGER},
+      UC = #{uc,jdbcType=INTEGER},
+      US = #{us,jdbcType=INTEGER},
+      UE = #{ue,jdbcType=INTEGER},
+      EJ = #{ej,jdbcType=INTEGER},
+      ED = #{ed,jdbcType=INTEGER},
+      GTP = #{gtp,jdbcType=INTEGER},
+      M10 = #{m10,jdbcType=INTEGER},
+      M20 = #{m20,jdbcType=INTEGER},
+      M30 = #{m30,jdbcType=INTEGER},
+      M40 = #{m40,jdbcType=INTEGER},
+      M50 = #{m50,jdbcType=INTEGER},
+      M60 = #{m60,jdbcType=INTEGER},
+      M80 = #{m80,jdbcType=INTEGER},
+      M100 = #{m100,jdbcType=INTEGER},
+      PH = #{ph,jdbcType=INTEGER},
+      DOXY = #{doxy,jdbcType=INTEGER},
+      COND = #{cond,jdbcType=INTEGER},
+      TURB = #{turb,jdbcType=INTEGER},
+      NH4N = #{nh4n,jdbcType=INTEGER},
+      TP = #{tp,jdbcType=INTEGER},
+      TN = #{tn,jdbcType=INTEGER},
+      CHLA = #{chla,jdbcType=INTEGER},
+      TD11 = #{td11,jdbcType=INTEGER},
+      TD12 = #{td12,jdbcType=INTEGER},
+      TD13 = #{td13,jdbcType=INTEGER},
+      TD14 = #{td14,jdbcType=INTEGER},
+      TD15 = #{td15,jdbcType=INTEGER},
+      TD16 = #{td16,jdbcType=INTEGER},
+      TD17 = #{td17,jdbcType=INTEGER},
+      TD18 = #{td18,jdbcType=INTEGER},
+      TD19 = #{td19,jdbcType=INTEGER},
+      TD20 = #{td20,jdbcType=INTEGER},
+      TD21 = #{td21,jdbcType=INTEGER},
+      TD22 = #{td22,jdbcType=INTEGER},
+      TD23 = #{td23,jdbcType=INTEGER},
+      TD24 = #{td24,jdbcType=INTEGER},
+      TM = #{tm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  	<select id="getByEnterId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_EnterFactor
+		where EnterpriseId = #{enterId,jdbcType=VARCHAR}
+		limit 1
+	</select>
+	
+</mapper>

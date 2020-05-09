@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.reportManage.dao.StFactorNameMapper">
+	<resultMap id="BaseResultMap" type="com.fourfaith.reportManage.model.StFactorName">
+		<id column="Id" property="id" jdbcType="VARCHAR" />
+		<result column="EnterpriseId" property="enterpriseid" jdbcType="VARCHAR" />
+		<result column="FactorViewName11" property="factorviewname11"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName12" property="factorviewname12"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName13" property="factorviewname13"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName14" property="factorviewname14"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName15" property="factorviewname15"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName16" property="factorviewname16"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName17" property="factorviewname17"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName18" property="factorviewname18"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName19" property="factorviewname19"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName20" property="factorviewname20"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName21" property="factorviewname21"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName22" property="factorviewname22"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName23" property="factorviewname23"
+			jdbcType="VARCHAR" />
+		<result column="FactorViewName24" property="factorviewname24"
+			jdbcType="VARCHAR" />
+		<result column="TM" property="tm" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, EnterpriseId, FactorViewName11, FactorViewName12, FactorViewName13,
+		FactorViewName14,
+		FactorViewName15, FactorViewName16, FactorViewName17, FactorViewName18,
+		FactorViewName19,
+		FactorViewName20, FactorViewName21, FactorViewName22, FactorViewName23,
+		FactorViewName24,
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_FactorName
+		where Id = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ST_FactorName
+		where Id = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.fourfaith.reportManage.model.StFactorName">
+		insert into ST_FactorName (Id, EnterpriseId, FactorViewName11,
+		FactorViewName12, FactorViewName13, FactorViewName14,
+		FactorViewName15, FactorViewName16, FactorViewName17,
+		FactorViewName18, FactorViewName19, FactorViewName20,
+		FactorViewName21, FactorViewName22, FactorViewName23,
+		FactorViewName24, TM)
+		values (#{id,jdbcType=VARCHAR}, #{enterpriseid,jdbcType=VARCHAR},
+		#{factorviewname11,jdbcType=VARCHAR},
+		#{factorviewname12,jdbcType=VARCHAR},
+		#{factorviewname13,jdbcType=VARCHAR},
+		#{factorviewname14,jdbcType=VARCHAR},
+		#{factorviewname15,jdbcType=VARCHAR},
+		#{factorviewname16,jdbcType=VARCHAR},
+		#{factorviewname17,jdbcType=VARCHAR},
+		#{factorviewname18,jdbcType=VARCHAR},
+		#{factorviewname19,jdbcType=VARCHAR},
+		#{factorviewname20,jdbcType=VARCHAR},
+		#{factorviewname21,jdbcType=VARCHAR},
+		#{factorviewname22,jdbcType=VARCHAR},
+		#{factorviewname23,jdbcType=VARCHAR},
+		#{factorviewname24,jdbcType=VARCHAR}, #{tm,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.fourfaith.reportManage.model.StFactorName">
+		insert into ST_FactorName
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="enterpriseid != null">
+				EnterpriseId,
+			</if>
+			<if test="factorviewname11 != null">
+				FactorViewName11,
+			</if>
+			<if test="factorviewname12 != null">
+				FactorViewName12,
+			</if>
+			<if test="factorviewname13 != null">
+				FactorViewName13,
+			</if>
+			<if test="factorviewname14 != null">
+				FactorViewName14,
+			</if>
+			<if test="factorviewname15 != null">
+				FactorViewName15,
+			</if>
+			<if test="factorviewname16 != null">
+				FactorViewName16,
+			</if>
+			<if test="factorviewname17 != null">
+				FactorViewName17,
+			</if>
+			<if test="factorviewname18 != null">
+				FactorViewName18,
+			</if>
+			<if test="factorviewname19 != null">
+				FactorViewName19,
+			</if>
+			<if test="factorviewname20 != null">
+				FactorViewName20,
+			</if>
+			<if test="factorviewname21 != null">
+				FactorViewName21,
+			</if>
+			<if test="factorviewname22 != null">
+				FactorViewName22,
+			</if>
+			<if test="factorviewname23 != null">
+				FactorViewName23,
+			</if>
+			<if test="factorviewname24 != null">
+				FactorViewName24,
+			</if>
+			<if test="tm != null">
+				TM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="enterpriseid != null">
+				#{enterpriseid,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname11 != null">
+				#{factorviewname11,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname12 != null">
+				#{factorviewname12,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname13 != null">
+				#{factorviewname13,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname14 != null">
+				#{factorviewname14,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname15 != null">
+				#{factorviewname15,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname16 != null">
+				#{factorviewname16,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname17 != null">
+				#{factorviewname17,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname18 != null">
+				#{factorviewname18,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname19 != null">
+				#{factorviewname19,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname20 != null">
+				#{factorviewname20,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname21 != null">
+				#{factorviewname21,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname22 != null">
+				#{factorviewname22,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname23 != null">
+				#{factorviewname23,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname24 != null">
+				#{factorviewname24,jdbcType=VARCHAR},
+			</if>
+			<if test="tm != null">
+				#{tm,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.reportManage.model.StFactorName">
+		update ST_FactorName
+		<set>
+			<if test="enterpriseid != null">
+				EnterpriseId = #{enterpriseid,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname11 != null">
+				FactorViewName11 = #{factorviewname11,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname12 != null">
+				FactorViewName12 = #{factorviewname12,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname13 != null">
+				FactorViewName13 = #{factorviewname13,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname14 != null">
+				FactorViewName14 = #{factorviewname14,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname15 != null">
+				FactorViewName15 = #{factorviewname15,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname16 != null">
+				FactorViewName16 = #{factorviewname16,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname17 != null">
+				FactorViewName17 = #{factorviewname17,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname18 != null">
+				FactorViewName18 = #{factorviewname18,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname19 != null">
+				FactorViewName19 = #{factorviewname19,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname20 != null">
+				FactorViewName20 = #{factorviewname20,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname21 != null">
+				FactorViewName21 = #{factorviewname21,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname22 != null">
+				FactorViewName22 = #{factorviewname22,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname23 != null">
+				FactorViewName23 = #{factorviewname23,jdbcType=VARCHAR},
+			</if>
+			<if test="factorviewname24 != null">
+				FactorViewName24 = #{factorviewname24,jdbcType=VARCHAR},
+			</if>
+			<if test="tm != null">
+				TM = #{tm,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fourfaith.reportManage.model.StFactorName">
+		update ST_FactorName
+		set EnterpriseId = #{enterpriseid,jdbcType=VARCHAR},
+		FactorViewName11 = #{factorviewname11,jdbcType=VARCHAR},
+		FactorViewName12 = #{factorviewname12,jdbcType=VARCHAR},
+		FactorViewName13 = #{factorviewname13,jdbcType=VARCHAR},
+		FactorViewName14 = #{factorviewname14,jdbcType=VARCHAR},
+		FactorViewName15 = #{factorviewname15,jdbcType=VARCHAR},
+		FactorViewName16 = #{factorviewname16,jdbcType=VARCHAR},
+		FactorViewName17 = #{factorviewname17,jdbcType=VARCHAR},
+		FactorViewName18 = #{factorviewname18,jdbcType=VARCHAR},
+		FactorViewName19 = #{factorviewname19,jdbcType=VARCHAR},
+		FactorViewName20 = #{factorviewname20,jdbcType=VARCHAR},
+		FactorViewName21 = #{factorviewname21,jdbcType=VARCHAR},
+		FactorViewName22 = #{factorviewname22,jdbcType=VARCHAR},
+		FactorViewName23 = #{factorviewname23,jdbcType=VARCHAR},
+		FactorViewName24 = #{factorviewname24,jdbcType=VARCHAR},
+		TM = #{tm,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getByEnterId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ST_FactorName
+		where EnterpriseId = #{getByEnterId,jdbcType=VARCHAR}
+		limit 1
+	</select>
+	
+	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM ST_FactorName
+		where 1=1
+		<if test="enterpriseId != null">
+			AND EnterpriseId = #{enterpriseId,jdbcType=VARCHAR}
+		</if>
+		order by TM desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+</mapper>

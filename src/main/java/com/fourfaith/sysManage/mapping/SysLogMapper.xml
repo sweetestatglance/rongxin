@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysLogMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysLog" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="EnterpriseId" property="enterpriseid" jdbcType="CHAR" />
+    <result column="UserId" property="userid" jdbcType="CHAR" />
+    <result column="LogContent" property="logcontent" jdbcType="VARCHAR" />
+    <result column="LoginTime" property="logintime" jdbcType="TIMESTAMP" />
+    <result column="LoginIP" property="loginip" jdbcType="VARCHAR" />
+    <result column="LoginArea" property="loginarea" jdbcType="VARCHAR" />
+    <result column="LogTime" property="logtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, EnterpriseId, UserId, LogContent, LoginTime, LoginIP, LoginArea, LogTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysLog
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysLog
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysLog" >
+    insert into SysLog (Id, EnterpriseId, UserId, 
+      LogContent, LoginTime, LoginIP, 
+      LoginArea, LogTime)
+    values (#{id,jdbcType=CHAR}, #{enterpriseid,jdbcType=CHAR}, #{userid,jdbcType=CHAR}, 
+      #{logcontent,jdbcType=VARCHAR}, #{logintime,jdbcType=TIMESTAMP}, #{loginip,jdbcType=VARCHAR}, 
+      #{loginarea,jdbcType=VARCHAR}, #{logtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysLog" >
+    insert into SysLog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="enterpriseid != null" >
+        EnterpriseId,
+      </if>
+      <if test="userid != null" >
+        UserId,
+      </if>
+      <if test="logcontent != null" >
+        LogContent,
+      </if>
+      <if test="logintime != null" >
+        LoginTime,
+      </if>
+      <if test="loginip != null" >
+        LoginIP,
+      </if>
+      <if test="loginarea != null" >
+        LoginArea,
+      </if>
+      <if test="logtime != null" >
+        LogTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="enterpriseid != null" >
+        #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=CHAR},
+      </if>
+      <if test="logcontent != null" >
+        #{logcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginip != null" >
+        #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="loginarea != null" >
+        #{loginarea,jdbcType=VARCHAR},
+      </if>
+      <if test="logtime != null" >
+        #{logtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysLog" >
+    update SysLog
+    <set >
+      <if test="enterpriseid != null" >
+        EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=CHAR},
+      </if>
+      <if test="logcontent != null" >
+        LogContent = #{logcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginip != null" >
+        LoginIP = #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="loginarea != null" >
+        LoginArea = #{loginarea,jdbcType=VARCHAR},
+      </if>
+      <if test="logtime != null" >
+        LogTime = #{logtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysLog" >
+    update SysLog
+    set EnterpriseId = #{enterpriseid,jdbcType=CHAR},
+      UserId = #{userid,jdbcType=CHAR},
+      LogContent = #{logcontent,jdbcType=VARCHAR},
+      LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      LoginIP = #{loginip,jdbcType=VARCHAR},
+      LoginArea = #{loginarea,jdbcType=VARCHAR},
+      LogTime = #{logtime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+    <select id="getList" resultMap="BaseResultMap" parameterType="map">
+  	SELECT SysLog.*,
+  	user.UserName as username FROM SysLog left join SysUser as user on user.id=SysLog.UserId 
+  	where 1=1
+    <if test="enterpriseid != null" >
+        AND SysLog.EnterpriseId = #{enterpriseid,jdbcType=VARCHAR} 
+    </if>
+     <if test="userid != null" >
+        AND SysLog.UserId = #{userid,jdbcType=VARCHAR} 
+    </if>
+    <if test="logcontent_fuzzy != null" >
+        AND SysLog.LogContent like '%${logcontent_fuzzy}%'
+    </if>
+    <if test="loginarea_fuzzy != null" >
+        AND SysLog.LoginArea like '%${loginarea_fuzzy}%'
+    </if>
+    <if test="beginTime != null" >
+        and SysLog.LoginTime &gt;= #{beginTime,jdbcType=TIMESTAMP} 
+    </if>
+    <if test="endTime != null" >
+        and SysLog.LoginTime &lt;= #{endTime,jdbcType=TIMESTAMP} 
+    </if>
+    order by SysLog.LogTime desc
+    <if test="pageStart!= null and pageEnd!= null">
+       limit ${pageStart},${pageEnd}
+    </if>
+  </select>
+  
+  <select id="getCount" resultType="java.lang.Integer" parameterType="map">
+  	SELECT count(*) FROM SysLog
+  	where 1=1
+    <if test="enterpriseid != null" >
+        AND EnterpriseId = #{enterpriseid,jdbcType=VARCHAR} 
+    </if>
+    <if test="userid != null" >
+        AND UserId = #{userid,jdbcType=VARCHAR} 
+    </if>
+    <if test="logcontent_fuzzy != null" >
+        AND LogContent like '%${logcontent_fuzzy}%'
+    </if>
+     <if test="loginarea_fuzzy != null" >
+        AND SysLog.LoginArea like '%${loginarea_fuzzy}%'
+    </if>
+    <if test="beginTime != null" >
+        and LoginTime &gt;= #{beginTime,jdbcType=TIMESTAMP} 
+    </if>
+    <if test="endTime != null" >
+        and LoginTime &lt;= #{endTime,jdbcType=TIMESTAMP} 
+    </if>
+  </select>
+</mapper>

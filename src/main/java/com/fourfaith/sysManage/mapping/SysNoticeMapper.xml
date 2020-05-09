@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fourfaith.sysManage.dao.SysNoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.fourfaith.sysManage.model.SysNotice" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="Href" property="href" jdbcType="VARCHAR" />
+    <result column="Time" property="time" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="Tm" property="tm" jdbcType="TIMESTAMP" />
+    <result column="OrderTm" property="ordertm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Title, Href, Time, Type, Tm,OrderTm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SysNotice
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SysNotice
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fourfaith.sysManage.model.SysNotice" >
+    insert into SysNotice (Id, Title, Href, 
+      Time, Type, Tm,OrderTm)
+    values (#{id,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, #{href,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{tm,jdbcType=TIMESTAMP}, #{ordertm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fourfaith.sysManage.model.SysNotice" >
+    insert into SysNotice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="href != null" >
+        Href,
+      </if>
+      <if test="time != null" >
+        Time,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="tm != null" >
+        Tm,
+      </if>
+      <if test="ordertm != null" >
+        OrderTm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null" >
+        #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+       <if test="ordertm != null" >
+        #{ordertm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fourfaith.sysManage.model.SysNotice" >
+    update SysNotice
+    <set >
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null" >
+        Href = #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        Time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        Type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        Tm = #{tm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertm != null" >
+        OrderTm = #{ordertm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fourfaith.sysManage.model.SysNotice" >
+    update SysNotice
+    set Title = #{title,jdbcType=VARCHAR},
+      Href = #{href,jdbcType=VARCHAR},
+      Time = #{time,jdbcType=VARCHAR},
+      Type = #{type,jdbcType=INTEGER},
+      Tm = #{tm,jdbcType=TIMESTAMP},
+      OrderTm = #{ordertm,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  
+  	<select id="getList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM SysNotice
+		where 1=1
+		<if test="type != null">
+			AND Type = #{type,jdbcType=INTEGER}
+		</if>
+		order by OrderTm desc
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+	
+  <delete id="deleteNotice" parameterType="java.lang.Integer" >
+    delete from SysNotice
+    where Type = #{type,jdbcType=INTEGER}
+  </delete>
+  
+</mapper>
