@@ -304,8 +304,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
           <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
+            <source>1.7</source>
+            <target>1.7</target>
           </configuration>
         </plugin>
         <plugin>
@@ -333,16 +333,25 @@
         <directory>src/main/java</directory>
         <includes>
           <include>**/*.xml</include>
-          <include>**/*.dic</include>
+          <include>**/*.dat</include>
           <include>**/*.properties</include>
         </includes>
         <filtering>false</filtering>
       </resource>
       <resource>
-        <directory>src/main/Resource</directory>
+      <directory>src/main/Resource</directory>
+      <includes>
+        <include>**/*.xml</include>
+        <include>**/*.dat</include>
+        <include>**/*.properties</include>
+      </includes>
+      <filtering>false</filtering>
+    </resource>
+      <resource>
+        <directory>src/main/webapp</directory>
         <includes>
           <include>**/*.xml</include>
-          <include>**/*.dic</include>
+          <include>**/*.dat</include>
           <include>**/*.properties</include>
         </includes>
         <filtering>false</filtering>
