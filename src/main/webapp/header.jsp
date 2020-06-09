@@ -130,12 +130,12 @@ $(function () {
 
 	function initNoticeAndAlarmRefreshJS() {
 		if ($("a.notice_a").length > 0) {
-			getUnReadNoticeCount();
-			setInterval( getUnReadNoticeCount ,20*1000);
+			//getUnReadNoticeCount();
+			//setInterval( getUnReadNoticeCount ,20*1000);
 		}
 		if ($("a.alarm_a").length > 0) {
-			getTodayAlarmCount();
-			setInterval( getTodayAlarmCount ,20*1000);
+			//getTodayAlarmCount();
+			//setInterval( getTodayAlarmCount ,20*1000);
 		}
 	}
 

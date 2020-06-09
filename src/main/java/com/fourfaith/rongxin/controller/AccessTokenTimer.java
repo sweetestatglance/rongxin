@@ -30,7 +30,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@Component
+//@Component
 public class AccessTokenTimer {
 
 
@@ -48,7 +48,7 @@ public class AccessTokenTimer {
      * 定时器：需要在spring配置中开启定时任务扫描
      * cron配置每9分钟执行一次，cron设置很怪只能0秒执行，不是任意时间计时
      */
-    @Scheduled(cron = "0/10 * * * * ?")
+    //@Scheduled(cron = "0/10 * * * * ?")
     public void timerfortoken() throws IOException {
         List<Openid> openids = new ArrayList<>();
         List<MessageVo> messageVo = new ArrayList<>();

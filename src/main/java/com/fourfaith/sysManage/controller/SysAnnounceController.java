@@ -127,6 +127,12 @@ public class SysAnnounceController {
         return JSONObject.toJSONString(ajaxJson);
     }
 
+    /**
+     * 获取未读预警信息数量
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping({"/getUnReadNoticeCount"})
     @ResponseBody
     public String getUnReadNoticeCount(HttpServletRequest request) throws Exception {
