@@ -5,7 +5,16 @@
 <div class="logo"></div>
 <ul class="button">
  <c:forEach items="${menuList}" var="item" varStatus="vs">
-<li class='<c:if test="${vs.index==1?'sell':''}" ></c:if>' style="cursor: pointer;"><a href="javascript:void(0)" onclick="showContent('${item.menuurl}?menuId=${item.id}','contain')"><img src="${ctx}/content/skin/css/images/menu/nav/${item.menuicon}.png" width="45" height="45" /><br />${item.menuname}</a></li>
+	 <c:choose>
+		 <c:when test="${item.id == '1122f4ebb1a54bc29de413df54739f11'}">
+			 <li id="hqlinedata" class='<c:if test="${vs.index==1?'sell':''}" ></c:if>' style="cursor: pointer;"><a href="javascript:void(0)" onclick="showContent('${item.menuurl}?menuId=${item.id}','contain',{nodeIds:'0066668806',isDevice:true,rainRange:null,query_beginTime:null,query_beginTime_hour:0,query_endTime:null,query_endTime_hour:23,showOnLineDevice:false,query_stcdName:null,sttp:null})">
+				 <img src="${ctx}/content/skin/css/images/menu/nav/${item.menuicon}.png" width="45" height="45" />
+				 <br />${item.menuname}</a></li>
+		 </c:when>
+		 <c:otherwise>
+			 <li class='<c:if test="${vs.index==1?'sell':''}" ></c:if>' style="cursor: pointer;"><a href="javascript:void(0)" onclick="showContent('${item.menuurl}?menuId=${item.id}','contain')"><img src="${ctx}/content/skin/css/images/menu/nav/${item.menuicon}.png" width="45" height="45" /><br />${item.menuname}</a></li>
+		 </c:otherwise>
+	 </c:choose>
 </c:forEach>
 </ul>
 <div class="top_user">
